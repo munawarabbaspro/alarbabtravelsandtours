@@ -1,0 +1,37 @@
+/* logo + name as a soft pill, to sit with the soft nav pills (preview only) */
+.bp-x{margin:0 0 26px}.bp-x h3{font:900 17px Archivo,sans-serif;margin:0 0 3px}.bp-x>p{margin:0 0 10px;font-size:13.5px;opacity:.8;max-width:76ch}
+.bp-s{position:relative;border-radius:22px;padding:22px;overflow:hidden;border:1px solid rgba(11,18,32,.12);
+  background:linear-gradient(180deg,rgba(0,12,30,.25),rgba(0,12,30,.35)),url(/assets/hero/1568508432206-7541b535f84c-1000.webp) center 35%/cover}
+.bp-s.lt{background:radial-gradient(70% 90% at 12% 0,#f6f8fb,transparent 70%),#e8ebf0}
+.bp-tg{position:absolute;right:10px;bottom:10px}.bp-tg button{min-height:32px;padding:0 12px;border-radius:99px;border:1px solid rgba(127,127,127,.45);background:rgba(255,255,255,.75);color:#12161d;font:700 12px Inter,sans-serif;cursor:pointer}
+.bp-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.bp-s a{color:inherit;text-decoration:none}
+.bp-nav{display:flex;gap:6px;flex-wrap:wrap;flex:1;min-width:0}
+.bp-p{display:flex;align-items:center;gap:6px;min-height:44px;padding:6px 8px 6px 12px;border-radius:999px;color:#12161d;font:800 12.5px/1 Inter,sans-serif;
+  background:linear-gradient(145deg,#fbfcfe,#e3e6ec);box-shadow:6px 8px 14px rgba(20,30,50,.35),-4px -4px 10px rgba(255,255,255,.9),inset 0 1px 0 #fff}
+.bp-s.lt .bp-p{box-shadow:6px 8px 14px rgba(140,150,172,.55),-5px -5px 11px rgba(255,255,255,.95),inset 0 1px 0 #fff}
+.bp-p::after{content:"";width:16px;height:16px;border-radius:50%;background:radial-gradient(circle,#c5cad6 0 30%,transparent 33%),linear-gradient(145deg,#fdfdfe,#dde1e8)}
+.bp-p.on{background:linear-gradient(145deg,#dde1e8,#eef0f4);color:#c4000f;box-shadow:inset 5px 6px 11px rgba(140,150,172,.6),inset -4px -4px 9px rgba(255,255,255,.95)}
+.bp-p.on::after{background:radial-gradient(circle,#e30613 0 34%,transparent 38%),linear-gradient(145deg,#fdfdfe,#dde1e8);box-shadow:0 0 12px 3px rgba(227,6,19,.5)}
+.bp-wa{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:99px;background:linear-gradient(145deg,#27b862,#13803f);color:#fff!important;font:800 11.5px Inter,sans-serif;white-space:nowrap}
+.bp-b{display:inline-flex;align-items:center;gap:10px;flex:none;color:#0a2f8f}
+.bp-b img{display:block;height:44px;width:auto;flex:none}
+.bp-b b{display:block;font:900 17px/1 Archivo,sans-serif}.bp-b small{display:block;margin-top:3px;font:700 8px/1 Archivo,sans-serif;letter-spacing:.2em;color:#5d6676}
+/* A raised pill */
+.bp-A{padding:6px 18px 6px 12px;border-radius:999px;background:linear-gradient(145deg,#fbfcfe,#e3e6ec);box-shadow:6px 8px 14px rgba(20,30,50,.35),-4px -4px 10px rgba(255,255,255,.9),inset 0 1px 0 #fff}
+.bp-s.lt .bp-A,.bp-s.lt .bp-B,.bp-s.lt .bp-E{box-shadow:6px 8px 14px rgba(140,150,172,.55),-5px -5px 11px rgba(255,255,255,.95),inset 0 1px 0 #fff}
+/* B mark in a round raised knob, name beside it */
+.bp-B{padding:5px 20px 5px 5px;border-radius:999px;background:linear-gradient(145deg,#fbfcfe,#e3e6ec);box-shadow:6px 8px 14px rgba(20,30,50,.35),-4px -4px 10px rgba(255,255,255,.9),inset 0 1px 0 #fff}
+.bp-B .kn{display:grid;place-items:center;width:54px;height:54px;border-radius:50%;background:linear-gradient(145deg,#ffffff,#dfe3ea);box-shadow:4px 5px 10px rgba(20,30,50,.3),-3px -3px 7px rgba(255,255,255,.95),inset 0 1px 0 #fff}
+.bp-B .kn img{height:34px}
+/* C pressed-in tray, mark rises out of it */
+.bp-C{padding:6px 20px 6px 64px;position:relative;border-radius:999px;background:linear-gradient(145deg,#dde1e8,#eef0f4);box-shadow:inset 5px 6px 11px rgba(140,150,172,.6),inset -4px -4px 9px rgba(255,255,255,.95)}
+.bp-C img{position:absolute;left:8px;top:50%;margin-top:-34px;height:62px;filter:drop-shadow(0 8px 8px rgba(20,30,60,.35))}
+/* D dark pill, white name */
+.bp-D{padding:6px 18px 6px 12px;border-radius:999px;color:#fff;background:linear-gradient(145deg,#2a2f3a,#0b0e14);box-shadow:6px 8px 14px rgba(0,0,0,.45),-3px -3px 8px rgba(255,255,255,.18),inset 0 1px 0 rgba(255,255,255,.25)}
+.bp-D b{background:linear-gradient(100deg,#9cc4ff,#fff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}.bp-D small{color:#aeb6c4}
+/* E two-line badge: name over a small capsule */
+.bp-E{padding:6px 14px 6px 8px;border-radius:999px;background:linear-gradient(145deg,#fbfcfe,#e3e6ec);box-shadow:6px 8px 14px rgba(20,30,50,.35),-4px -4px 10px rgba(255,255,255,.9),inset 0 1px 0 #fff}
+.bp-E .nm{display:grid;gap:4px}.bp-E b{font-size:16px;color:#0a2f8f}
+.bp-E small{display:inline-block;margin:0;padding:4px 8px;border-radius:99px;font-size:7.5px;color:#fff;background:linear-gradient(145deg,#e30613,#a30010);letter-spacing:.16em;box-shadow:0 3px 6px rgba(150,0,15,.35)}
+.bp-note{margin:10px 0 0;font-size:12.5px;opacity:.7}

@@ -1,0 +1,240 @@
+# slug|place|unsplash photo id   (first row per slug = hero image). Source: Unsplash (free licence).
+germany|Brandenburg Gate, Berlin|1554072675-66db59dba46f
+germany|Neuschwanstein Castle, Munich|1753155609895-d6a652d4aa65
+germany|The Rhine Valley|1591432535824-114ec85dce87
+france|Eiffel Tower, Paris|1502602898657-3e91760cbb34
+france|French Riviera (Nice/Cannes)|1585414299117-ef1d49b63144
+france|Mont Saint-Michel|1653751597763-d0d9e2baf46b
+italy|Colosseum, Rome|1552832230-c0197dd311b5
+italy|Grand Canal, Venice|1498307833015-e7b400441eb8
+italy|Duomo, Florence|1601195576601-346d58e024c0
+spain|Sagrada Familia, Barcelona|1578095172812-dcc191c5aed8
+spain|Royal Palace, Madrid|1658922184330-001b78430070
+spain|Alcázar, Seville|1744698277059-e6fcda5c88ea
+netherlands|Amsterdam Canals|1534351590666-13e3e96b5017
+netherlands|Rotterdam|1572202378710-71d8b1cce96c
+switzerland|Lucerne Chapel Bridge|1477271706509-fecda7438b68
+switzerland|Lake Zurich, Zurich|1643981670720-eef07ebdb179
+austria|Hallstatt|1504713194693-2afd8cf6fa99
+austria|Schönbrunn Palace, Vienna|1573599852326-2d4da0bbe613
+austria|Salzburg Old Town|1667896803625-047231b544df
+belgium|Bruges Canals|1601961208755-3519c8a31ded
+belgium|Grand Place, Brussels|1582124534218-f7bf8b908f2d
+belgium|Gravensteen, Ghent|1621929209200-2d630d806f8e
+denmark|Little Mermaid Statue, Copenhagen|1757671024555-a64d9a01ae5a
+denmark|Tivoli Gardens|1641676207257-7143f7b58df9
+greece|Santorini (Oia)|1570077188670-e3a8d69ac5ff
+greece|Acropolis, Athens|1603565816030-6b389eeb23cb
+greece|Mykonos|1601581875309-fafbf2d3ed3a
+norway|Geirangerfjord|1513519107127-1bed33748e4c
+norway|Bryggen, Bergen|1544085311-11a028465b03
+norway|Oslo Harbour|1746192422508-5918f25a90fb
+portugal|Ribeira, Porto|1555881400-74d7acaacd8b
+portugal|Belem Tower, Lisbon|1606215767711-263080a6b4b9
+portugal|Algarve Beaches|1591264786838-6acdff391890
+sweden|Gamla Stan, Stockholm|1571063393691-69f89d1eb82b
+sweden|Gothenburg|1581372415215-2379b52cf5ad
+czech-republic|Charles Bridge, Prague|1677937148591-19bd3fa21e5f
+czech-republic|Old Town Square, Prague|1688066146683-3ba3a69c041e
+czech-republic|Prague Castle|1637013919535-c0e49e46a26f
+estonia|Tallinn Old Town|1564951537954-29dd59397b90
+estonia|Lahemaa National Park|1601379542598-587dacf14833
+finland|Senate Square, Helsinki|1742639008371-2b405351395e
+finland|Lapland|1546205811-43c360b42f1c
+finland|Santa Claus Village, Rovaniemi|1608636852311-1c03f68275a8
+hungary|Parliament Building, Budapest|1616432902940-b7a1acbc60b3
+hungary|Lake Balaton|1684073991873-e502eeba87f4
+iceland|Blue Lagoon|1462993340984-49bd9e0f32dd
+iceland|Golden Circle|1727977179353-19efaaab9478
+iceland|Reykjavík|1639588458309-76ee6aaafaaf
+latvia|Riga Old Town|1683730796330-06e60e3438d8
+lithuania|Trakai Island Castle|1679485437983-088e808ba7fb
+lithuania|Vilnius Old Town|1747672355553-77391d2609d2
+lithuania|Curonian Spit|1724903294439-9a7d83473235
+luxembourg|Luxembourg City Old Quarter|1727793737440-d577f07394dc
+luxembourg|Vianden Castle|1590918836821-3c692676add7
+malta|Valletta|1587974928552-4f4aac51b45d
+malta|Gozo Island|1724176434042-73a8a3032b61
+malta|Blue Grotto|1660727265763-0455a2f6e2fa
+poland|Main Market Square, Kraków|1562050380-55da3bae840c
+poland|Warsaw Old Town|1577133192629-5140c5371590
+slovakia|High Tatras|1629267481369-28fb3ac3828b
+slovakia|Bratislava Castle|1579948889900-cebe5135e34a
+slovenia|Lake Bled|1562083589-3bf71182e9c2
+slovenia|Ljubljana|1602619025915-073b0594d662
+slovenia|Postojna Cave|1726640897240-dce88471ac36
+liechtenstein|Vaduz Castle|1512424113276-fa9f6a112384
+liechtenstein|Malbun|1512424338480-fca2e8aab21e
+liechtenstein|Gutenberg Castle|1731068896517-50d4b3677ee9
+croatia|Dubrovnik Old Town|1575540291670-8d3b26f7d327
+croatia|Plitvice Lakes National Park|1589312133722-eab40c686ebb
+bulgaria|Alexander Nevsky Cathedral, Sofia|1594803294810-c860e5d29e07
+bulgaria|Rila Monastery|1636374772180-f045a4d587cc
+romania|Bran Castle, Transylvania|1612118231574-3dad97d26ecf
+romania|Bucharest|1689655451590-be38de8003e2
+romania|Sighişoara|1649835580587-c39ebf3bad5c
+pakistan|Faisal Mosque, Islamabad|1608020932658-d0e19a69580b
+pakistan|Badshahi Mosque, Lahore|1603491656337-3b491147917c
+pakistan|Hunza Valley|1612128952123-88ed13410495
+thailand|Maya Bay, Phuket|1534008897995-27a23e859048
+thailand|Bangkok|1508009603885-50cf7c579365
+thailand|Pattaya|1652346637723-83799b99ea87
+malaysia|Petronas Towers, Kuala Lumpur|1576506730652-f0e4ad14828f
+malaysia|Langkawi Sky Bridge|1771220262024-f06807deaaed
+malaysia|Genting Highlands|1592396131156-0d1a9c1f6869
+malaysia|Batu Caves, Kuala Lumpur|1590436181954-158d03b6efa7
+sri-lanka|Temple of the Tooth, Kandy|1665849050332-8d5d7e59afb6
+sri-lanka|Colombo|1704797390767-de3e63fa939f
+sri-lanka|Bentota|1709926474736-d11e0b3fbd3e
+maldives|Maldives water villas|1590523277543-a94d2e4eb00b
+maldives|Maafushi|1620065487644-1080510335f5
+maldives|Male|1516815231560-8f41ec531527
+nepal|Pokhara|1718179634911-8551f8b0cccf
+nepal|Everest Base Camp|1697746149225-63a33bcb2ea4
+indonesia|Ulun Danu Bratan Temple, Bali|1592364395653-83e648b20cc2
+indonesia|Ubud rice terraces, Bali|1555400038-63f5ba517a47
+indonesia|Selamat Datang Monument, Jakarta|1555899434-94d1368aa7af
+indonesia|Gili Islands|1581773683009-11e0e759e9ad
+vietnam|Ha Long Bay|1668000018482-a02acf02b22a
+vietnam|Hanoi|1543355890-20bc0a26fda1
+vietnam|Ho Chi Minh City|1541079033018-63489731598f
+bangladesh|Cox's Bazar|1587222318667-31212ce2828d
+bangladesh|Sylhet|1670930371984-d8f47ec55d87
+cambodia|Angkor Wat|1599283787923-51b965a58b05
+cambodia|Phnom Penh|1635167463041-00f6d9344cda
+cambodia|Siem Reap|1568715281772-74fa7a5e6e72
+singapore|Marina Bay Sands|1525625293386-3f8f99389edd
+singapore|Gardens by the Bay|1508597370841-836e72ef6f54
+singapore|Sentosa Island|1694763746530-266a68710e05
+turkey|Cappadocia|1505783638529-f3fdc62e1bb1
+turkey|Bosphorus, Istanbul|1589561454226-796a8aa89b05
+turkey|Antalya|1661179688412-8687ff77ef81
+azerbaijan|Baku Flame Towers|1596306499398-8d88944a5ec4
+azerbaijan|Baku Old City|1716758519404-cabca37863b3
+uzbekistan|Registan, Samarkand|1719144065955-89a4dadaba41
+uzbekistan|Bukhara|1725635395229-92c5afe516bd
+uzbekistan|Tashkent|1622021109028-8ba1d5374161
+kazakhstan|Almaty|1530480667809-b655d4dc3aaa
+kazakhstan|Charyn Canyon|1676495093917-a47555d35a33
+kazakhstan|Astana|1704693004447-c9a3d7ad5a28
+kyrgyzstan|Issyk-Kul Lake|1626767507695-7165523a5372
+kyrgyzstan|Ala Archa National Park|1686287733978-eaa5f6d7f719
+egypt|Pyramids of Giza|1600520611035-84157ad4084d
+egypt|The Sphinx|1562679299-266edbefd6d7
+egypt|Valley of the Kings, Luxor|1632944398987-494eebe663be
+morocco|Koutoubia Mosque, Marrakesh|1597212618440-806262de4f6b
+morocco|Hassan II Mosque, Casablanca|1699210260021-eac11ba4ff86
+morocco|Fes|1587974928442-77dc3e0dba72
+tunisia|Sidi Bou Said|1607869861980-da5f9b8b4969
+tunisia|Tunis|1737276679387-ac18cbca095e
+algeria|Algiers|1658996403259-5a2dd3efc6fa
+algeria|Constantine|1664403809653-b91d0b61ac55
+algeria|Oran|1653815129496-445487ae0479
+south-africa|Table Mountain, Cape Town|1588455471455-4b28e9ab3cd5
+south-africa|Kruger National Park|1597007950942-12536676ee89
+south-africa|Johannesburg|1577948000111-9c970dfe3743
+mauritius|Le Morne Brabant|1513415563383-4e580ed27a46
+mauritius|Port Louis coast|1634972312739-d7237018e06a
+mauritius|Grand Baie|1672351738075-b2ae4fe9f839
+kenya|Maasai Mara|1547471080-7cc2caa01a7e
+kenya|Mombasa|1680346087980-1dbc57f7ba56
+kenya|Nairobi|1596005554384-d293674c91d7
+seychelles|La Digue|1506405211174-1c41d7bc9ed6
+seychelles|Mahé|1553829176-61484f865ac3
+seychelles|Praslin|1706088773588-98152aabeb81
+zimbabwe|Victoria Falls|1627347456206-d3df7d8484b0
+zimbabwe|Hwange National Park|1659132814891-ef346422b339
+zambia|South Luangwa|1533631278779-d722ded4c7df
+zambia|Victoria Falls, Livingstone|1627347456206-d3df7d8484b0
+zambia|Lusaka|1643580018337-5af73fe3c21a
+tanzania|Zanzibar|1575999502951-4ab25b5ca889
+tanzania|Mount Kilimanjaro|1511965675262-c4e1e6ac3f06
+tanzania|Serengeti|1564101160531-4838e8a5f4e7
+united-arab-emirates|Burj Khalifa, Dubai|1512453979798-5ea266f8880c
+united-arab-emirates|Sheikh Zayed Grand Mosque, Abu Dhabi|1512632578888-169bbbc64f33
+united-arab-emirates|Sharjah|1676821330958-08e83daae762
+saudi-arabia|Kaaba, Makkah|1693590614566-1d3ea9ef32f7
+saudi-arabia|Kingdom Centre, Riyadh|1694018359679-49465b4c0d61
+saudi-arabia|Jeddah|1699954669485-812988f5c2db
+oman|Muscat|1700919816978-82de9d9474f4
+oman|Salalah|1615399144021-822ba908c6f3
+kuwait|Kuwait Towers|1611837138577-d1eda6518d6f
+kuwait|Kuwait City|1558634742-56096b49522b
+qatar|Katara Towers, Doha|1700901742651-6b353164caf3
+qatar|The Pearl|1537345532964-7c8f0749f8b8
+bahrain|Bahrain World Trade Center, Manama|1748066768504-99532da7d1e9
+jordan|Petra|1580834341580-8c17a3a630ca
+jordan|Wadi Rum|1709599349283-9e207d6b2d99
+jordan|Dead Sea|1715534221197-4d2827fed660
+lebanon|Beirut|1641304009599-e994aba69b5a
+lebanon|Jeita Grotto|1594745996295-c5217d2aeda6
+china|Great Wall of China|1608037521277-154cd1b89191
+china|Forbidden City, Beijing|1547981609-4b6bfe67ca0b
+china|Shanghai|1627484986972-e544190b8abb
+japan|Mount Fuji|1526481280693-3bfa7568e0f3
+japan|Tokyo|1542051841857-5f90071e7989
+japan|Kyoto|1528360983277-13d401cdc186
+south-korea|Seoul|1532649097480-b67d52743b69
+south-korea|Jeju Island|1616798249081-30877e213b16
+south-korea|Busan|1611372876693-4dc4153dee61
+taiwan|Taipei 101|1694908153357-658c532d25a8
+taiwan|Taroko Gorge|1542479860-a2548d4da9b0
+taiwan|Kaohsiung|1571555788467-71d9e3add426
+hong-kong|Victoria Peak|1602422283675-ba8ff794899c
+hong-kong|Tsim Sha Tsui|1597120778189-582d47e5525f
+mongolia|Terelj National Park|1695554468837-35c3c3b1ee66
+mongolia|Ulaanbaatar|1575415868394-e3b78f3e9b3f
+mongolia|Gobi Desert|1561990768-fc6c571931cc
+macau|Ruins of St. Paul's|1682975113690-3f4eeca22dc2
+macau|Senado Square|1549166533-a14a8093640b
+brazil|Christ the Redeemer, Rio de Janeiro|1518639192441-8fce0a366e2e
+brazil|Iguazu Falls|1614949260630-1d8a27791215
+brazil|São Paulo|1554168848-228452c09d60
+argentina|Patagonia|1552751753-0fc84ae5b6c8
+argentina|Iguazu Falls|1556918936-3e73b945d24f
+colombia|Cartagena|1583531352515-8884af319dc1
+colombia|Bogotá|1568632234157-ce7aecd03d0d
+colombia|Medellín|1736554540635-5d2490036f6c
+peru|Machu Picchu|1587595431973-160d0d94add1
+peru|Lima|1577587230708-187fdbef4d91
+peru|Cusco|1526926076776-50d6dd9e39e6
+chile|Torres del Paine|1570075017462-b5478b3abfff
+chile|Santiago|1593985437133-03d5e1435c03
+chile|San Pedro de Atacama|1540574223031-9322520d58e2
+ecuador|Galapagos Islands|1595517930215-d2778a56ac93
+ecuador|Quito|1501684691657-cf3012635478
+ecuador|Cuenca|1504037738139-b281049f760e
+bolivia|Salar de Uyuni|1542380536-bdd0f60a9c44
+bolivia|La Paz|1596118769843-08e9ad381ab0
+uruguay|Colonia del Sacramento|1527004915547-aa85e5b90eb3
+uruguay|Montevideo|1667846788406-15622c02fe4d
+uruguay|Punta del Este|1691441799387-722f8cfaa1d9
+venezuela|Los Roques|1730507349890-95257be72533
+venezuela|Caracas|1724711603891-ca4557b9f40f
+paraguay|Asunción|1708007736300-89c16fa57b40
+mexico|Chichen Itza|1518638150340-f706e86654de
+mexico|Cancun|1510097467424-192d713fd8b2
+australia|Sydney Opera House|1624138784614-87fd1b6528f8
+australia|Great Barrier Reef|1587139223877-04cb899fa3e8
+australia|Melbourne|1585217514204-d025f2f1b116
+new-zealand|Milford Sound|1501884428012-aa321a256730
+new-zealand|Queenstown|1512017615494-fdf6146235ff
+new-zealand|Auckland|1595125990323-885cec5217ff
+fiji|Fiji islands|1519253577721-083d740006e5
+fiji|Fiji coast|1449347206122-792f0e389512
+ireland|Cliffs of Moher|1602354817989-b9664561ae84
+ireland|Ring of Kerry|1560606889-448ece1ec1de
+ireland|Dublin|1518005068251-37900150dfca
+R:schengen|Eiffel Tower, Paris|1502602898657-3e91760cbb34
+R:united-states|New York City|1568515387631-8b650bbcdb90
+R:united-kingdom|Big Ben, London|1486299267070-83823f5448dd
+R:canada|Moraine Lake, Banff|1582778959124-88d5fd4fafa9
+R:middle-east|Burj Khalifa, Dubai|1512453979798-5ea266f8880c
+R:south-asia|Maldives|1620065487644-1080510335f5
+R:central-asia|Registan, Samarkand|1719144065955-89a4dadaba41
+R:north-africa|Pyramids of Giza|1600520611035-84157ad4084d
+R:southern-africa|Table Mountain, Cape Town|1588455471455-4b28e9ab3cd5
+R:east-asia|Mount Fuji|1509023464722-18d996393ca8
+R:south-america|Machu Picchu|1587595431973-160d0d94add1
+R:oceania|Milford Sound, New Zealand|1501884428012-aa321a256730
+R:australia|Sydney Opera House|1624138784614-87fd1b6528f8

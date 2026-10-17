@@ -1,0 +1,36 @@
+/* PREVIEW ONLY: light destination cards with a pastel colour rising from the bottom and a faint wing streak
+   (after the owner's flight-deal card reference). Scoped to .pv, so nothing else is affected.
+   --a  = accent (pill, rim, wing)   --g1 / --g2 = top and bottom of the pastel gradient */
+.pv-green{--p:#0e7f3e;--a:#12a150;--a2:#5fd48a;--g1:#e2f9ea;--g2:#7fe3a2}
+.pv-blue{--p:#1767b3;--a:#1d8fe0;--a2:#5cc2ff;--g1:#e1f4ff;--g2:#80d0ff}
+.pv-orange{--p:#c2410c;--a:#f26a2e;--a2:#ff9a73;--g1:#ffe9de;--g2:#ff9f7a}
+/* the card itself */
+.pv .ncard{--nc-bg:#fff;--nc-panel:rgba(255,255,255,.62);--nc-line:rgba(15,23,42,.1);--nc-pill:var(--p);
+  position:relative;overflow:hidden;isolation:isolate;color:#0b1220;background:#fff;border:1px solid rgba(15,23,42,.07);
+  box-shadow:0 20px 44px -24px rgba(15,23,42,.38),0 2px 0 rgba(255,255,255,.9) inset}
+.pv .ncard:hover{box-shadow:0 30px 56px -24px rgba(15,23,42,.45),0 2px 0 rgba(255,255,255,.9) inset}
+.pv .ncard::before{content:"";position:absolute;left:0;right:0;bottom:0;height:38%;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,255,255,0) 0%,var(--g1) 40%,var(--g2) 100%)}
+.pv .ncard::after{content:"";position:absolute;right:-8%;bottom:4%;width:74%;height:30%;z-index:-1;pointer-events:none;opacity:.55;
+  background:linear-gradient(104deg,transparent 22%,var(--a2) 62%,var(--a) 100%);
+  clip-path:polygon(0 70%,86% 0,100% 18%,100% 100%,24% 100%);filter:blur(.6px)}
+/* inside the card */
+.pv .n-media{box-shadow:0 14px 30px -16px rgba(15,23,42,.55)}
+.pv .n-pill{background:var(--p);border-color:rgba(255,255,255,.65);box-shadow:0 8px 18px -8px rgba(15,23,42,.45)}
+.pv .n-ico{background:#fff;border:1.5px solid rgba(15,23,42,.12);box-shadow:0 6px 14px -8px rgba(15,23,42,.35)}
+.pv .n-name b{color:#0b1220}
+.pv .n-name small,.pv .n-stats small{color:#3a455c}
+.pv .n-stats{background:var(--nc-panel);border:1px solid rgba(255,255,255,.7);backdrop-filter:blur(10px) saturate(150%);-webkit-backdrop-filter:blur(10px) saturate(150%);box-shadow:0 10px 24px -16px rgba(15,23,42,.35)}
+.pv .n-stats b{color:#0b1220}
+.pv .n-stats>span+span{border-left-color:rgba(15,23,42,.14)}
+.pv .n-notch{color:#0b1220}
+/* mix: each card takes the next colour, like the reference */
+.pv-mix .rgrid .ncard:nth-child(4n+1){--p:#0e7f3e;--a:#12a150;--a2:#5fd48a;--g1:#e2f9ea;--g2:#7fe3a2}
+.pv-mix .rgrid .ncard:nth-child(4n+2){--p:#1767b3;--a:#1d8fe0;--a2:#5cc2ff;--g1:#e1f4ff;--g2:#80d0ff}
+.pv-mix .rgrid .ncard:nth-child(4n+3){--p:#c2410c;--a:#f26a2e;--a2:#ff9a73;--g1:#ffe9de;--g2:#ff9f7a}
+.pv-mix .rgrid .ncard:nth-child(4n+4){--p:#c8284e;--a:#e5486b;--a2:#ff90a6;--g1:#ffe6ec;--g2:#ff9bb0}
+/* switcher bar at the top of every preview */
+.pvbar{position:sticky;top:0;z-index:90;display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center;padding:10px 14px;background:#0b1220;color:#fff;font:600 13px Inter,sans-serif}
+.pvbar a{padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.12);color:#fff;min-height:36px;display:inline-flex;align-items:center}
+.pvbar a[aria-current="page"]{background:#fff;color:#0b1220}
+.pvbar span{opacity:.75}

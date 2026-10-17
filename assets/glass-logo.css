@@ -1,0 +1,56 @@
+/* AL mark as a glossy 3D glass app icon (preview only) */
+.gl-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:16px}
+.gl-c h3{font:900 16px Archivo,sans-serif;margin:0 0 3px}.gl-c p{margin:0 0 8px;font-size:13px;opacity:.78}
+.gl-s{position:relative;display:grid;place-items:center;aspect-ratio:1/1;border-radius:22px;overflow:hidden;border:1px solid rgba(11,18,32,.1)}
+.gl-s.lt{background:radial-gradient(60% 50% at 6% 4%,#d6e4ff,transparent 62%),radial-gradient(55% 45% at 100% 96%,#cfe0ff,transparent 62%),linear-gradient(160deg,#f5f8ff,#e6eeff)}
+.gl-s.dk{background:radial-gradient(60% 50% at 10% 5%,#1b3a73,transparent 62%),radial-gradient(55% 45% at 96% 100%,#5b1230,transparent 62%),linear-gradient(160deg,#0b1220,#05070d)}
+.gl-s.rd{background:radial-gradient(60% 50% at 10% 5%,#ff9aa2,transparent 60%),radial-gradient(55% 45% at 96% 100%,#ffd2c2,transparent 62%),linear-gradient(160deg,#ffeef0,#ffe0e4)}
+.gl-orb{position:absolute;border-radius:50%;filter:blur(26px);opacity:.75}
+.gl-t{position:relative;width:62%;aspect-ratio:1/1;border-radius:27%;display:grid;place-items:center}
+.gl-m{position:relative;width:64%;aspect-ratio:321/260;display:block}
+.gl-m img{position:absolute;inset:0;width:100%;height:100%;display:block}
+.gl-m::before,.gl-m::after{content:"";position:absolute;inset:0;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat;pointer-events:none}
+
+/* 1 · frosted glass tile, glossy original colours */
+.gl-1 .gl-t{background:linear-gradient(150deg,rgba(255,255,255,.95),rgba(232,241,255,.55) 55%,rgba(255,255,255,.75));border:1.5px solid rgba(255,255,255,.95);
+  box-shadow:0 34px 50px -26px rgba(40,90,220,.45),0 6px 14px -6px rgba(40,90,220,.18),inset 0 3px 0 #fff,inset 0 -22px 34px rgba(110,150,255,.2)}
+.gl-1 .gl-m{filter:drop-shadow(0 16px 14px rgba(20,60,200,.3)) drop-shadow(0 2px 1px rgba(0,0,0,.18))}
+.gl-1 .gl-m::before{background:linear-gradient(155deg,rgba(255,255,255,.85) 0,rgba(255,255,255,0) 42%);mix-blend-mode:soft-light}
+.gl-1 .gl-m::after{background:radial-gradient(60% 40% at 30% 18%,rgba(255,255,255,.7),transparent 70%)}
+
+/* 2 · black glass tile, red mark with glow */
+.gl-2 .gl-t{background:linear-gradient(150deg,rgba(255,255,255,.2),rgba(255,255,255,.04) 45%,rgba(255,255,255,.12));border:1.5px solid rgba(255,255,255,.35);
+  box-shadow:0 36px 50px -24px rgba(0,0,0,.85),0 0 40px -10px rgba(227,6,19,.45),inset 0 2px 0 rgba(255,255,255,.55),inset 0 -22px 30px rgba(227,6,19,.15)}
+.gl-2 .gl-m{filter:drop-shadow(0 0 18px rgba(255,40,60,.55)) drop-shadow(0 12px 12px rgba(0,0,0,.6))}
+.gl-2 .gl-m::before{background:linear-gradient(160deg,rgba(255,255,255,.7) 0,rgba(255,255,255,0) 46%);mix-blend-mode:soft-light}
+.gl-2 .gl-m::after{background:radial-gradient(60% 38% at 28% 16%,rgba(255,255,255,.65),transparent 70%)}
+
+/* 3 · crystal-clear glass mark: no colour, the shape is carved glass on a red tile */
+.gl-3 .gl-t{background:linear-gradient(150deg,#ff5663,#e30613 55%,#a30010);border:1.5px solid rgba(255,255,255,.6);
+  box-shadow:0 34px 50px -24px rgba(180,0,20,.75),inset 0 3px 0 rgba(255,255,255,.7),inset 0 -22px 30px rgba(90,0,10,.35)}
+.gl-3 .gl-m img{display:none}
+.gl-3 .gl-m{filter:drop-shadow(0 10px 10px rgba(80,0,10,.5)) drop-shadow(0 0 1px rgba(255,255,255,.9))}
+.gl-3 .gl-m::before{background:linear-gradient(150deg,rgba(255,255,255,.98),rgba(255,230,232,.75) 55%,rgba(255,255,255,.55))}
+.gl-3 .gl-m::after{background:linear-gradient(160deg,rgba(255,255,255,.9) 0,rgba(255,255,255,0) 40%),radial-gradient(60% 30% at 70% 90%,rgba(255,120,130,.55),transparent 70%)}
+
+/* 4 · floating glossy mark, no tile, with a mirror reflection */
+.gl-4 .gl-t{background:none;border:0;box-shadow:none}
+.gl-4 .gl-m{width:78%;filter:drop-shadow(0 22px 18px rgba(30,70,200,.35)) drop-shadow(0 2px 1px rgba(0,0,0,.2))}
+.gl-4 .gl-m::before{background:linear-gradient(155deg,rgba(255,255,255,.9) 0,rgba(255,255,255,0) 44%);mix-blend-mode:soft-light}
+.gl-4 .gl-m::after{background:radial-gradient(60% 40% at 30% 18%,rgba(255,255,255,.75),transparent 70%)}
+.gl-4 .gl-r{position:absolute;left:50%;top:calc(50% + 17%);width:60%;aspect-ratio:321/260;transform:translateX(-50%) scaleY(-1);opacity:.22;-webkit-mask:linear-gradient(to top,#000,transparent 55%);mask:linear-gradient(to top,#000,transparent 55%);pointer-events:none}
+.gl-4 .gl-r img{width:100%;height:100%;display:block}
+
+/* 5 · glass tile on dark, mark in frosted white with a red edge light */
+.gl-5 .gl-t{background:linear-gradient(150deg,rgba(255,255,255,.28),rgba(255,255,255,.06) 50%,rgba(255,255,255,.2));border:1.5px solid rgba(255,255,255,.5);
+  -webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);
+  box-shadow:0 34px 50px -26px rgba(0,0,0,.9),inset 0 3px 0 rgba(255,255,255,.7),inset 0 -20px 30px rgba(255,255,255,.1)}
+.gl-5 .gl-m img{display:none}
+.gl-5 .gl-m{filter:drop-shadow(0 0 10px rgba(255,60,80,.7)) drop-shadow(0 8px 10px rgba(0,0,0,.5))}
+.gl-5 .gl-m::before{background:linear-gradient(150deg,rgba(255,255,255,.96),rgba(220,235,255,.6) 60%,rgba(255,255,255,.75))}
+.gl-5 .gl-m::after{background:linear-gradient(160deg,rgba(255,255,255,.85) 0,rgba(255,255,255,0) 40%)}
+
+/* 6 · header-size check */
+.gl-hd{display:flex;gap:18px;flex-wrap:wrap;align-items:center;padding:14px;border-radius:18px;background:#fff;border:1px solid rgba(11,18,32,.1);margin-top:14px}
+.gl-hd .gl-t{width:64px;border-radius:24%}.gl-hd .gl-m{width:68%}
+.gl-hd.dk{background:#0b1220}

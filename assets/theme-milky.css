@@ -1,0 +1,10 @@
+/* Milky glass page theme (applied site-wide). Soft off-white page, pastel colour blobs behind, translucent frosted surfaces.
+   The colour blobs live on a fixed layer (body::before) so they look the same on phones; --bg is the plain fallback colour. */
+:root{--bg:#f6fbfb;--panel:rgba(255,255,255,.62);--shell:rgba(255,255,255,.55);--card:rgba(255,255,255,.72);--soft:rgba(255,255,255,.6);
+  --bgfx:radial-gradient(60% 50% at 8% 8%,#e3f5f4 0,transparent 62%),radial-gradient(55% 50% at 92% 14%,#e8f6f5 0,transparent 62%),radial-gradient(62% 56% at 70% 97%,#ecf8f7 0,transparent 62%),radial-gradient(50% 45% at 4% 90%,#dff3f2 0,transparent 60%),#f6fbfb}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:var(--bgfx);pointer-events:none}
+:is(.shell,.card,.feat,.prose,.vt,.rcard,.info,.block,.search,.tile,.air,.route,details.faq,.tcard,.f){backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%)}
+:is(.shell,.card,.feat,.prose,.vt,.rcard,.info,.block,.search){border:1px solid rgba(255,255,255,.8);box-shadow:0 24px 50px -30px rgba(15,23,42,.35),inset 0 1px 0 rgba(255,255,255,.9)}
+.shell{box-shadow:0 30px 70px -30px rgba(15,23,42,.3),inset 0 1px 0 rgba(255,255,255,.9)}
+.dd-panel{background:#fff}
+@media(max-width:700px){:is(.shell,.card,.feat,.prose,.vt,.rcard,.info,.block,.search,.tile,.air,.route,details.faq,.tcard,.f){backdrop-filter:blur(10px) saturate(150%);-webkit-backdrop-filter:blur(10px) saturate(150%)}}

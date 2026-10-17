@@ -1,0 +1,8 @@
+# internal drafts and review notes (not part of the site)
+reports/
+research_notes/
+.claude/
+# preview/draft pages built for review only (noindex, not deployed)
+dist/preview-*/
+__pycache__/
+*.pyc

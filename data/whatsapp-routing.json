@@ -1,0 +1,58 @@
+{
+ "_note": "WhatsApp routing for every page. Checked in this order: general, schengen, asian; anything else uses default. A route matches the page itself and every page under it (\"/umrah\" matches /umrah and /umrah/economy-package). Numbers in international format; build.py removes the + for wa.me links. Edit, then run: py build.py",
+ "whatsappNumbers": {
+  "asian": "+923152323811",
+  "schengen": "+923099923232",
+  "default": "+923152323811"
+ },
+ "routing": {
+  "general": [
+   "/countries/south-asia/pakistan"
+  ],
+  "schengen": [
+   "/countries/schengen",
+   "/countries/united-kingdom",
+   "/packages/italy-schengen",
+   "/tours/europe-tour-package-from-pakistan",
+   "/visa-services/schengen-visa",
+   "/visa-services/business-visa",
+   "/visa-services/student-visa",
+   "/visa-services/family-visit-visa",
+   "/visa-services/family-reunification",
+   "/visa-appointments",
+   "/travel-insurance",
+   "/guides/schengen-visa-requirements-from-pakistan",
+   "/guides/schengen-travel-insurance-from-pakistan",
+   "/guides/bank-statement-for-visa-from-pakistan",
+   "/guides/visa-refused-what-to-do",
+   "/guides/visa-documents-explained",
+   "/guides/visa-cover-letter-pakistan",
+   "/guides/visa-appointment-booking-pakistan",
+   "/guides/visa-interview-preparation-pakistan",
+   "/guides/noc-letter-for-visa-pakistan"
+  ],
+  "asian": [
+   "/countries/south-asia",
+   "/countries/east-asia",
+   "/countries/central-asia",
+   "/countries/middle-east",
+   "/umrah",
+   "/packages",
+   "/tours",
+   "/air-ticketing",
+   "/hotel-booking",
+   "/flight-hotel-reservation-for-visa",
+   "/visa-services/tourist-visa"
+  ]
+ },
+ "labels": {
+  "asian": "Visa Help",
+  "schengen": "Schengen Help",
+  "general": "Visa Help"
+ },
+ "messageTemplates": {
+  "asian": "سلام! مجھے ایشیائی ویزہ میں مدد چاہیے",
+  "schengen": "سلام! مجھے شنگن فائل اور دستاویزات میں مدد چاہیے",
+  "general": "السلام علیکم، مجھے ویزہ اور سفر کی خدمات میں مدد چاہیے"
+ }
+}

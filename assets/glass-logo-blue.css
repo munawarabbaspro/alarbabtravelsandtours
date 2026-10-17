@@ -1,0 +1,14 @@
+/* blue glass logo variants: reference colours (deep blue, bright blue, white-lilac) */
+.gl-blue .gl-s.pb{background:radial-gradient(60% 50% at 4% 3%,#bcd2ff,transparent 62%),radial-gradient(55% 45% at 100% 97%,#c7dbff,transparent 62%),linear-gradient(160deg,#f6f9ff,#e4ecff)}
+.gl-blue .gl-s.nv{background:radial-gradient(60% 50% at 10% 5%,#2a55c9,transparent 62%),radial-gradient(55% 45% at 96% 100%,#3a2a8f,transparent 62%),linear-gradient(160deg,#08122e,#040818)}
+.gl-blue .gl-1 .gl-m{filter:drop-shadow(0 18px 14px rgba(20,60,220,.38)) drop-shadow(0 2px 1px rgba(0,30,120,.25))}
+.gl-blue .gl-1 .gl-t{box-shadow:0 38px 54px -26px rgba(30,80,230,.5),0 6px 14px -6px rgba(40,90,220,.2),inset 0 3px 0 #fff,inset 0 -24px 36px rgba(100,150,255,.25)}
+.gl-blue .gl-2 .gl-t{box-shadow:0 36px 50px -24px rgba(0,0,0,.85),0 0 46px -8px rgba(60,120,255,.55),inset 0 2px 0 rgba(255,255,255,.55),inset 0 -22px 30px rgba(60,120,255,.2)}
+.gl-blue .gl-2 .gl-m{filter:drop-shadow(0 0 20px rgba(70,130,255,.7)) drop-shadow(0 12px 12px rgba(0,0,0,.6))}
+.gl-blue .gl-3 .gl-t{background:linear-gradient(150deg,#7db6ff,#1f66f0 52%,#0a2fb0);box-shadow:0 36px 50px -24px rgba(10,50,200,.75),inset 0 3px 0 rgba(255,255,255,.75),inset 0 -24px 32px rgba(0,20,120,.4)}
+.gl-blue .gl-3 .gl-m{filter:drop-shadow(0 10px 10px rgba(0,20,100,.5)) drop-shadow(0 0 1px rgba(255,255,255,.95))}
+.gl-blue .gl-3 .gl-m::before{background:linear-gradient(150deg,rgba(255,255,255,.98),rgba(225,236,255,.78) 55%,rgba(255,255,255,.6))}
+.gl-blue .gl-3 .gl-m::after{background:linear-gradient(160deg,rgba(255,255,255,.9) 0,rgba(255,255,255,0) 40%),radial-gradient(60% 30% at 70% 90%,rgba(120,170,255,.6),transparent 70%)}
+.gl-blue .gl-4 .gl-m{filter:drop-shadow(0 24px 18px rgba(20,60,220,.4)) drop-shadow(0 2px 1px rgba(0,30,120,.25))}
+.gl-blue .gl-5 .gl-m{filter:drop-shadow(0 0 12px rgba(80,140,255,.8)) drop-shadow(0 8px 10px rgba(0,0,0,.5))}
+.gl-blue .gl-hd .gl-1,.gl-blue .gl-hd .gl-2{border:0}

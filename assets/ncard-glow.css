@@ -1,0 +1,22 @@
+/* Glow theme for the destination cards (.ncard): colours only, from the owner's "Guest status" reference.
+   Shapes, sizes and layout are unchanged. Switch off with NCARD_GLOW = False in build.py.
+   Near-black navy at the top, a bright blue glow rising from the bottom-left, and a light rim that is soft at the top
+   and glows white-blue along the bottom edge. */
+.ncard{--nc-bg:#060a1c;--nc-panel:rgba(5,9,34,.62);--nc-line:rgba(150,175,255,.26);--nc-pill:#2a5bff;
+  border:1.5px solid transparent;
+  background:
+    radial-gradient(125% 52% at 12% 106%,rgba(40,100,255,.98) 0%,rgba(22,56,205,.72) 34%,rgba(8,16,90,0) 74%),
+    radial-gradient(70% 38% at 102% 102%,rgba(80,140,255,.55),transparent 72%),
+    linear-gradient(180deg,#05070f 0%,var(--nc-bg) 46%,#081444 100%),
+    linear-gradient(168deg,rgba(255,255,255,.6) 0%,rgba(150,175,255,.2) 24%,rgba(70,110,255,.34) 58%,#a9c0ff 86%,#fff 100%);
+  background-origin:padding-box,padding-box,padding-box,border-box;
+  background-clip:padding-box,padding-box,padding-box,border-box;
+  box-shadow:0 34px 60px -32px rgba(36,92,255,.7),0 0 44px -18px rgba(36,92,255,.55),inset 0 -28px 44px -30px rgba(120,160,255,.6)}
+.ncard:hover{box-shadow:0 42px 72px -30px rgba(50,110,255,.9),0 0 54px -12px rgba(60,120,255,.65),inset 0 -28px 44px -26px rgba(140,180,255,.75)}
+.ncard .n-media{box-shadow:0 0 0 1px rgba(150,175,255,.2),0 18px 36px -20px rgba(0,0,40,.8)}
+.ncard .n-pill{background:linear-gradient(180deg,#3b6dff,#2250e6);border-color:rgba(190,208,255,.5);box-shadow:0 8px 22px -8px rgba(40,100,255,.9)}
+.ncard .n-ico{background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.02));border:1.5px solid rgba(150,175,255,.4);box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 8px 18px -10px rgba(0,0,30,.9)}
+.ncard .n-name small,.ncard .n-stats small{color:#a9bcf5}
+.ncard .n-stats{background:var(--nc-panel);border:1px solid var(--nc-line);backdrop-filter:blur(12px) saturate(140%);-webkit-backdrop-filter:blur(12px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+.ncard .n-stats>span+span{border-left-color:rgba(150,175,255,.22)}
+@media(prefers-contrast:more){.ncard .n-name small,.ncard .n-stats small{color:#dbe5ff}}

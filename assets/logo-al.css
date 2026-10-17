@@ -1,0 +1,19 @@
+/* PREVIEW ONLY: AL monogram + plane marks. Not part of the live site. */
+.al-ctl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 12px}
+.al-ctl b{font:700 13px Inter,sans-serif;margin-right:2px}
+.al-ctl button{min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid rgba(11,18,32,.2);background:#fff;color:#0b1220;font:600 13px Inter,sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.al-ctl button i{width:20px;height:20px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px rgba(11,18,32,.25)}
+.al-ctl button[aria-pressed="true"]{background:#0b1220;color:#fff;border-color:#0b1220}
+.alg{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(320px,100%),1fr));gap:16px}
+.alc{display:grid;gap:12px;padding:16px;border-radius:24px;background:rgba(255,255,255,.7);border:1px solid #fff;box-shadow:0 22px 44px -30px rgba(15,23,42,.45)}
+.alc h3{font:800 15px Archivo,sans-serif;margin:0}
+.alc .big{border-radius:18px;min-height:210px;display:grid;place-items:center;border:1px solid rgba(11,18,32,.08)}
+.alc .big.white{background:#fff}.alc .big.dark{background:radial-gradient(120% 90% at 50% 0,#1b2b33,#0a1216 75%)}
+.alc .big.milky{background:radial-gradient(60% 50% at 8% 8%,#e3f6ec,transparent 62%),radial-gradient(55% 50% at 92% 14%,#e1effb,transparent 62%),#fbfaf7}
+.alc .big svg{width:min(190px,64%);height:auto;display:block}
+.alc .pw{display:flex;justify-content:center}
+.pill{display:flex;align-items:center;gap:10px;padding:6px 20px 6px 12px;border-radius:999px;background:rgba(255,255,255,.9);border:1px solid #fff;box-shadow:0 14px 30px -20px rgba(15,23,42,.5)}
+.pill .pm{width:50px;height:46px;display:block;flex:none}.pill .pm svg{width:100%;height:100%;display:block}
+.pill .pn{display:grid;line-height:1.05}.pill b{font:900 20px Archivo,sans-serif;color:#091413}.pill b i{font-style:italic}
+.pill small{font:700 11px Inter,sans-serif;letter-spacing:.2em;color:#506661}
+.alc .sm{display:flex;gap:14px;align-items:flex-end;justify-content:center}.alc .sm span{display:block}.alc .sm svg{width:100%;height:auto;display:block}

@@ -1,0 +1,44 @@
+/* PREVIEW ONLY: colour switcher bar for /preview-colors*. Not part of the live site. */
+.tpbar{position:sticky;top:0;z-index:95;display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center;padding:10px 14px;background:#0b1220;color:#fff;font:600 13px Inter,sans-serif}
+.tpbar .grp{display:flex;gap:6px;flex-wrap:wrap;align-items:center;justify-content:center}
+.tpbar b{font-weight:700;opacity:.75;margin-right:2px}
+.tpbar button,.tpbar a{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:6px 14px 6px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);color:#fff;font:600 13px Inter,sans-serif;cursor:pointer;text-decoration:none}
+.tpbar a{padding:6px 14px}
+.tpbar button i{width:22px;height:22px;border-radius:50%;border:2px solid #fff;display:block}
+.tpbar button[aria-pressed="true"]{background:#fff;color:#0b1220;border-color:#fff}
+.tpbar a[aria-current="page"]{background:#fff;color:#0b1220}
+.tpbar button:focus-visible,.tpbar a:focus-visible{outline:3px solid #7ff0d6;outline-offset:2px}
+
+/* glass themes: fixed colour-blob gradient behind translucent, blurred surfaces */
+html.tpglass body{background-attachment:fixed}
+html.tpglass :is(.shell,.inner,.card,.feat,.prose,.tile,.rcard,.vt,.air,.route,details.faq,.info,.f,.block,.search,.start:not(.wa),.facts div,.note,.srcs a,.steps li,.mini,.tcard,.timeline div,.checks li,.docs li,.chipsrow span,.chipsrow a,.chip,.eyebrow,.btn.light,.weather,.social,.tabs button,.gallery figure,.feebox div,.out-docs li,.kw span){backdrop-filter:blur(18px) saturate(165%);-webkit-backdrop-filter:blur(18px) saturate(165%)}
+html.tpglass :is(.shell,.card,.feat,.prose,.vt,.rcard,.info,.block,.search){border:1px solid rgba(255,255,255,.6);box-shadow:0 24px 50px -28px rgba(15,23,42,.5),inset 0 1px 0 rgba(255,255,255,.75)}
+html.tpglass .inner{border:1px solid rgba(255,255,255,.45)}
+
+.tpbar{row-gap:6px}
+.tpbar .grp+.grp{padding-left:10px;border-left:1px solid rgba(255,255,255,.2)}
+/* milky: soft white shadows instead of dark ones, so cards still lift off the white page */
+html:has(.tpbar button[data-t^="m-"][aria-pressed="true"]) .shell{box-shadow:0 30px 70px -28px rgba(15,23,42,.28),0 0 0 1px rgba(15,23,42,.06)}
+@media(max-width:900px){.tpbar{gap:4px;padding:6px 8px}.tpbar button,.tpbar a{min-height:32px;padding:3px 10px 3px 5px;font-size:12px}.tpbar button i{width:16px;height:16px}.tpbar .grp+.grp{padding-left:6px}}
+
+/* footer colour options (html class tpf-*), preview only */
+html.tpf-green footer.fA{background:linear-gradient(180deg,#1a4136,#0d241c)}
+html.tpf-navy footer.fA{background:linear-gradient(180deg,#1a2a4d,#0a1226)}
+html.tpf-teal footer.fA{background:linear-gradient(135deg,#14625c,#0a3431)}
+html:is(.tpf-milky,.tpf-mint) footer.fA{color:#33405a;border:1px solid rgba(255,255,255,.85);border-bottom:0;box-shadow:0 -24px 60px -34px rgba(15,23,42,.35),inset 0 1px 0 rgba(255,255,255,.9)}
+html.tpf-milky footer.fA{background:rgba(255,255,255,.58);backdrop-filter:blur(18px) saturate(165%);-webkit-backdrop-filter:blur(18px) saturate(165%)}
+html.tpf-mint footer.fA{background:linear-gradient(180deg,rgba(236,248,242,.92),rgba(214,238,226,.96))}
+html:is(.tpf-milky,.tpf-mint) .fA h2.fh,html:is(.tpf-milky,.tpf-mint) .fA a.fs{color:#0b1220}
+html:is(.tpf-milky,.tpf-mint) .fA a:not(.btn):not(.fs){color:#1f2c44}
+html:is(.tpf-milky,.tpf-mint) .fA a:not(.btn):not(.fs):hover{color:#0e7f3e}
+html:is(.tpf-milky,.tpf-mint) .fa-bottom,html:is(.tpf-milky,.tpf-mint) .fa-disc{color:#4a566b}
+html:is(.tpf-milky,.tpf-mint) .fa-more,html:is(.tpf-milky,.tpf-mint) .fa-bottom,html:is(.tpf-milky,.tpf-mint) .fa-follow{border-top-color:rgba(15,23,42,.12)}
+html:is(.tpf-milky,.tpf-mint) .fA .badges span{background:rgba(15,23,42,.06)}
+html:is(.tpf-milky,.tpf-mint) .fa-dts{background:rgba(14,127,62,.12);color:#0b6a34}
+html:is(.tpf-milky,.tpf-mint) .fA a.fs{background:rgba(255,255,255,.75);box-shadow:inset 0 0 0 1px rgba(15,23,42,.16)}
+html:is(.tpf-milky,.tpf-mint) .fA a.fs:hover{color:#fff}
+html:is(.tpf-milky,.tpf-mint) .fA .glink a{color:#0b6a34}
+
+.tpbar .tpgroups{display:flex;gap:6px 8px;flex-wrap:wrap;align-items:center;justify-content:center;width:100%}
+.tpbar .tpgroups[hidden]{display:none}
+.tpbar .tptoggle{padding:6px 14px;min-height:34px;background:#fff;color:#0b1220}

@@ -1,0 +1,60 @@
+/* Mix theme for the destination cards (.ncard): light destination cards with a pastel colour rising from the bottom and a faint wing streak
+   (after the owner's flight-deal card reference). Switch in build.py: NCARD_THEME.
+   --a  = accent (pill, rim, wing)   --g1 / --g2 = top and bottom of the pastel gradient */
+/* default colour (green) for cards outside a grid */
+.ncard{--p:#0e7c86;--a:#17a2a8;--a2:#7fd6d6;--g1:#e4f6f5;--g2:#9fdcd9}
+/* the card itself */
+.ncard{--nc-bg:#fff;--nc-panel:rgba(255,255,255,.62);--nc-line:rgba(15,23,42,.1);--nc-pill:var(--p);
+  position:relative;overflow:hidden;isolation:isolate;color:#0b1220;background:#fff;border:1px solid rgba(15,23,42,.07);
+  box-shadow:0 20px 44px -24px rgba(15,23,42,.38),0 2px 0 rgba(255,255,255,.9) inset}
+.ncard:hover{box-shadow:0 30px 56px -24px rgba(15,23,42,.45),0 2px 0 rgba(255,255,255,.9) inset}
+.ncard::before{content:"";position:absolute;left:0;right:0;bottom:0;height:38%;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,255,255,0) 0%,var(--g1) 40%,var(--g2) 100%)}
+.ncard::after{content:"";position:absolute;right:-8%;bottom:4%;width:74%;height:30%;z-index:-1;pointer-events:none;opacity:.55;
+  background:linear-gradient(104deg,transparent 22%,var(--a2) 62%,var(--a) 100%);
+  clip-path:polygon(0 70%,86% 0,100% 18%,100% 100%,24% 100%);filter:blur(.6px)}
+/* inside the card */
+.ncard .n-media{box-shadow:0 14px 30px -16px rgba(15,23,42,.55)}
+.ncard .n-pill{background:rgba(255,255,255,.58);color:#073b40;border:1px solid rgba(255,255,255,.75);backdrop-filter:blur(12px) saturate(170%);-webkit-backdrop-filter:blur(12px) saturate(170%);box-shadow:0 8px 20px -10px rgba(15,23,42,.5),inset 0 1px 0 rgba(255,255,255,.8);text-shadow:none}
+.ncard .n-ico{background:#fff;border:1.5px solid rgba(15,23,42,.12);box-shadow:0 6px 14px -8px rgba(15,23,42,.35)}
+.ncard .n-name b{color:#0b1220}
+.ncard .n-name small,.ncard .n-stats small{color:#3a5558}
+.ncard .n-stats{background:var(--nc-panel);border:1px solid rgba(255,255,255,.7);backdrop-filter:blur(10px) saturate(150%);-webkit-backdrop-filter:blur(10px) saturate(150%);box-shadow:0 10px 24px -16px rgba(15,23,42,.35)}
+.ncard .n-stats b{color:#0b1220}
+.ncard .n-stats>span+span{border-left-color:rgba(15,23,42,.14)}
+.ncard .n-notch{color:#0b1220}
+/* mix: each card takes the next colour, like the reference */
+.rgrid .ncard:nth-child(4n+1){--p:#0e7c86;--a:#17a2a8;--a2:#7fd6d6;--g1:#e4f6f5;--g2:#9fdcd9}
+.rgrid .ncard:nth-child(4n+2){--p:#0e7c86;--a:#17a2a8;--a2:#7fd6d6;--g1:#e4f6f5;--g2:#9fdcd9}
+.rgrid .ncard:nth-child(4n+3){--p:#0e7c86;--a:#17a2a8;--a2:#7fd6d6;--g1:#e4f6f5;--g2:#9fdcd9}
+.rgrid .ncard:nth-child(4n+4){--p:#0e7c86;--a:#17a2a8;--a2:#7fd6d6;--g1:#e4f6f5;--g2:#9fdcd9}
+/* package "book" cards: same Mix look. Photo cover with a glass caption; inside page is white fading to the card colour. */
+.book{--p:#0e7c86;--a:#17a2a8;--a2:#7fd6d6;--g1:#e4f6f5;--g2:#9fdcd9;border-radius:26px;background:#fff;border:1px solid rgba(15,23,42,.07);box-shadow:0 20px 44px -24px rgba(15,23,42,.38)}
+.grid>.book:nth-child(4n+2){--p:#0e7c86;--a:#17a2a8;--a2:#7fd6d6;--g1:#e4f6f5;--g2:#9fdcd9}
+.grid>.book:nth-child(4n+3){--p:#0e7c86;--a:#17a2a8;--a2:#7fd6d6;--g1:#e4f6f5;--g2:#9fdcd9}
+.grid>.book:nth-child(4n+4){--p:#0e7c86;--a:#17a2a8;--a2:#7fd6d6;--g1:#e4f6f5;--g2:#9fdcd9}
+.book .page{isolation:isolate;overflow:hidden;border-radius:26px;background:linear-gradient(90deg,rgba(15,23,42,.1) 0,rgba(255,255,255,0) 16px),linear-gradient(180deg,#fff 0,#fff 42%,var(--g1) 72%,var(--g2) 100%)}
+.book .page::after{content:"";position:absolute;right:-10%;bottom:3%;width:70%;height:24%;z-index:-1;pointer-events:none;opacity:.5;background:linear-gradient(104deg,transparent 22%,var(--a2) 62%,var(--a) 100%);clip-path:polygon(0 70%,86% 0,100% 18%,100% 100%,24% 100%)}
+.book .page .tag{align-self:flex-start;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.7);border:1px solid rgba(15,23,42,.1);color:var(--p)}
+.book .page h3{color:#0b1220}
+.book .page p{color:#3a5558}
+.book .page li::before{color:var(--p)}
+.book .page .more,.book .page .more:hover{background:var(--p);color:#fff;box-shadow:0 10px 22px -12px rgba(15,23,42,.6)}
+.book .cover{border-radius:26px;background:var(--p);box-shadow:0 20px 44px -24px rgba(15,23,42,.45)}
+.book .cover::after{background:linear-gradient(180deg,rgba(9,20,19,0) 45%,rgba(9,20,19,.28))}
+.book .cv{left:12px;right:12px;bottom:12px;padding:12px 14px 12px;border-radius:20px;color:#0b1220;background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.8);backdrop-filter:blur(14px) saturate(170%);-webkit-backdrop-filter:blur(14px) saturate(170%);box-shadow:0 12px 26px -14px rgba(15,23,42,.55),inset 0 1px 0 rgba(255,255,255,.85)}
+.book .cv small{color:#3a5558;opacity:1;font-weight:700;letter-spacing:.04em}
+.book .cv b{color:#0b1220;font-size:20px}
+.book .cv i{justify-self:start;padding:5px 12px;border-radius:999px;background:var(--p);color:#fff;opacity:1}
+.book:focus-visible{box-shadow:0 0 0 3px #fff,0 0 0 6px #0a1530}
+/* Umrah feature card: same Mix look (green, to suit the Kaaba photo) */
+.umrah{--p:#0e7c86;--a:#17a2a8;--a2:#7fd6d6;position:relative;isolation:isolate;padding:12px;gap:10px;border-radius:30px;color:#0b1220;border:1px solid rgba(15,23,42,.07);
+  background:linear-gradient(110deg,#fff 0,#fff 38%,#e4f6f5 70%,#9fdcd9 135%);box-shadow:0 22px 48px -26px rgba(15,23,42,.42)}
+.umrah::after{content:"";position:absolute;left:-6%;bottom:0;width:52%;height:34%;z-index:-1;pointer-events:none;opacity:.45;background:linear-gradient(256deg,transparent 22%,var(--a2) 62%,var(--a) 100%);clip-path:polygon(100% 70%,14% 0,0 18%,0 100%,76% 100%)}
+.umrah .t{padding:26px 24px}
+.umrah h3,.umrah h2.qh{color:#0b1220}
+.umrah p{color:#3a5558}
+.umrah .eyebrow{background:rgba(255,255,255,.62);color:#073b40;border:1px solid rgba(255,255,255,.85);backdrop-filter:blur(12px) saturate(170%);-webkit-backdrop-filter:blur(12px) saturate(170%);box-shadow:0 8px 20px -12px rgba(15,23,42,.45),inset 0 1px 0 rgba(255,255,255,.85)}
+.umrah .btn{background:var(--p);color:#fff;border-color:transparent;box-shadow:0 12px 24px -14px rgba(15,23,42,.6)}
+.umrah .pic{border-radius:22px;overflow:hidden;box-shadow:0 16px 34px -18px rgba(15,23,42,.55)}
+.umrah .pic img{opacity:1}
