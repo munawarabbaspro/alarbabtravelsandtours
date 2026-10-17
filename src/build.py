@@ -148,7 +148,7 @@ LOGO_DARK = f"/assets/brand/logo1-plane-dark.png?v={_v('brand/logo1-plane-dark.p
 ICON32 = f"/assets/icon-32.png?v={_v('icon-32.png')}"
 ICON192 = f"/assets/icon-192.png?v={_v('icon-192.png')}"
 APPJS = f"/assets/app.js?v={_v('app.js')}"
-TODAY = "2026-10-08"
+TODAY = "2026-10-17"
 UPDATED = "October 2026"
 GSC_CODE = ""         # Google Search Console HTML-tag code (content value only). Empty = no tag.
 BING_CODE = ""        # Bing Webmaster verification code. Empty = no tag.
