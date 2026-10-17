@@ -9,8 +9,9 @@ PAGE TEXT section below. Edit, re-run, upload the contents of dist/.
 import json, os, re, shutil, html as H
 from urllib.parse import quote
 
-ROOT = os.path.dirname(os.path.abspath(__file__))
-OUT = os.path.join(ROOT, "dist")
+ROOT = os.path.dirname(os.path.abspath(__file__))   # src/: source folder
+SITE = os.path.dirname(ROOT)                                  # repo root: dist/ is written here
+OUT = os.path.join(SITE, "dist")
 DATA = json.load(open(os.path.join(ROOT, "data", "site-data.json"), encoding="utf-8"))
 B = DATA["brand"]
 
