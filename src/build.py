@@ -79,6 +79,7 @@ for _ln in open(os.path.join(ROOT, "data", "images.tsv"), encoding="utf-8"):
 BASE = "https://www.alarbabtravel.com"
 NAME = B["name"]
 PHONE, PHONE_I = B["mobile"], "+923152323811"
+PHONE_SCHENGEN_I = "+923099923232"   # Schengen & visa file preparation desk
 PHONE_D = PHONE[:4] + "-" + PHONE[4:]   # 0315-2323811 for search snippets
 LAND, LAND_I = B["landline"], "+92512000066"
 EMAIL = B["email"]
@@ -152,7 +153,7 @@ TODAY = "2026-10-17"
 UPDATED = "October 2026"
 GSC_CODE = ""         # Google Search Console HTML-tag code (content value only). Empty = no tag.
 BING_CODE = ""        # Bing Webmaster verification code. Empty = no tag.
-GA_ID = ""            # Google Analytics 4 measurement ID, e.g. "G-XXXXXXX". Empty = no tracking script.
+GA_ID = "G-T4BRVJZGNR"   # Google Analytics 4 measurement ID (AL ARBAB). Empty = no tracking script.
 # Trust signals. Leave empty until you have the real value; nothing is shown (and nothing is invented) while a field is empty.
 DTS_LICENCE = ""      # DTS licence number, e.g. "TA-1234". Shown in the footer and under the contact banners.
 GBP_URL = "https://maps.google.com/?cid=2894299413323017788"   # Google Business Profile / Google Maps reviews link
@@ -640,7 +641,7 @@ def org_ld():
             "name": NAME, "url": BASE + "/", "logo": {"@type": "ImageObject", "url": LOGO, "width": 513, "height": 412}, "image": LOGO,
             # every value below is shown on the site (home, footer, contact, policies); nothing schema-only
             "description": ORG_DESC,
-            "telephone": [PHONE_I, LAND_I], "email": EMAIL,
+            "telephone": [PHONE_I, PHONE_SCHENGEN_I, LAND_I], "email": EMAIL,
             "address": {"@type": "PostalAddress", "streetAddress": "Eagle Plaza, Mezzanine No. 121, Fazal-e-Haq Road, Blue Area",
                         "addressLocality": "Islamabad", "addressRegion": "Islamabad Capital Territory", "postalCode": "44000", "addressCountry": "PK"},
             "geo": {"@type": "GeoCoordinates", "latitude": 33.7135, "longitude": 73.0673}, "hasMap": MAP_URL,
@@ -975,7 +976,22 @@ VERIFY_TAGS = (f'<meta name="google-site-verification" content="{GSC_CODE}">' if
 GA_TAG = (f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag("js",new Date());gtag("config","{GA_ID}");</script>'
           if GA_ID else "")
 
+def an(word):
+    """'a' or 'an' in front of a country or visa name (e.g. 'an Italy visa', 'a Thailand visa')."""
+    return ("an " if word[:1].lower() in "aeiou" else "a ") + word
+
+# Titles and descriptions the owner specified (checked Oct 2026). Used by page() below.
+META_OVERRIDE = {
+    "/countries/schengen/italy": ("Italy Visa from Pakistan 2026: Documents | AL ARBAB",
+        "Italy Schengen visa from Pakistan: document checklist, bank statement and insurance rules, and file help in Blue Area, Islamabad. Free file check."),
+    "/visa-consultant-islamabad": ("Visa Consultant in Islamabad (Blue Area) | AL ARBAB",
+        "Visa consultant in Blue Area, Islamabad. Free document check for Schengen, UK, Malaysia, Thailand and more. Call 051-2000066."),
+    "/about": ("Visa Consultant & Travel Agency Islamabad | AL ARBAB",
+        "AL ARBAB Travel and Tours, Eagle Plaza, Blue Area, Islamabad. Visa help, air tickets and Umrah. Get a free document check on WhatsApp today."),
+}
+
 def page(url, title, desc, body, ld=None, kw="", image=None, extra_head="", extra_script="", priority="0.7", noindex=False, home=False):
+    title, desc = META_OVERRIDE.get(url, (title, desc))   # title, description, og:title, og:description and twitter tags all use these
     canon = BASE + url
     if not noindex and len(title) > 60 and title.endswith(" | AL ARBAB"):
         title = title[:-len(" | AL ARBAB")]   # keep titles inside one search-result line
@@ -1011,7 +1027,7 @@ def page(url, title, desc, body, ld=None, kw="", image=None, extra_head="", extr
 <link rel="preconnect" href="https://images.unsplash.com">
 {FONT_PRELOAD}
 {extra_head}
-{VERIFY_TAGS}{GA_TAG}
+{VERIFY_TAGS}{GA_TAG if not noindex else ""}
 <script>document.documentElement.classList.add('js')</script>
 <style>{FONT_CSS}{CSS}</style>
 {ldt}
@@ -1075,7 +1091,7 @@ def pagehead(eyebrow, h1, lead, pid=None, flagcode=None, alt="", actions=""):
     return f'<div class="ph"{grid}><div>{eb}<h1 style="margin-top:14px">{h1}</h1><p class="lead2">{lead}</p>{act}</div>{pic}</div>'
 
 def tile(c):
-    sub = ", ".join(c["popularPlaces"][:2]) or "Visa assistance"
+    sub = ", ".join(c["popularPlaces"][:2]) or "Visa guide"
     th = (f'<span class="th"><img src="{U(c["img"], 160)}"{"" if c["img"].startswith("/") else f' srcset="{U(c["img"], 320)} 2x"'} alt="{e(c["name"])} – {e(c["popularPlaces"][0] if c["popularPlaces"] else c["name"])}" width="72" height="54" loading="lazy" decoding="async">{flag(c["code"], c["name"] + " flag", 22)}</span>'
           if c["img"] else flag(c["code"], c["name"] + " flag"))
     return f'<a class="tile" href="{c["url"]}" data-name="{e(c["name"].lower())}">{th}<span><b>{e(c["name"])}</b><small>{e(sub)}</small></span></a>'
@@ -1131,7 +1147,7 @@ def short_time(t):
     if m:
         return f"{m.group(1)}–{m.group(2)} {m.group(3).replace('working days', 'days')}"
     m = re.search(r"(\d+)\s*(working days|weeks|days)", t or "")
-    return f"~{m.group(1)} {m.group(2).replace('working days', 'days')}" if m else "Ask us"
+    return f"~{m.group(1)} {m.group(2).replace('working days', 'days')}" if m else "See guide"
 
 def ncard(href, pid, alt, pill, notch, icon, title, sub, s1l, s1v, s2l, s2v, flagcode=None):
     """Dark collectible card: framed photo with pill on top and a notch tab at the bottom, icon tile, title, two stats."""
@@ -1170,7 +1186,7 @@ def region_card(r):
     icon = flag(r["flag"], "", 40) if r["flag"] else LOGO_ICON
     sub = r["shortDesc"].split(".")[0]
     return ncard(f"/countries/{r['slug']}", r["img"], r["name"] + " visa from Pakistan", cnt, "Visa guide →", icon, r["name"], sub,
-                 "Processing", short_time(vv["processingTime"]) if vv else "Ask us", "Visa types", str(len(r["visas"])), r["flag"])
+                 "Processing", short_time(vv["processingTime"]) if vv else "See guide", "Visa types", str(len(r["visas"])), r["flag"])
 
 def steps_html(items):
     return "".join(f"<li><b>{e(a)}</b><span>{e(b)}</span></li>" for a, b in items)
@@ -2946,8 +2962,8 @@ def build_country(c):
         places_block = f'<div class="block"><h2>Top places to visit in {e(c["name"])}</h2><div class="chipsrow">{places}</div></div>' if places else ""
     st = [(s["title"], s["desc"]) for s in r["stepByStep"]] if len(r["stepByStep"]) >= 3 else PROCESS
     proc = vv["processingTime"] if vv else "Embassy dependent"
-    faqs = [(f"What documents do I need for a {c['name']} visa from Pakistan?", "The main documents are: " + "; ".join(c["docs_clean"][:6]) + ". The full checklist is on this page."),
-            (f"How much does a {c['name']} visa cost from Pakistan?", "Embassy charges change often, so we don't publish them. Message us on WhatsApp and we confirm the current all-in cost for your case before you pay anything."),
+    faqs = [(f"What documents do I need for {an(c['name'])} visa from Pakistan?", "The main documents are: " + "; ".join(c["docs_clean"][:6]) + ". The full checklist is on this page."),
+            (f"How much does {an(c['name'])} visa cost from Pakistan?", "Embassy charges change often, so we don't publish them. Message us on WhatsApp and we confirm the current all-in cost for your case before you pay anything."),
             (f"How long does {c['name']} visa processing take?", f"{proc} Processing can take longer in peak season."),
             ((f"Can AL ARBAB TRAVEL AND TOURS apply for my {c['name']} visa from Islamabad?",
               f"Yes. We process and follow up {c['name']} visit visa applications from our Blue Area office: document checklist, file preparation, submission and follow-up. "
@@ -2961,8 +2977,8 @@ def build_country(c):
     faqs += [tuple(x) for x in c.get("faq_extra", [])]
     route = visa_route(c)
     faqs += [(f"Is the {c['name']} visa open for Pakistani passport holders?",
-              (f"Yes. We are handling {c['name']} applications for Pakistani passport holders from our Islamabad office ({route.lower()}). " if tier == 1 else
-               f"Yes. We prepare {c['name']} visa files for Pakistani passport holders from our Islamabad office ({route.lower()}). ") +
+              (f"Yes. We are handling {c['name']} applications for Pakistani passport holders from our Islamabad office ({re.sub(r'\s*\(.*?\)', '', route).strip().lower()}). " if tier == 1 else
+               f"Yes. We prepare {c['name']} visa files for Pakistani passport holders from our Islamabad office ({re.sub(r'\s*\(.*?\)', '', route).strip().lower()}). ") +
               "Rules can change at short notice, so message us on WhatsApp to confirm the current position before you book anything.")]
     siblings = by_rank([x for x in BY_REGION[c["region"]] if x["slug"] != c["slug"] and x["region"] == c["region"]])
     srcs = OFFICIAL.get(c["slug"], []) + REGION_OFFICIAL.get(c["region"], [])
@@ -3119,9 +3135,9 @@ def build_service(slug, name, ic, desc, req_kind):
     ln = name.lower()
     if req:
         items = "".join(f"<li>{e(x)}</li>" for x in req["requirements"])
-        req_block = f'<div class="block"><h2>Typical documents for a {e(ln)}</h2><ul class="docs">{items}</ul><p class="note" style="margin-top:14px">Each embassy has its own checklist. Open your destination below for its exact requirements and fee.</p></div>'
+        req_block = f'<div class="block"><h2>Typical documents for {e(an(ln))}</h2><ul class="docs">{items}</ul><p class="note" style="margin-top:14px">Each embassy has its own checklist. Open your destination below for its exact requirements and fee.</p></div>'
     else:
-        req_block = f'<div class="block"><h2>Documents for a {e(ln)}</h2><p>Documents for a {e(ln)} depend heavily on the destination country and your personal profile. After a free assessment we give you a written checklist for your exact case.</p></div>'
+        req_block = f'<div class="block"><h2>Documents for {e(an(ln))}</h2><p>Documents for {e(an(ln))} depend heavily on the destination country and your personal profile. After a free assessment we give you a written checklist for your exact case.</p></div>'
     faqs = FAQ_VISA[2:] + FAQ_GENERAL[:2]
     db = f'<div class="block"><h2>Popular destinations for {e(ln)}s</h2><div class="tiles">{"".join(tile(c) for c in dests)}</div></div>' if dests else ""
     rb = f'<div class="block"><h2>Regional guides</h2><div class="rgrid">{"".join(region_card(r) for r in regs)}</div></div>' if regs else ""
@@ -4089,6 +4105,8 @@ def write_all():
     js = open(os.path.join(ROOT, "assets", "app.js"), encoding="utf-8").read()
     open(os.path.join(OUT, "assets", "app.js"), "w", encoding="utf-8").write(re.sub(r"\n\s*", "\n", js))
     for url, (html, _, _) in PAGES.items():
+        if _ and GA_TAG:   # noindex pages (previews, copies of the home page) must not send analytics
+            html = html.replace(GA_TAG, "")
         if url == "/404":
             path = os.path.join(OUT, "404.html")
         elif url == "/":
