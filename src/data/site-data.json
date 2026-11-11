@@ -2487,7 +2487,7 @@
     "title": "Saudi Tourist & Umrah Visa Specialist Islamabad",
     "description": "Apply for Saudi Arabia tourist and Umrah visas from Pakistan. We prepare your visa file.",
     "keywords": "Saudi visa consultant Islamabad, Umrah visa Pakistan, Saudi tourist visa ISB",
-    "intro": "Saudi Arabia has opened its doors to the world with the new Tourist Visa. We prepare Tourist and Umrah visa files and arrange hotel bookings.",
+    "intro": "We prepare Umrah, family visit and tourist visa files for Pakistani passport holders and arrange hotel bookings. The right visa depends on your purpose, so tell us why you are travelling and we confirm the route.",
     "docs": [
      "Digital Scan of Passport (First page)",
      "Recent Digital Photo (White background)",
@@ -2675,7 +2675,52 @@
      "The Pearl",
      "Katara Cultural Village"
     ],
-    "image": "https://images.trvl-media.com/place/6361053/b3f7cfde-2031-4df4-8afc-4db6d101ae6b.jpg"
+    "image": "https://images.trvl-media.com/place/6361053/b3f7cfde-2031-4df4-8afc-4db6d101ae6b.jpg",
+    "facts": [
+     [
+      "For a Pakistani passport holder who is not a GCC resident and has no valid Schengen, UK, US, Australia, New Zealand or Canada visa, the official visa check says: book Discover Qatar accommodation before you travel to get your Entry Visa on arrival, or apply in advance for a Hayya A1 Entry Visa.",
+      "Visit Qatar (Qatar Tourism): Visas and visa check",
+      "https://www.visitqatar.com/intl-en/practical-info/visas"
+     ],
+     [
+      "The Ministry of Interior requires nationals of the listed countries to hold a hotel booking made through the Discover Qatar website before travelling, to get a visa on arrival.",
+      "Visit Qatar (Qatar Tourism): Visas and visa check",
+      "https://www.visitqatar.com/intl-en/practical-info/visas"
+     ],
+     [
+      "Visas are applied for on the Hayya platform (website or the 'Hayya to Qatar' app), which handles the Tourist Visa (A1), GCC Resident Visa (A2) and other categories.",
+      "Visit Qatar (Qatar Tourism): Visas and visa check",
+      "https://www.visitqatar.com/intl-en/practical-info/visas"
+     ],
+     [
+      "For visa on arrival, the passport must be valid for at least three months from the date of arrival in Qatar.",
+      "Visit Qatar (Qatar Tourism): Visas and visa check",
+      "https://www.visitqatar.com/intl-en/practical-info/visas"
+     ],
+     [
+      "Qatar Tourism recommends that all visitors hold health insurance covering Qatar's medical facilities; it can also be bought on arrival.",
+      "Visit Qatar (Qatar Tourism): Visas and visa check",
+      "https://www.visitqatar.com/intl-en/practical-info/visas"
+     ]
+    ],
+    "faq_extra": [
+     [
+      "Can Pakistanis get a Qatar visa on arrival?",
+      "Yes, with a condition. Qatar's official visa check says a Pakistani passport holder must book accommodation through the Discover Qatar website before travelling to get the Entry Visa on arrival. The alternative is to apply in advance for a Hayya A1 Entry Visa."
+     ],
+     [
+      "What is the Hayya A1 visa for Qatar?",
+      "The Hayya A1 is Qatar's Tourist Visa, applied for online on the Hayya platform or the 'Hayya to Qatar' app. We fill the application with you and arrange the hotel booking it needs."
+     ],
+     [
+      "Do I need a Discover Qatar hotel booking?",
+      "For a visa on arrival, yes. Qatar's Ministry of Interior requires nationals of the listed countries, including Pakistan, to book their hotel through Discover Qatar before travel. We can make this booking for you."
+     ],
+     [
+      "How long must my passport be valid for Qatar?",
+      "At least three months from the date you arrive in Qatar, for a visa on arrival."
+     ]
+    ]
    },
    {
     "slug": "bahrain",

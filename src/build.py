@@ -459,6 +459,7 @@ OFFICIAL = {
  "netherlands": [("Netherlands Worldwide: Schengen visa in Pakistan", "https://www.netherlandsworldwide.nl/visa-the-netherlands/schengen-visa/apply-pakistan")],
 }
 OFFICIAL["malaysia"].append(("Immigration Department of Malaysia: visa requirement by country", "https://www.imi.gov.my/index.php/en/main-services/visa/visa-requirement-by-country/"))
+OFFICIAL["qatar"] = [("Visit Qatar: visas and visa check", "https://www.visitqatar.com/intl-en/practical-info/visas"), ("Hayya platform (official)", "https://www.hayya.qa/")]
 OFFICIAL["oman"].append(("Oman Ministry of Foreign Affairs: entry visas", "https://www.fm.gov.om/en/visitors/entry-visas/"))
 REGION_OFFICIAL = {
  "united-kingdom": [("UK Standard Visitor visa (GOV.UK)", "https://www.gov.uk/standard-visitor")],
@@ -590,6 +591,7 @@ def proc_phrase(vv):
 ONLINE_ROUTE = {"sri-lanka": "Online ETA", "kenya": "Online ETA"}
 ROUTE_OVERRIDE = {"philippines": "Embassy / visa centre", "uzbekistan": "Embassy / visa centre", "japan": "Embassy / visa centre",
                   "turkey": "E-visa or embassy", "azerbaijan": "E-visa or embassy",
+                  "qatar": "Visa on arrival / e-visa",   # visitqatar.com check for Pakistan: VoA with Discover Qatar hotel booking, or Hayya A1
                   "saudi-arabia": "Route depends on purpose",   # Pakistan is not on the 72-country tourist eVisa list (visa.visitsaudi.com, Nov 2026)
                   **{s: "Schengen visa (embassy / visa centre)" for s in ("germany", "france", "spain", "netherlands")}}   # DFA: temporary visitor visa applied for in person at the embassy
 
