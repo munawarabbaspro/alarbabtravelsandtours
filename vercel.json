@@ -7,6 +7,11 @@
    "source": "/pakistan-visa",
    "destination": "/countries/south-asia/pakistan",
    "permanent": true
+  },
+  {
+   "source": "/consultation",
+   "destination": "/eligibility-check",
+   "permanent": true
   }
  ],
  "headers": [

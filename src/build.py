@@ -3508,10 +3508,15 @@ def build_cities():
                 ("Do you charge for the first consultation?", "No. The first consultation and document check are free; we quote the full price before you pay anything."),
                 ("Are you a licensed travel agency?", "Yes. We are licensed by the Department of Tourist Services (DTS), Government of Pakistan.")]
         faqs += PAA_AGENCY[:2]
+        if visa and not rawal:
+            faqs.insert(1, ("What does a visa agency in Islamabad do for me?",
+                            "A visa agency checks your documents, fills the forms, books the appointment and follows the file. We process visit visas for Asian countries, "
+                            "and for Schengen, UK, USA, Canada and Australia we prepare your file and guide you. The embassy makes the final decision."))
         if rawal:
             faqs.insert(1, ("Do you have an office in Rawalpindi?", "Our office is in Blue Area, Islamabad. Rawalpindi clients start on WhatsApp and visit Blue Area once, when the file is ready."))
         main = f'''<div class="stack">
 <div class="block"><h2>{e(name)} you can trust</h2><p>{intro}</p><div class="chipsrow" style="margin-top:12px"><span>DTS licensed</span><span>Free first consultation</span></div></div>
+{'<div class="block"><h2>Visa agency in Islamabad: what we handle</h2><p>As a visa agency in Blue Area, Islamabad, we work in two ways. For Asian countries such as Thailand, Malaysia, Singapore and Indonesia we process your visit visa and follow it up. For Schengen, the UK, the USA, Canada and Australia we prepare your file, book the appointment and guide you; you attend the visa centre or interview yourself. We do not guarantee approval. The embassy makes the final decision.</p><ul class="checks2"><li>Free document check on WhatsApp before you pay</li><li>Forms, cover letter and checklist prepared by one adviser</li><li>Appointment booking and file tracking</li></ul></div>' if visa and not rawal else ""}
 {'<div class="block"><h2>Visa regions we handle</h2><div class="rgrid">' + regions + '</div></div>' if visa else '<div class="block"><h2>Everything under one roof</h2><div class="grid">' + services + '</div></div>'}
 <div class="block"><h2>How it works{' for ' + city + ' clients' if rawal else ''}</h2><ol class="steps">{steps}</ol></div>
 {getting}
@@ -4139,14 +4144,18 @@ def write_all():
     open(os.path.join(OUT, "llms.txt"), "w", encoding="utf-8").write("\n".join(llms) + "\n")
     open(os.path.join(OUT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\n\nSitemap: {BASE}/sitemap.xml\n")
     # hosting helpers: Netlify / Cloudflare Pages, Vercel, Apache (cPanel)
-    open(os.path.join(OUT, "_redirects"), "w").write("/pakistan-visa  /countries/south-asia/pakistan  301\n")
+    REDIRECTS = [("/pakistan-visa", "/countries/south-asia/pakistan"),
+                 ("/consultation", "/eligibility-check")]   # old URL Google still requests (Search Console, Nov 2026)
+    open(os.path.join(OUT, "_redirects"), "w").write("".join(f"{s}  {d}  301\n" for s, d in REDIRECTS))
     open(os.path.join(OUT, "_headers"), "w").write("/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n/*\n  X-Content-Type-Options: nosniff\n  X-Frame-Options: SAMEORIGIN\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()\n")
-    json.dump({"cleanUrls": True, "trailingSlash": False, "redirects": [{"source": "/pakistan-visa", "destination": "/countries/south-asia/pakistan", "permanent": True}],
+    _vc = ({"cleanUrls": True, "trailingSlash": False, "redirects": [{"source": s, "destination": d, "permanent": True} for s, d in REDIRECTS],
                "headers": [{"source": "/assets/(.*)", "headers": [{"key": "Cache-Control", "value": "public, max-age=31536000, immutable"}]},
                            {"source": "/(.*)", "headers": [{"key": "X-Content-Type-Options", "value": "nosniff"}, {"key": "X-Frame-Options", "value": "SAMEORIGIN"},
                                                           {"key": "Referrer-Policy", "value": "strict-origin-when-cross-origin"},
                                                           {"key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), payment=()"}]}]},
-              open(os.path.join(OUT, "vercel.json"), "w"), indent=1)
+           )[0]
+    json.dump(_vc, open(os.path.join(OUT, "vercel.json"), "w"), indent=1)
+    json.dump({"outputDirectory": "dist", **_vc}, open(os.path.join(SITE, "vercel.json"), "w"), indent=1)   # Vercel reads the repo-root file
     open(os.path.join(OUT, ".htaccess"), "w").write("""Options -MultiViews -Indexes
 DirectorySlash Off
 ErrorDocument 404 /404.html
