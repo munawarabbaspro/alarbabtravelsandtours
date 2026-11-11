@@ -476,8 +476,12 @@ REFUSAL = [("Weak financial proof", "Bank statements with sudden large deposits,
 APPOINTMENT_CENTRES = [("United Kingdom", "VFS Global (UK Visa Application Centre)", "/countries/united-kingdom"),
                        ("United States", "CGI Federal fee & appointment; interview at US Embassy Islamabad or Consulate Karachi", "/countries/united-states"),
                        ("Spain", "BLS International", "/countries/schengen/spain"), ("Netherlands", "VFS Global", "/countries/schengen/netherlands"),
-                       ("Sweden", "VFS Global", "/countries/schengen/sweden"), ("Greece", "GVCW visa centre", "/countries/schengen/greece"),
-                       ("France", "France-Visas online portal", "/countries/schengen/france"), ("Denmark", "ApplyVisa portal", "/countries/schengen/denmark"),
+                       ("Sweden", "VFS Global", "/countries/schengen/sweden"), ("Greece", "Greek Consular Office, Islamabad (appointment on the embassy's scheduling site)", "/countries/schengen/greece"),
+                       ("France", "France-Visas form, then TLScontact appointment (from 16 Nov 2026); submission at the Embassy in Islamabad", "/countries/schengen/france"),
+                       ("Germany", "Online waiting list of the German Embassy Islamabad / Consulate General Karachi", "/countries/schengen/germany"),
+                       ("Italy", "BLS-Intiana centre for your consular area", "/countries/schengen/italy"),
+                       ("Switzerland", "Gerry's / VFS centres in Islamabad, Karachi and Lahore", "/countries/schengen/switzerland"),
+                       ("Denmark", "ApplyVisa portal", "/countries/schengen/denmark"),
                        ("Norway", "UDI online portal", "/countries/schengen/norway"), ("Other Schengen states", "VFS Global / BLS / Gerry's, depending on the embassy", "/countries/schengen")]
 
 # ------------------------------------------------------------------ page text

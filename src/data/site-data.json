@@ -470,7 +470,34 @@
      "Interlaken (Jungfraujoch)",
      "Geneva (Jet d'Eau)"
     ],
-    "image": "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&q=80&w=800"
+    "image": "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&q=80&w=800",
+    "facts": [
+     [
+      "Residents of Pakistan and Afghanistan submit their Swiss Schengen visa application to Gerry's / VFS, at the Switzerland Visa Application Centres in Islamabad, Karachi and Lahore.",
+      "Embassy of Switzerland in Pakistan: Where to apply for a Schengen visa? (27 Apr 2026)",
+      "https://www.schweiz-pakistan.eda.admin.ch/en/where-to-apply-for-a-schengen-visa"
+     ],
+     [
+      "The Islamabad centre is on Park Road, Chatta Bakhtawar, Chak Shahzad. Appointments are booked on the Gerry's / VFS website or by phone on +92 51 848 58 36.",
+      "Embassy of Switzerland in Pakistan: Where to apply for a Schengen visa? (27 Apr 2026)",
+      "https://www.schweiz-pakistan.eda.admin.ch/en/where-to-apply-for-a-schengen-visa"
+     ],
+     [
+      "The embassy says the visa centre charges for its services; ask the agency for the amount.",
+      "Embassy of Switzerland in Pakistan: Where to apply for a Schengen visa? (27 Apr 2026)",
+      "https://www.schweiz-pakistan.eda.admin.ch/en/where-to-apply-for-a-schengen-visa"
+     ]
+    ],
+    "faq_extra": [
+     [
+      "Where do I apply for a Switzerland visa in Pakistan?",
+      "At the Switzerland Visa Application Centre run by Gerry's / VFS in Islamabad (Chak Shahzad), Karachi or Lahore, according to the Embassy of Switzerland. We prepare your file; you attend the centre yourself."
+     ],
+     [
+      "How do I book a Switzerland visa appointment?",
+      "On the Gerry's / VFS website, or by phone on +92 51 848 58 36, as listed by the Embassy of Switzerland in Pakistan."
+     ]
+    ]
    },
    {
     "slug": "austria",
@@ -569,7 +596,7 @@
     "title": "Greece Visa Consultant in Islamabad — Schengen Visa Expert",
     "description": "Secure your Greece Schengen visa from Pakistan. Expert documentation for tourist & business visas.",
     "keywords": "Greece visa consultant Islamabad, Greece visit visa Pakistan, Athens visa from ISB, Greece Schengen visa requirements, apply Greece visa Islamabad 2026, Greek embassy visa Pakistan",
-    "intro": "From the Acropolis to the stunning Aegean islands, Greece is a dream destination for Pakistani travelers. AL ARBAB TRAVEL AND TOURS assists in preparing your Greece Schengen visa file for submission at GVCW centers, ensuring every document — from financial proofs to hotel confirmations — is in perfect order for maximum approval chances.",
+    "intro": "From the Acropolis to the stunning Aegean islands, Greece is a dream destination for Pakistani travelers. AL ARBAB TRAVEL AND TOURS assists in preparing your Greece Schengen visa file for your appointment at the Greek Consular Office in Islamabad, ensuring every document — from financial proofs to hotel confirmations — is in perfect order for maximum approval chances.",
     "docs": [
      "Original Passport (valid 6 months, 2 blank pages)",
      "Greece Schengen Visa Application Form",
@@ -589,7 +616,53 @@
      "Mykonos",
      "Meteora Monasteries"
     ],
-    "image": "https://images.unsplash.com/photo-1503152394-c571994fd383?auto=format&fit=crop&q=80&w=800"
+    "image": "https://images.unsplash.com/photo-1503152394-c571994fd383?auto=format&fit=crop&q=80&w=800",
+    "facts": [
+     [
+      "To apply for a Schengen visa at the Greek Consular Office in Islamabad you book an appointment on the embassy's scheduling site, print the confirmation and bring it on the day.",
+      "Embassy of Greece in Islamabad: General Schengen visa requirements",
+      "https://www.mfa.gr/missionsabroad/en/pakistan-en/visas/general-schengen-visa-requirements.html"
+     ],
+     [
+      "The passport must have at least two blank pages, have been issued within the previous ten years, and be valid at least three months after you leave the Schengen area.",
+      "Embassy of Greece in Islamabad: General Schengen visa requirements",
+      "https://www.mfa.gr/missionsabroad/en/pakistan-en/visas/general-schengen-visa-requirements.html"
+     ],
+     [
+      "Fingerprints are collected unless they were registered in the VIS within the previous 59 months.",
+      "Embassy of Greece in Islamabad: General Schengen visa requirements",
+      "https://www.mfa.gr/missionsabroad/en/pakistan-en/visas/general-schengen-visa-requirements.html"
+     ],
+     [
+      "Travel medical insurance must cover emergency medical care, hospitalisation and repatriation, with a minimum cover of 30,000 euros, for the whole stay.",
+      "Embassy of Greece in Islamabad: General Schengen visa requirements",
+      "https://www.mfa.gr/missionsabroad/en/pakistan-en/visas/general-schengen-visa-requirements.html"
+     ],
+     [
+      "You cannot choose which Schengen country's mission to apply at: apply at the mission of the country of your longest stay, or of your first point of entry if that is hard to determine.",
+      "Embassy of Greece in Islamabad: General Schengen visa requirements",
+      "https://www.mfa.gr/missionsabroad/en/pakistan-en/visas/general-schengen-visa-requirements.html"
+     ],
+     [
+      "The embassy lists, among other documents, the NADRA Family Registration Certificate, previous visas and passports, proof of employment or business, and bank statements. A personal interview may be requested.",
+      "Embassy of Greece in Islamabad: General Schengen visa requirements",
+      "https://www.mfa.gr/missionsabroad/en/pakistan-en/visas/general-schengen-visa-requirements.html"
+     ]
+    ],
+    "faq_extra": [
+     [
+      "Where do I apply for a Greece visa in Pakistan?",
+      "At the Greek Consular Office in Islamabad, by appointment. The embassy says you book the appointment on its scheduling site, print the confirmation and bring it with you. We prepare the file before your appointment."
+     ],
+     [
+      "Can I apply for a Greece visa if I will spend more days in Italy?",
+      "No. The Embassy of Greece says you must apply at the mission of the country where your longest stay will be, or your first point of entry if that is hard to determine. We check your itinerary and tell you which embassy is correct."
+     ],
+     [
+      "Is an old passport accepted for a Greece visa?",
+      "Only if it was issued within the previous ten years, has two blank pages and is valid at least three months after you leave the Schengen area. The embassy also asks for your previous passports."
+     ]
+    ]
    },
    {
     "slug": "norway",
