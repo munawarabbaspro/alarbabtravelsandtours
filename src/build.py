@@ -451,7 +451,7 @@ OFFICIAL = {
                  ("eVisaPH: check if you need a visa", "https://evisa.gov.ph/"), ("eVisaPH: Philippine visa policy", "https://evisa.gov.ph/page/policy")],
  "tajikistan": [("Tajikistan e-Visa portal (Ministry of Foreign Affairs)", "https://www.evisa.tj/"), ("Tajikistan e-Visa: Get informed", "https://www.evisa.tj/#/getinformed"),
                 ("Tajikistan e-Visa: FAQ", "https://www.evisa.tj/#/help")],
- "australia": [("Visitor visa subclass 600 (Home Affairs)", "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600")],
+ "australia": [("Visitor visa subclass 600 (Home Affairs)", "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600"), ("Visitor visa 600: Tourist stream, apply outside Australia (Home Affairs)", "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600/tourist-stream-overseas")],
  "kuwait": [("Kuwait Ministry of Interior: Kuwait Visa portal", "https://kuwaitvisa.moi.gov.kw/")],
  "germany": [("German Missions in Pakistan: short-term / Schengen visa", "https://pakistan.diplo.de/pk-en/service/visa-shortterm-1673126")],
  "france": [("Embassy of France in Pakistan: visa appointments with TLScontact (10 Nov 2026)", "https://pk.diplomatie.gouv.fr/fr/aller-en-france/prendre-rendez-vous-pour-deposer-une-demande-de-visa-avec-tlscontact"), ("France-Visas (official)", "https://france-visas.gouv.fr/")],
@@ -465,13 +465,14 @@ OFFICIAL["hong-kong"] = [("Hong Kong Immigration Department: visit visa / entry 
 OFFICIAL["egypt"] = [("Egypt e-Visa Portal: who requires a visa", "https://visa2egypt.gov.eg/eVisa/FAQ")]
 OFFICIAL["kenya"] = OFFICIAL.get("kenya", []) + [("Kenya eTA: general information", "https://www.etakenya.go.ke/general-information")]
 OFFICIAL["maldives"] = [("Maldives Immigration: tourist visa", "https://immigration.gov.mv/visa/tourist-visa/")]
+OFFICIAL["ireland"] = [("Irish Immigration Service (official)", "https://www.irishimmigration.ie/")]
 OFFICIAL["qatar"] = [("Visit Qatar: visas and visa check", "https://www.visitqatar.com/intl-en/practical-info/visas"), ("Hayya platform (official)", "https://www.hayya.qa/")]
 OFFICIAL["oman"].append(("Oman Ministry of Foreign Affairs: entry visas", "https://www.fm.gov.om/en/visitors/entry-visas/"))
 REGION_OFFICIAL = {
  "united-kingdom": [("UK Standard Visitor visa (GOV.UK)", "https://www.gov.uk/standard-visitor")],
  "united-states": [("US visitor visas (travel.state.gov)", "https://travel.state.gov/content/travel/en/us-visas/tourism-visit/visitor.html"), ("DS-160 online form (CEAC)", "https://ceac.state.gov/genniv/")],
  "canada": [("Visit Canada (IRCC)", "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html")],
- "australia": [("Visitor visa subclass 600 (Home Affairs)", "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600")],
+ "australia": [("Visitor visa subclass 600 (Home Affairs)", "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600"), ("Visitor visa 600: Tourist stream, apply outside Australia (Home Affairs)", "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600/tourist-stream-overseas")],
  "schengen": [("Schengen visa policy (European Commission)", "https://home-affairs.ec.europa.eu/policies/schengen-borders-and-visa/visa-policy_en")],
 }
 REFUSAL = [("Weak financial proof", "Bank statements with sudden large deposits, a low closing balance or no maintenance certificate."),
@@ -608,7 +609,8 @@ ROUTE_OVERRIDE = {"philippines": "Embassy / visa centre", "uzbekistan": "Embassy
                   "hong-kong": "Visa centre or Hong Kong sponsor",   # ImmD: Chinese mission / visa centre, or ImmD by post or through a local sponsor
                   "china": "Embassy / visa centre",
                   "maldives": "Visa on arrival / e-visa",   # Maldives Immigration: tourist visa granted on arrival
-                  "egypt": "Embassy / visa centre",   # Pakistan is not on the Egypt e-Visa Portal nationality list (visa2egypt.gov.eg FAQ, Nov 2026)   # visitqatar.com check for Pakistan: VoA with Discover Qatar hotel booking, or Hayya A1
+                  "egypt": "Embassy / visa centre",
+                  "ireland": "Embassy / visa centre",   # keep the route it had before the official link was added   # Pakistan is not on the Egypt e-Visa Portal nationality list (visa2egypt.gov.eg FAQ, Nov 2026)   # visitqatar.com check for Pakistan: VoA with Discover Qatar hotel booking, or Hayya A1
                   "saudi-arabia": "Route depends on purpose",   # Pakistan is not on the 72-country tourist eVisa list (visa.visitsaudi.com, Nov 2026)
                   **{s: "Schengen visa (embassy / visa centre)" for s in ("germany", "france", "spain", "netherlands")}}   # DFA: temporary visitor visa applied for in person at the embassy
 
@@ -3048,7 +3050,7 @@ def build_country(c):
                f"Yes. We prepare {c['name']} visa files for Pakistani passport holders from our Islamabad office ({re.sub(r'\s*\(.*?\)', '', route).strip().lower().replace(' eta', ' ETA')}). ") +
               "Rules can change at short notice, so message us on WhatsApp to confirm the current position before you book anything.")]
     siblings = by_rank([x for x in BY_REGION[c["region"]] if x["slug"] != c["slug"] and x["region"] == c["region"]])
-    srcs = OFFICIAL.get(c["slug"], []) + REGION_OFFICIAL.get(c["region"], [])
+    srcs = OFFICIAL.get(c["slug"], []) + ([] if c["slug"] == "ireland" else REGION_OFFICIAL.get(c["region"], []))   # Ireland is filed under the UK region; GOV.UK links don't apply
     src_block = (f'<div class="block" id="sources"><h2>Official sources</h2><p>Always confirm the latest rules on the official portal. We check every file against these requirements before submission. <a class="link" href="/editorial-policy">How we keep this page accurate →</a></p><ul class="srcs">'
                  + "".join(f'<li><a href="{u}" target="_blank" rel="noopener nofollow">{e(n)} ↗</a></li>' for n, u in srcs) + "</ul></div>") if srcs else ""
     refusal = "".join(f"<li><b>{e(a)}</b><span>{e(b)}</span></li>" for a, b in REFUSAL)

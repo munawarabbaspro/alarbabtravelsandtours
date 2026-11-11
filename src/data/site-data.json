@@ -5096,16 +5096,20 @@
    ],
    "faqs": [
     {
-     "q": "How long is an Australian visitor visa valid for?",
-     "a": "Typically up to 3 years with multiple entries, allowing stays up to 3 or 6 months per visit."
+     "q": "How long can I stay in Australia on a visitor visa?",
+     "a": "The Home Affairs page for the Visitor visa (subclass 600) Tourist stream lists a stay of up to 12 months. The period you get is set on your visa grant."
     },
     {
-     "q": "Is a medical checkup required?",
-     "a": "Usually not for short-term visitor visas unless you are over 75 or plan to stay longer than 6 months."
+     "q": "Can I apply for an Australia tourist visa from Pakistan?",
+     "a": "Yes. The Tourist stream (apply outside Australia) is for visiting as a tourist, for a cruise or to see family and friends. Home Affairs says you must be outside Australia when you apply and when the visa is decided."
     },
     {
-     "q": "What is the subclass 600 visa fee?",
-     "a": "The base application charge is currently 190 AUD, payable online."
+     "q": "What does Australia check for a visitor visa?",
+     "a": "Home Affairs says you must intend to visit only, have enough money for your stay, and not work in Australia. We prepare the file to show these clearly."
+    },
+    {
+     "q": "How long does an Australia visitor visa take?",
+     "a": "Home Affairs publishes a visa processing time guide based on recently decided applications. It is a guide only and not specific to your application."
     }
    ],
    "visas": [
@@ -5128,7 +5132,7 @@
       "Planned Itinerary and Cover Letter"
      ],
      "fees": "190 AUD Embassy Fee + Service Charges",
-     "processingTime": "Typically 2 to 4 weeks (can vary by season).",
+     "processingTime": "Varies. Home Affairs publishes a processing time guide on its website.",
      "tips": [
       "Ensure all documents are clear color scans.",
       "Show sufficient funds for your entire stay in Australia.",
