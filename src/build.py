@@ -459,6 +459,9 @@ OFFICIAL = {
  "netherlands": [("Netherlands Worldwide: Schengen visa in Pakistan", "https://www.netherlandsworldwide.nl/visa-the-netherlands/schengen-visa/apply-pakistan")],
 }
 OFFICIAL["malaysia"].append(("Immigration Department of Malaysia: visa requirement by country", "https://www.imi.gov.my/index.php/en/main-services/visa/visa-requirement-by-country/"))
+OFFICIAL["south-korea"] = [("Embassy of the Republic of Korea in Pakistan: visa requirements", "https://overseas.mofa.go.kr/pk-en/wpge/m_3159/contents.do")] + OFFICIAL.get("south-korea", [])
+OFFICIAL["china"] = [("Embassy of China in Pakistan: instruction for Chinese visa application", "https://pk.china-embassy.gov.cn/eng/lsfw/va/202504/t20250428_11606290.htm"), ("Embassy of China in Pakistan: most common reasons for returned applications", "https://pk.china-embassy.gov.cn/eng/lsfw/va/202504/t20250428_11606302.htm")]
+OFFICIAL["hong-kong"] = [("Hong Kong Immigration Department: visit visa / entry permit", "https://www.immd.gov.hk/eng/services/visas/visit-transit/visit-visa-entry-permit.html")]
 OFFICIAL["qatar"] = [("Visit Qatar: visas and visa check", "https://www.visitqatar.com/intl-en/practical-info/visas"), ("Hayya platform (official)", "https://www.hayya.qa/")]
 OFFICIAL["oman"].append(("Oman Ministry of Foreign Affairs: entry visas", "https://www.fm.gov.om/en/visitors/entry-visas/"))
 REGION_OFFICIAL = {
@@ -584,6 +587,8 @@ def group_docs(docs):
 
 ROUTE_PHRASE = {"Online e-visa": "an online e-visa", "Online ETA": "an online ETA", "Visa on arrival / e-visa": "a visa on arrival or e-visa",
                 "Schengen visa (embassy / visa centre)": "a Schengen visa at the embassy or its visa centre", "Embassy / visa centre": "the embassy or its visa centre",
+                "Visa centre or Hong Kong sponsor": "the Chinese visa centre, or the Hong Kong Immigration Department through a local sponsor",
+                "Embassy in person": "the embassy in person (you submit your own application)",
                 "Route depends on purpose": "the visa route that fits your purpose (Umrah, family visit or tourist visa)"}
 
 def proc_phrase(vv):
@@ -595,7 +600,10 @@ def proc_phrase(vv):
 ONLINE_ROUTE = {"sri-lanka": "Online ETA", "kenya": "Online ETA"}
 ROUTE_OVERRIDE = {"philippines": "Embassy / visa centre", "uzbekistan": "Embassy / visa centre", "japan": "Embassy / visa centre",
                   "turkey": "E-visa or embassy", "azerbaijan": "E-visa or embassy",
-                  "qatar": "Visa on arrival / e-visa",   # visitqatar.com check for Pakistan: VoA with Discover Qatar hotel booking, or Hayya A1
+                  "qatar": "Visa on arrival / e-visa",
+                  "south-korea": "Embassy in person",   # Embassy of Korea in Pakistan: applicants must submit their own application in person
+                  "hong-kong": "Visa centre or Hong Kong sponsor",   # ImmD: Chinese mission / visa centre, or ImmD by post or through a local sponsor
+                  "china": "Embassy / visa centre",   # visitqatar.com check for Pakistan: VoA with Discover Qatar hotel booking, or Hayya A1
                   "saudi-arabia": "Route depends on purpose",   # Pakistan is not on the 72-country tourist eVisa list (visa.visitsaudi.com, Nov 2026)
                   **{s: "Schengen visa (embassy / visa centre)" for s in ("germany", "france", "spain", "netherlands")}}   # DFA: temporary visitor visa applied for in person at the embassy
 

@@ -3171,7 +3171,57 @@
      "Great Wall",
      "Shanghai"
     ],
-    "image": "https://images.unsplash.com/photo-1508197149814-0cc02e8b7f74?auto=format&fit=crop&q=80&w=800"
+    "image": "https://images.unsplash.com/photo-1508197149814-0cc02e8b7f74?auto=format&fit=crop&q=80&w=800",
+    "facts": [
+     [
+      "Fill the online Visa Application Form on bio.visaforchina.cn and upload all documents. After the 'Online Visa Approved' email, submit your passport, the Visa Application Certificate and original documents at Gerry's Center in Islamabad, Karachi or Lahore.",
+      "Embassy of China in Pakistan: Instruction for Chinese Visa Application",
+      "https://pk.china-embassy.gov.cn/eng/lsfw/va/202504/t20250428_11606290.htm"
+     ],
+     [
+      "The Embassy in Islamabad takes applicants who permanently live in Islamabad, Rawalpindi and Punjab (the Consulate General in Lahore does not accept visa applications currently). The Consulate General in Karachi takes Sindh and Balochistan.",
+      "Embassy of China in Pakistan: Instruction for Chinese Visa Application",
+      "https://pk.china-embassy.gov.cn/eng/lsfw/va/202504/t20250428_11606290.htm"
+     ],
+     [
+      "The tourist (L) visa is issued to tourists visiting China in a group of at least 5 people, with an Invitation Letter for Tourist Group from the authorised tourism office in China.",
+      "Embassy of China in Pakistan: Instruction for Chinese Visa Application",
+      "https://pk.china-embassy.gov.cn/eng/lsfw/va/202504/t20250428_11606290.htm"
+     ],
+     [
+      "The embassy generally needs 4 working days to process an application and does not provide a fast service. Fingerprints are collected at Gerry's Center (with some exemptions).",
+      "Embassy of China in Pakistan: Instruction for Chinese Visa Application",
+      "https://pk.china-embassy.gov.cn/eng/lsfw/va/202504/t20250428_11606290.htm"
+     ],
+     [
+      "Since 20 November 2025, foreign nationals can submit the China arrival card online before travel, on the National Immigration Administration website or app.",
+      "Embassy of China in Pakistan: Notice on Online Submission of Arrival Card",
+      "https://pk.china-embassy.gov.cn/eng/lsfw/va/202511/t20251128_11762876.htm"
+     ],
+     [
+      "Common reasons the embassy returns business (M) visa files: fake or incomplete invitation letters, unreadable police character certificates, unverifiable proof of funds, and errors on the form such as a mismatched name or passport number.",
+      "Embassy of China in Pakistan: Most common reasons for returned visa applications",
+      "https://pk.china-embassy.gov.cn/eng/lsfw/va/202504/t20250428_11606302.htm"
+     ]
+    ],
+    "faq_extra": [
+     [
+      "How do I apply for a China visa from Pakistan?",
+      "Fill the online form on bio.visaforchina.cn and upload your documents. When you receive the 'Online Visa Approved' email, take your passport, the Visa Application Certificate and the originals to Gerry's Center in Islamabad, Karachi or Lahore. We prepare and check the file before you upload it."
+     ],
+     [
+      "Can I get a China tourist visa alone?",
+      "The Embassy of China says the tourist (L) visa is issued to tourists visiting in a group of at least 5 people, with a group invitation from the authorised tourism office in China. Individual travellers usually go on another category, such as business with an invitation; we check which fits your trip."
+     ],
+     [
+      "How long does a China visa take in Pakistan?",
+      "The embassy generally needs 4 working days and does not offer a fast service. Processing can vary case by case."
+     ],
+     [
+      "Why do China visa files get returned?",
+      "The embassy lists fake or incomplete invitation letters, unreadable police character certificates, unverifiable proof of funds and form errors such as a mismatched name or passport number. We check these before submission."
+     ]
+    ]
    },
    {
     "slug": "japan",
@@ -3278,7 +3328,52 @@
      "Jeju Island",
      "Busan"
     ],
-    "image": "https://images.unsplash.com/photo-1538681105587-85640961bf8b?auto=format&fit=crop&q=80&w=800"
+    "image": "https://images.unsplash.com/photo-1538681105587-85640961bf8b?auto=format&fit=crop&q=80&w=800",
+    "facts": [
+     [
+      "Pakistani nationals with an ordinary passport must obtain a visa to enter Korea. Applicants must appear in person to submit their own application.",
+      "Embassy of the Republic of Korea in Pakistan: Visa Requirements",
+      "https://overseas.mofa.go.kr/pk-en/wpge/m_3159/contents.do"
+     ],
+     [
+      "The embassy accepts applications Monday to Friday, 9:30 to 11:30 (hours can change). Processing takes a minimum of 8 weeks after the application is received.",
+      "Embassy of the Republic of Korea in Pakistan: Visa Requirements",
+      "https://overseas.mofa.go.kr/pk-en/wpge/m_3159/contents.do"
+     ],
+     [
+      "For short-term visits (business C-3-4, or family visit and conference C-3-1), the Korean inviter provides an original invitation letter and guarantee letter notarized in Korea.",
+      "Embassy of the Republic of Korea in Pakistan: Visa Requirements",
+      "https://overseas.mofa.go.kr/pk-en/wpge/m_3159/contents.do"
+     ],
+     [
+      "Applicants submit a passport valid at least six months, one application form filled in personally, one recent colour photo and the documents for their visa category, such as a bank statement for the previous six months.",
+      "Embassy of the Republic of Korea in Pakistan: Visa Requirements",
+      "https://overseas.mofa.go.kr/pk-en/wpge/m_3159/contents.do"
+     ],
+     [
+      "The embassy does not have any obligation to explain the reason for a refusal.",
+      "Embassy of the Republic of Korea in Pakistan: Visa Requirements",
+      "https://overseas.mofa.go.kr/pk-en/wpge/m_3159/contents.do"
+     ]
+    ],
+    "faq_extra": [
+     [
+      "Can someone else submit my Korea visa application?",
+      "No. The Embassy of Korea in Pakistan says applicants must appear in person to submit their own application. We prepare and check your file; you submit it at the embassy."
+     ],
+     [
+      "How long does a Korea visa take from Pakistan?",
+      "The embassy says a minimum of 8 weeks after it receives the application, so apply well before your travel date."
+     ],
+     [
+      "Do I need an invitation for a Korea visit visa?",
+      "For short-term business, family visit or conference visas, the embassy asks for an original invitation letter and guarantee letter from the Korean inviter, notarized in Korea."
+     ],
+     [
+      "Will the Korean embassy tell me why my visa was refused?",
+      "No. The embassy says it has no obligation to explain the reason for a refusal, so the file should be checked carefully before you apply."
+     ]
+    ]
    },
    {
     "slug": "taiwan",
@@ -3311,7 +3406,7 @@
     "title": "Hong Kong Visa Consultant in Islamabad",
     "description": "Apply for Hong Kong visit visas from Pakistan with expert assistance.",
     "keywords": "Hong Kong visa Pakistan, Hong Kong visit visa consultant",
-    "intro": "Hong Kong is a major global financial hub and tourist hotspot. We assist Pakistani citizens with online visa applications and thorough documentation review for smooth entry.",
+    "intro": "Hong Kong is a major global financial hub and tourist hotspot. We prepare Hong Kong visa files for Pakistani citizens, through the Chinese visa centre or a Hong Kong sponsor, with a thorough documentation review.",
     "docs": [
      "Passport Copy (All used pages)",
      "Digital Photo",
@@ -3325,7 +3420,38 @@
      "Disneyland",
      "Tsim Sha Tsui"
     ],
-    "image": "https://images.goway.com/production/featured_images/Hong%20Kong%20Skyline%20Kowloon%20from%20Fei%20Ngo%20Shan%20Hill%20sunset_shutterstock_213021286.jpg?VersionId=h9UH95UG_HR9HmVfKg3ZPgERx9AB2MTe"
+    "image": "https://images.goway.com/production/featured_images/Hong%20Kong%20Skyline%20Kowloon%20from%20Fei%20Ngo%20Shan%20Hill%20sunset_shutterstock_213021286.jpg?VersionId=h9UH95UG_HR9HmVfKg3ZPgERx9AB2MTe",
+    "facts": [
+     [
+      "Pakistan is on the Hong Kong Immigration Department's list of nationalities that need a visa. All Pakistani nationals except diplomatic and official passport holders need a valid visa, including transit passengers who stay airside.",
+      "Hong Kong Immigration Department: visit visa / entry permit requirements",
+      "https://www.immd.gov.hk/eng/services/visas/visit-transit/visit-visa-entry-permit.html"
+     ],
+     [
+      "You can apply at the nearest Chinese diplomatic or consular mission (some missions pass applications to the Chinese Visa Application Service Center), or apply to the Immigration Department directly by post or through a local sponsor in Hong Kong.",
+      "Hong Kong Immigration Department: visit visa / entry permit requirements",
+      "https://www.immd.gov.hk/eng/services/visas/visit-transit/visit-visa-entry-permit.html"
+     ],
+     [
+      "Visitors must have adequate funds for their stay without working and hold onward or return tickets (unless in transit to the Chinese Mainland or Macao).",
+      "Hong Kong Immigration Department: visit visa / entry permit requirements",
+      "https://www.immd.gov.hk/eng/services/visas/visit-transit/visit-visa-entry-permit.html"
+     ]
+    ],
+    "faq_extra": [
+     [
+      "Do Pakistanis need a visa for Hong Kong?",
+      "Yes. The Hong Kong Immigration Department lists Pakistan as visa required, even for transit passengers who stay airside. Only diplomatic and official passport holders are visa-free."
+     ],
+     [
+      "Where do Pakistanis apply for a Hong Kong visa?",
+      "At the Chinese mission or its Chinese Visa Application Service Center, or directly to the Hong Kong Immigration Department by post or through a local sponsor in Hong Kong. We check which route fits your trip and prepare the file."
+     ],
+     [
+      "Do I need a visa to transit through Hong Kong airport?",
+      "Yes. The Immigration Department says the visa requirement for Pakistani nationals also applies to transit passengers who stay airside."
+     ]
+    ]
    },
    {
     "slug": "mongolia",
