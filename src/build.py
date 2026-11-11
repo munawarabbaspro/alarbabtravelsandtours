@@ -151,6 +151,17 @@ ICON192 = f"/assets/icon-192.png?v={_v('icon-192.png')}"
 APPJS = f"/assets/app.js?v={_v('app.js')}"
 TODAY = "2026-10-17"
 UPDATED = "October 2026"
+# Pages whose content was re-checked against official sources on 11 Nov 2026 (patches v33-v45). Only these get the
+# November label and sitemap lastmod; every other page keeps the date it was last really changed.
+CHECKED_NOV = {"thailand", "italy", "singapore", "indonesia", "uzbekistan", "bahrain", "sri-lanka", "vietnam", "cambodia", "philippines",
+               "turkey", "azerbaijan", "tajikistan", "japan", "malaysia", "oman", "kuwait", "spain", "netherlands", "germany", "france",
+               "saudi-arabia", "qatar", "greece", "switzerland", "belgium", "luxembourg", "sweden", "denmark", "iceland", "norway", "finland",
+               "poland", "czech-republic", "china", "south-korea", "hong-kong", "egypt", "kenya", "maldives", "ireland"}
+UPDATED_NOV, TODAY_NOV = "November 2026", "2026-11-11"
+LASTMOD_NOV_PREFIX = ("/countries/united-kingdom", "/countries/canada", "/countries/australia")
+LASTMOD_NOV_URLS = {"/guides/schengen-travel-insurance-from-pakistan", "/travel-insurance", "/visa-appointments", "/guides/schengen-visa-requirements-from-pakistan"}
+def upd_of(c):
+    return UPDATED_NOV if c["slug"] in CHECKED_NOV else UPDATED
 GSC_CODE = ""         # Google Search Console HTML-tag code (content value only). Empty = no tag.
 BING_CODE = ""        # Bing Webmaster verification code. Empty = no tag.
 GA_ID = "G-T4BRVJZGNR"   # Google Analytics 4 measurement ID (AL ARBAB). Empty = no tracking script.
@@ -839,7 +850,7 @@ def official_facts(c):
         return ""
     li = "".join(f'<li><span>{e(t)}<br><a class="link" href="{u}" target="_blank" rel="noopener nofollow">Source: {e(n)} ↗</a></span></li>' for t, n, u in fs)
     return (f'<div class="block" id="official"><h2>What the official sources say about the {e(c["name"])} visa</h2><ul class="checks">{li}</ul>'
-            f'<p class="note" style="margin-top:12px">Checked on the official sites in {UPDATED}. Rules change, so check the official site before you apply. Final decision rests with the embassy.</p></div>')
+            f'<p class="note" style="margin-top:12px">Checked on the official sites in {upd_of(c)}. Rules change, so check the official site before you apply. Final decision rests with the embassy.</p></div>')
 
 def tier_block_region(r):
     if r["slug"] in ASIAN_REGIONS:
@@ -958,7 +969,7 @@ def footer():
            ("/honeymoon-packages", "Honeymoon Packages"), ("/visa-appointments", "Visa Appointments"), ("/flight-hotel-reservation-for-visa", "Flight & Hotel Reservation"), ("/eligibility-check", "Free Eligibility Check")]
     reg = [(f"/countries/{r['slug']}", r["name"]) for r in regions_ordered()]
     co = [("/about", "About Us"), ("/contact", "Contact Us"), ("/travel-agency-islamabad", "Travel Agency Islamabad"), ("/visa-consultant-islamabad", "Visa Consultant Islamabad"),
-          ("/travel-agency-rawalpindi", "Travel Agency Rawalpindi"), ("/visa-consultant-rawalpindi", "Visa Consultant Rawalpindi"), ("/guides", "Visa Guides"), ("/editorial-policy", "Editorial Policy"), ("/sources", "Official sources"), ("/sitemap", "Sitemap"),
+          ("/travel-agency-rawalpindi", "Travel Agency Rawalpindi"), ("/visa-consultant-rawalpindi", "Visa Consultant Rawalpindi"), ("/guides", "Visa Guides"), ("/visa-updates", "Visa Updates"), ("/editorial-policy", "Editorial Policy"), ("/sources", "Official sources"), ("/sitemap", "Sitemap"),
           ("/terms", "Terms & Conditions"), ("/privacy", "Privacy Policy"), ("/fees-and-refunds", "Fees & Refund Policy"), ("/disclaimer", "Disclaimer"), ("/compliance", "Compliance Commitment")]
     li = lambda xs: "".join(f'<li><a href="{u}">{e(n)}</a></li>' for u, n in xs)
     asia_links = " ".join(f'<a href="{c["url"]}">{e(c["name"])}</a>' for c in asian_priority())
@@ -1261,6 +1272,62 @@ def steps_html(items):
     return "".join(f"<li><b>{e(a)}</b><span>{e(b)}</span></li>" for a, b in items)
 
 # ================================================================== PAGES
+# Official visa updates (newest first). Every item restates an official notice already cited on the linked country page.
+VISA_UPDATES = [
+ ("2026-11-10", "France", "/countries/schengen/france", "France visa appointments move to TLScontact from 16 November 2026",
+  "The Embassy of France in Pakistan says appointments are booked only online through TLScontact, which replaces AEG. Passports are returned at the TLScontact centre in Islamabad.",
+  "Embassy of France in Pakistan", "https://pk.diplomatie.gouv.fr/fr/aller-en-france/prendre-rendez-vous-pour-deposer-une-demande-de-visa-avec-tlscontact"),
+ ("2026-11-02", "Czech Republic", "/countries/schengen/czech-republic", "Czech Schengen appointments: email registration on the last working day of the month",
+  "The Czech Embassy in Islamabad gives appointments by random selection from emails sent on the last working day of each month, 12:00 to 18:00 Pakistan time.",
+  "Embassy of the Czech Republic in Islamabad", "https://mzv.gov.cz/islamabad/en/visa_1/appointments/appointments_for_short_term_schengen.html"),
+ ("2026-10-19", "Netherlands", "/countries/schengen/netherlands", "Netherlands: apply at VFS Islamabad, Karachi or Lahore, up to 6 months ahead",
+  "Netherlands Worldwide says appointments are made only through VFS Global and advises against intermediaries.",
+  "Netherlands Worldwide", "https://www.netherlandsworldwide.nl/visa-the-netherlands/schengen-visa/apply-pakistan"),
+ ("2026-05-29", "Italy", "/countries/schengen/italy", "Italy: embassy warns against paying anyone for an appointment",
+  "The Embassy of Italy says it and BLS-Intiana have no official WhatsApp or mobile number for applicants.",
+  "Embassy of Italy in Islamabad", "https://ambislamabad.esteri.it/en/?p=3034"),
+ ("2026-05-25", "Sri Lanka", "/countries/south-asia/sri-lanka", "Sri Lanka tourist ETA free for Pakistanis for 30 days",
+  "From 25 May 2026 Pakistan is one of 40 countries whose nationals get the 30-day tourist ETA free of charge. The ETA is still required before arrival.",
+  "Sri Lanka ETA (official)", "https://www.eta.gov.lk/slvisa/"),
+ ("2026-03-24", "Norway", "/countries/schengen/norway", "Norway resumes visa services in Pakistan",
+  "Visitor visa applications are again submitted through VFS Global / Gerry's in Islamabad, Lahore and Karachi; the Norwegian Embassy in Abu Dhabi decides.",
+  "Embassy of Norway in Islamabad", "https://www.norway.no/en/pakistan/norway-pakistan/news-events/resuming-visa-operations-in-pakistan-24.03.2026/"),
+ ("2026-02-19", "Germany", "/countries/schengen/germany", "Germany: waiting-list registration is free",
+  "The German Missions in Pakistan say anyone asking for money to register on the appointment waiting list is a fraudster.",
+  "German Missions in Pakistan", "https://pakistan.diplo.de/pk-en/service/visa-shortterm-1673126"),
+ ("2025-11-20", "China", "/countries/east-asia/china", "China arrival card can now be filled online",
+  "Since 20 November 2025, foreign nationals can submit the China arrival card online before travel.",
+  "Embassy of China in Pakistan", "https://pk.china-embassy.gov.cn/eng/lsfw/va/202511/t20251128_11762876.htm"),
+ ("2025-07-07", "Sweden", "/countries/schengen/sweden", "Sweden visit visas can be applied for in Islamabad",
+  "Pakistani citizens and residents can apply in Islamabad, through VFS Global, for visits of up to 90 days.",
+  "Embassy of Sweden in Islamabad", "https://www.swedenabroad.se/en/embassies/pakistan-islamabad/current/news/if-you-need-to-apply-for-a-visa-you-can-now-do-so-in-islamabad/"),
+]
+_MON = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+def _hdate(s):
+    y, m, d_ = s.split("-")
+    return f"{int(d_)} {_MON[int(m) - 1]} {y}"
+
+def updates_list(n=None):
+    items = VISA_UPDATES[:n] if n else VISA_UPDATES
+    return '<ul class="checks">' + "".join(
+        f'<li><span><b><a class="link" href="{u}">{e(t)}</a></b><br><small>{_hdate(dt)} · {e(cn)}</small><br>{e(x)}<br>'
+        f'<a class="link" href="{su}" target="_blank" rel="noopener nofollow">Source: {e(sn)} ↗</a></span></li>'
+        for dt, cn, u, t, x, sn, su in items) + "</ul>"
+
+def build_visa_updates():
+    content = (f'<section class="sec reveal"><div class="prose"><h2>Latest official visa updates for Pakistani travellers</h2>'
+               f'<p>Changes announced by embassies and immigration departments, newest first. Each update links to the official notice and to our country guide. '
+               f'Rules change, so check the official site before you apply. Final decision rests with the embassy.</p>{updates_list()}'
+               f'<p class="note">Last checked: {UPDATED_NOV}.</p></div></section>{cta_band("Not sure what changed for your visa?", "Send us your destination on WhatsApp and we check the latest official rules for your case.")}')
+    ph = pagehead(f"Visa updates · {UPDATED_NOV}", "Visa updates for Pakistan", "Official embassy and immigration notices that change how Pakistanis apply, with links to the source.", UNS["it"], alt="Visa updates for Pakistani travellers")
+    body = shell("/visa-updates", [("Home", "/"), ("Visa updates", None)], ph, content)
+    ld = [crumbs_ld([("Home", "/"), ("Visa updates", "/visa-updates")]),
+          {"@context": "https://schema.org", "@type": "ItemList", "name": "Official visa updates for Pakistani travellers",
+           "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": BASE + u, "name": t} for i, (dt, cn, u, t, x, sn, su) in enumerate(VISA_UPDATES)]}]
+    page("/visa-updates", "Visa Updates for Pakistanis (November 2026) | AL ARBAB",
+         "Latest official visa changes for Pakistani travellers: France TLScontact, Norway reopening, Czech appointments, free Sri Lanka ETA and more, with sources.",
+         body, ld, "visa updates pakistan, embassy news pakistan, france visa tlscontact pakistan, norway visa pakistan 2026", priority="0.7")
+
 def build_home():
     d0 = HERO[0]
     find = [[c["name"], c["url"]] for c in by_rank(list(COUNTRIES.values()))] + [[r["name"], f"/countries/{r['slug']}"] for r in DATA["regions"]] + \
@@ -1331,6 +1398,7 @@ def build_home():
 {tiers_section()}
 {asian_featured}
 {how_we_work()}
+{sec("Latest official visa updates", "Embassy and immigration notices that change how Pakistanis apply. Each one links to the official source.", updates_list(4) + '<p style="margin-top:18px"><a class="btn light" href="/visa-updates">All visa updates</a></p>', "updates")}
 {sec("Exclusive travel packages", "All-inclusive international packages curated for Pakistani travelers.", f'<div class="grid g4">{"".join(pkg_card(p) for p in PACKAGES)}</div><p style="margin-top:20px"><a class="btn light" href="/packages">See all packages</a></p>', "packages")}
 {sec("Umrah packages 2026", "We arrange Umrah packages, hotels and flights, and prepare your Umrah visa file.",
   f'''<div class="umrah"><div class="t"><span class="eyebrow">🕋 Umrah Packages 2026</span><h3>Umrah Packages — Makkah &amp; Madinah Stays</h3><p>We are a travel agency that arranges Umrah packages, hotels and flights, and prepares your Umrah visa file. Choose Economy, 3 Star, 4 Star or 5 Star and message us on WhatsApp for today's price.</p><div><a class="btn" href="/umrah">Explore Umrah packages</a></div></div><div class="pic">{picture(UMRAH_IMG, "Umrah packages 2026 – Kaaba, Makkah", 1000, 667, "(max-width:1000px) 100vw, 560px")}</div></div>''', "umrah")}
@@ -3076,7 +3144,7 @@ def build_country(c):
 <div class="block" id="checks"><h2>Before you apply for the {e(c["name"])} visa</h2><p>Officers judge the same things on every file: purpose of the trip, enough funds, reasons to return and consistent documents. Read our short guides, then send your file for a free check.</p><div class="chipsrow" style="margin-top:12px"><a href="/guides/bank-statement-for-visa-from-pakistan">Bank statement rules</a><a href="/guides/visa-cover-letter-pakistan">Cover letter template</a><a href="/guides/visa-refused-what-to-do">If a visa is refused</a><a href="/guides/visa-documents-explained">Documents explained</a></div></div>
 {src_block}
 <div class="block" id="faqs"><h2>{e(c["name"])} visa FAQs</h2>{faq_html(faqs)}</div>
-<p class="note">{REVIEWED} {NAME} is licensed by the Department of Tourist Services (DTS). We are not an embassy or government office, and no agency can guarantee a visa: the decision is made by the embassy. <a class="link" href="/disclaimer">Disclaimer</a> · <a class="link" href="/fees-and-refunds">Fees &amp; refund policy</a> · <a class="link" href="/compliance">Compliance commitment</a></p>
+<p class="note">Updated {upd_of(c)}. Rules change; we confirm the latest requirements for your case. {NAME} is licensed by the Department of Tourist Services (DTS). We are not an embassy or government office, and no agency can guarantee a visa: the decision is made by the embassy. <a class="link" href="/disclaimer">Disclaimer</a> · <a class="link" href="/fees-and-refunds">Fees &amp; refund policy</a> · <a class="link" href="/compliance">Compliance commitment</a></p>
 </div>'''
     vlinks = "".join(f'<a href="/countries/{c["region"]}/visa/{v["slug"]}">{e(r["name"])} {e(v["name"])} <span>→</span></a>' for v in r["visas"])
     sib = "".join(f'<a href="{x["url"]}">{e(x["name"])} <span>→</span></a>' for x in siblings[:10])
@@ -3088,7 +3156,7 @@ def build_country(c):
     facts = f'<div class="facts"><div><small>How you apply</small><b>{e(visa_route(c))}</b></div><div><small>Documents</small><b>{len(c["docs_clean"])} on the checklist</b></div><div><small>Processing</small><b>{e(proc)}</b></div><div><small>Region</small><b>{e(r["name"])}</b></div><div><small>Our service</small><b>{"Visit visa processing &amp; follow-up" if tier == 1 else "File preparation &amp; guidance"}</b></div>' + (f'<div><small>Track record</small><b>{e(SUCCESS_CLAIM)}</b></div></div><p class="note" style="margin-top:12px">{e(SUCCESS_NOTE)}</p>' if asian_claim(c) else '<div><small>First check</small><b>Free on WhatsApp</b></div></div>')
     content = f'<div class="layout">{main}{aside}</div>{rel}' + cta_band(f"Start your {e(c['name'])} journey today")
     acts = f'<a class="btn wa" href="{wa("Hi, I want to apply for a " + c["name"] + " visa.")}" target="_blank" rel="noopener">💬 Free assessment</a><a class="btn light" href="tel:{PHONE_I}">📞 {PHONE}</a>'
-    ph = pagehead(f'{e(r["name"])} · Updated {UPDATED}', f'{e(c["name"])} visa from Pakistan', e(c["description"]) + f' Prepared by our visa consultants in Blue Area, Islamabad.', c["img"], c["code"], (f"{c['gallery'][0][0]}, {c['name']}" if c["gallery"] else f"{c['name']} – " + (c["popularPlaces"][0] if c["popularPlaces"] else "visa from Pakistan")), acts) + facts
+    ph = pagehead(f'{e(r["name"])} · Updated {upd_of(c)}', f'{e(c["name"])} visa from Pakistan', e(c["description"]) + f' Prepared by our visa consultants in Blue Area, Islamabad.', c["img"], c["code"], (f"{c['gallery'][0][0]}, {c['name']}" if c["gallery"] else f"{c['name']} – " + (c["popularPlaces"][0] if c["popularPlaces"] else "visa from Pakistan")), acts) + facts
     body = shell("/countries", [("Home", "/"), ("Destinations", "/countries"), (r["name"], f"/countries/{r['slug']}"), (c["name"], None)], ph, content)
     ld = [crumbs_ld([("Home", "/"), ("Destinations", "/countries"), (r["name"], f"/countries/{r['slug']}"), (c["name"], c["url"])]),
           service_ld(f"{c['name']} visa consultancy in Islamabad", c["description"], c["url"],
@@ -4067,10 +4135,10 @@ def build_guides2():
     for g in GUIDES2:
         secs = "".join(f'<div class="block" id="s{i}"><h2>{h}</h2>{body}</div>' for i, (h, body) in enumerate(g["sections"]))
         toc = "".join(f'<a href="#s{i}">{H.unescape(h)[:40]} <span>↓</span></a>' for i, (h, _) in enumerate(g["sections"]))
-        main = f'<div class="stack">{secs}<div class="block" id="faqs"><h2>FAQs</h2>{faq_html(g["faqs"])}</div><p class="note">{REVIEWED}</p></div>'
+        main = f'<div class="stack">{secs}<div class="block" id="faqs"><h2>FAQs</h2>{faq_html(g["faqs"])}</div><p class="note">{REVIEWED.replace(UPDATED, UPDATED_NOV) if g["url"] in LASTMOD_NOV_URLS else REVIEWED}</p></div>'
         others = "".join(f'<a href="{o["url"]}">{e(o["h1"])} <span>→</span></a>' for o in GUIDES2 if o is not g)
         aside = f'<aside class="aside"><nav class="mini toc" aria-label="On this page"><h3>On this page</h3>{toc}</nav>{ctacard("visa file")}<nav class="mini"><h3>More guides</h3><a href="/guides">All guides <span>→</span></a>{others}</nav></aside>'
-        ph = pagehead(f"Guide · Updated {UPDATED}", e(g["h1"]), e(g["lead"]), g["pid"], alt=g["h1"], actions=f'<a class="btn wa" href="{wa("Hi, I have a question: " + g["h1"])}" target="_blank" rel="noopener">💬 Ask an adviser</a>')
+        ph = pagehead(f"Guide · Updated {UPDATED_NOV if g['url'] in LASTMOD_NOV_URLS else UPDATED}", e(g["h1"]), e(g["lead"]), g["pid"], alt=g["h1"], actions=f'<a class="btn wa" href="{wa("Hi, I have a question: " + g["h1"])}" target="_blank" rel="noopener">💬 Ask an adviser</a>')
         body = shell("/guides", [("Home", "/"), ("Guides", "/guides"), (g["h1"], None)], ph, f'<div class="layout">{main}{aside}</div>{cta_band()}')
         art = {"@context": "https://schema.org", "@type": "Article", "headline": g["h1"], "description": g["desc"], "image": U(g["pid"], 1200), "datePublished": TODAY, "dateModified": TODAY,
                "author": {"@type": "Organization", "name": NAME, "url": BASE + "/"}, "publisher": {"@id": BASE + "/#org"}, "mainEntityOfPage": BASE + g["url"], "inLanguage": "en-PK"}
@@ -4214,7 +4282,8 @@ def write_all():
         if noi:
             continue
         im = "".join(f"<image:image><image:loc>{src}</image:loc></image:image>" for src, _ in imgs(h))
-        urls += f"<url><loc>{BASE}{u}</loc><lastmod>{TODAY}</lastmod><priority>{p}</priority>{im}</url>\n"
+        _lm = TODAY_NOV if (u in LASTMOD_NOV_URLS or u.startswith(LASTMOD_NOV_PREFIX) or any(c["url"] == u and c["slug"] in CHECKED_NOV for c in COUNTRIES.values())) else TODAY
+        urls += f"<url><loc>{BASE}{u}</loc><lastmod>{_lm}</lastmod><priority>{p}</priority>{im}</url>\n"
     open(os.path.join(OUT, "sitemap.xml"), "w", encoding="utf-8").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n' + urls + "</urlset>\n")
     llms = [f"# {NAME}", "", f"> DTS-licensed travel agency and visa consultancy in Blue Area, Islamabad, Pakistan. Visa help with {len(COUNTRIES)} country guides, air tickets, Umrah packages, hotels and travel insurance.", "",
             f"- Address: {ADDR}", f"- Phone / WhatsApp: {PHONE}, landline {LAND}", f"- Email: {EMAIL}", f"- Hours: {HOURS}", "", "## Key pages"]
@@ -4276,7 +4345,7 @@ ExpiresByType font/woff2 "access plus 1 year"
 """)
 
 if __name__ == "__main__":
-    build_home(); build_countries_hub(); build_packages(); build_visa_services(); build_air(); build_umrah()
+    build_home(); build_visa_updates(); build_countries_hub(); build_packages(); build_visa_services(); build_air(); build_umrah()
     build_hotel(); build_insurance(); build_airlines(); build_about(); build_contact(); build_policies(); build_misc()
     build_eligibility(); build_cities(); build_appointments(); build_reservation(); build_routes(); build_umrah_packages(); build_guides()
     for r in DATA["regions"]:
