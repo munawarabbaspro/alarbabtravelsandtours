@@ -983,6 +983,12 @@ def an(word):
 # Titles and descriptions the owner specified (checked Oct 2026). Used by page() below.
 META_OVERRIDE = {
     # CTR round, Nov 2026 (Search Console: avg CTR 3.9%, avg position 20)
+    "/countries/schengen/spain": ("Spain Visa from Pakistan 2026: Documents & Appointment",
+        "Spain Schengen visa from Pakistan: 11-document checklist, visa centre appointment help and bank statement tips. Free file check in Blue Area: 0309-9923232."),
+    "/countries/south-asia/singapore": ("Singapore e-Visa from Pakistan 2026: Documents | AL ARBAB",
+        "Singapore visa for Pakistanis: 7-document checklist and how the online application works. We process your file from Blue Area, Islamabad. WhatsApp 0315-2323811."),
+    "/countries/south-asia/malaysia": ("Malaysia e-Visa from Pakistan 2026: Documents | AL ARBAB",
+        "Malaysia visa for Pakistanis: 6-document checklist and how the online e-visa works. We process your file from Blue Area, Islamabad. WhatsApp 0315-2323811."),
     "/visa-services": ("Visa Services in Islamabad | Tourist, Family, Business",
         "Visa services from Blue Area, Islamabad: Asian visit visas processed, Schengen, UK, USA and Canada files prepared. Free document check on WhatsApp."),
     "/countries/schengen": ("Schengen Visa Consultant Islamabad | Europe Visas | AL ARBAB",
