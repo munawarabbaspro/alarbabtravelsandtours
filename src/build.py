@@ -982,6 +982,15 @@ def an(word):
 
 # Titles and descriptions the owner specified (checked Oct 2026). Used by page() below.
 META_OVERRIDE = {
+    # CTR round, Nov 2026 (Search Console: avg CTR 3.9%, avg position 20)
+    "/visa-services": ("Visa Services in Islamabad | Tourist, Family, Business",
+        "Visa services from Blue Area, Islamabad: Asian visit visas processed, Schengen, UK, USA and Canada files prepared. Free document check on WhatsApp."),
+    "/countries/schengen": ("Schengen Visa Consultant Islamabad | Europe Visas | AL ARBAB",
+        "Schengen visa from Pakistan: we prepare your file for all 29 countries and book the visa centre appointment. Free document check in Blue Area, Islamabad."),
+    "/guides": ("Visa Guides for Pakistani Travellers 2026 | AL ARBAB",
+        "Visa guides for Pakistani travellers: documents, bank statements, cover letters and refusal reasons for 88 countries, from our Blue Area office."),
+    "/countries/middle-east/oman": ("Oman Visa Agency in Islamabad: eVisa from Pakistan 2026",
+        "Oman eVisa from Pakistan 2026: document checklist, how to apply and refusal reasons. Free file check in Blue Area, Islamabad. WhatsApp 0315-2323811."),
     "/countries/schengen/italy": ("Italy Visa from Pakistan 2026: Documents | AL ARBAB",
         "Italy Schengen visa from Pakistan: document checklist, bank statement and insurance rules, and file help in Blue Area, Islamabad. Free file check."),
     "/visa-consultant-islamabad": ("Visa Consultant in Islamabad (Blue Area) | AL ARBAB",
