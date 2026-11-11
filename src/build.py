@@ -159,7 +159,7 @@ CHECKED_NOV = {"thailand", "italy", "singapore", "indonesia", "uzbekistan", "bah
                "poland", "czech-republic", "china", "south-korea", "hong-kong", "egypt", "kenya", "maldives", "ireland"}
 UPDATED_NOV, TODAY_NOV = "November 2026", "2026-11-11"
 LASTMOD_NOV_PREFIX = ("/countries/united-kingdom", "/countries/canada", "/countries/australia")
-LASTMOD_NOV_URLS = {"/guides/schengen-travel-insurance-from-pakistan", "/travel-insurance", "/visa-appointments", "/guides/schengen-visa-requirements-from-pakistan"}
+LASTMOD_NOV_URLS = {"/visa-updates", "/", "/guides/schengen-travel-insurance-from-pakistan", "/travel-insurance", "/visa-appointments", "/guides/schengen-visa-requirements-from-pakistan"}
 def upd_of(c):
     return UPDATED_NOV if c["slug"] in CHECKED_NOV else UPDATED
 GSC_CODE = ""         # Google Search Console HTML-tag code (content value only). Empty = no tag.
