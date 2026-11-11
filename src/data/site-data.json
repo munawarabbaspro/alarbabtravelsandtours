@@ -619,7 +619,39 @@
      "Little Mermaid Statue",
      "Skagen"
     ],
-    "image": "https://www.wanderlustmagazine.com/wp-content/uploads/2023/10/shutterstock_2088468043-scaled.jpg"
+    "image": "https://www.wanderlustmagazine.com/wp-content/uploads/2023/10/shutterstock_2088468043-scaled.jpg",
+    "facts": [
+     [
+      "Pakistani nationals need a visa to enter Denmark and the other Schengen states, and must get it before leaving Pakistan.",
+      "Embassy of Denmark in Pakistan: Visa",
+      "https://um.dk/pakistan/en/travel-and-residence/visa"
+     ],
+     [
+      "Check the VFS visa centre website for available appointments before you submit the online application on ApplyVisa. The embassy says longer appointment waits can be expected at Gerry's because of heavy workload.",
+      "Embassy of Denmark in Pakistan: Visa",
+      "https://um.dk/pakistan/en/travel-and-residence/visa"
+     ],
+     [
+      "A decision on a short-stay visa can be expected within 45 days after the application is considered admissible; it can take longer in individual cases.",
+      "Embassy of Denmark in Pakistan: Visa",
+      "https://um.dk/pakistan/en/travel-and-residence/visa"
+     ],
+     [
+      "The embassy asks applicants not to use agents, warning that agents charge high prices for false documentation, which usually results in a flat refusal.",
+      "Embassy of Denmark in Pakistan: Visa",
+      "https://um.dk/pakistan/en/travel-and-residence/visa"
+     ]
+    ],
+    "faq_extra": [
+     [
+      "How do I apply for a Denmark visa from Pakistan?",
+      "Check VFS for an available appointment first, then submit the online application on ApplyVisa and attend the visa centre. We prepare genuine documents and the cover letter with you; the Danish embassy warns that false documents usually lead to refusal."
+     ],
+     [
+      "How long does a Denmark visa take?",
+      "The Embassy of Denmark says a decision can be expected within 45 days after the application is accepted as admissible, sometimes longer."
+     ]
+    ]
    },
    {
     "slug": "greece",
@@ -724,7 +756,25 @@
      "Geirangerfjord",
      "Lofoten Islands"
     ],
-    "image": "https://images.goway.com/production/featured_images/View-of-the-city-centre-of-Oslo%2C-Norway%20_iStock-898444450-min.jpg?VersionId=jpVVhtPlJvyLqEgKe9HEjSPR_WT7JE2Q"
+    "image": "https://images.goway.com/production/featured_images/View-of-the-city-centre-of-Oslo%2C-Norway%20_iStock-898444450-min.jpg?VersionId=jpVVhtPlJvyLqEgKe9HEjSPR_WT7JE2Q",
+    "facts": [
+     [
+      "Norway resumed visa operations in Pakistan on 24 March 2026. Visitor's visa applications are submitted through VFS Global / Gerry's International in Islamabad, Lahore and Karachi.",
+      "Embassy of Norway in Islamabad: Resuming visa operations in Pakistan (26 Mar 2026)",
+      "https://www.norway.no/en/pakistan/norway-pakistan/news-events/resuming-visa-operations-in-pakistan-24.03.2026/"
+     ],
+     [
+      "You must book an appointment online. All visa applications are handled by the Norwegian Embassy in Abu Dhabi.",
+      "Embassy of Norway in Islamabad: Resuming visa operations in Pakistan (26 Mar 2026)",
+      "https://www.norway.no/en/pakistan/norway-pakistan/news-events/resuming-visa-operations-in-pakistan-24.03.2026/"
+     ]
+    ],
+    "faq_extra": [
+     [
+      "Are Norway visas open in Pakistan?",
+      "Yes. The Embassy of Norway says visa operations in Pakistan resumed on 24 March 2026. You book online and submit through VFS Global / Gerry's in Islamabad, Lahore or Karachi; the Norwegian Embassy in Abu Dhabi decides."
+     ]
+    ]
    },
    {
     "slug": "portugal",
@@ -831,7 +881,43 @@
      "Prague Castle",
      "Český Krumlov"
     ],
-    "image": "https://images.unsplash.com/photo-1519677100203-a0e668c92439?auto=format&fit=crop&q=80&w=800"
+    "image": "https://images.unsplash.com/photo-1519677100203-a0e668c92439?auto=format&fit=crop&q=80&w=800",
+    "facts": [
+     [
+      "Appointments are registered by email to islamabad.schengen@mzv.gov.cz on the last working day of each month, 12:00 to 18:00 Pakistan time, with only the passport number in the subject line.",
+      "Embassy of the Czech Republic in Islamabad: Appointments for short-term (Schengen) visa (updated 2 Nov 2026)",
+      "https://mzv.gov.cz/islamabad/en/visa_1/appointments/appointments_for_short_term_schengen.html"
+     ],
+     [
+      "Slots are given by automatic random selection, one month ahead. Send only one email per applicant; emails outside the window are disqualified.",
+      "Embassy of the Czech Republic in Islamabad: Appointments for short-term (Schengen) visa (updated 2 Nov 2026)",
+      "https://mzv.gov.cz/islamabad/en/visa_1/appointments/appointments_for_short_term_schengen.html"
+     ],
+     [
+      "The embassy says it does not cooperate with any third-party appointment sellers.",
+      "Embassy of the Czech Republic in Islamabad: Appointments for short-term (Schengen) visa (updated 2 Nov 2026)",
+      "https://mzv.gov.cz/islamabad/en/visa_1/appointments/appointments_for_short_term_schengen.html"
+     ],
+     [
+      "After the appointment, a decision is made in most cases within 15 days; some cases take up to 45 days.",
+      "Embassy of the Czech Republic in Islamabad: Appointments for short-term (Schengen) visa (updated 2 Nov 2026)",
+      "https://mzv.gov.cz/islamabad/en/visa_1/appointments/appointments_for_short_term_schengen.html"
+     ]
+    ],
+    "faq_extra": [
+     [
+      "How do I get a Czech visa appointment in Islamabad?",
+      "Email islamabad.schengen@mzv.gov.cz on the last working day of the month between 12:00 and 18:00 Pakistan time, with only your passport number in the subject. Slots are given by random selection; send only one email."
+     ],
+     [
+      "How long does a Czech Schengen visa take?",
+      "The Czech Embassy says most decisions come within 15 days after your appointment, and some take up to 45 days."
+     ],
+     [
+      "Should I buy a Czech visa appointment from someone?",
+      "No. The Czech Embassy says it does not cooperate with any third-party appointment sellers. We prepare your documents; we do not sell appointments."
+     ]
+    ]
    },
    {
     "slug": "estonia",
@@ -868,7 +954,7 @@
     "title": "Finland Visa Consultant in Islamabad — Schengen Expert",
     "description": "Expert Finland Schengen visa services in Islamabad for tourism, study & business. Professional documentation.",
     "keywords": "Finland visa consultant Islamabad, Finland visit visa Pakistan, Helsinki visa from ISB, Finland Schengen visa 2026, Lapland visa ISB",
-    "intro": "Finland, consistently rated the world's happiest country, offers stunning lakes, magical Northern Lights, and world-class education. AL ARBAB TRAVEL AND TOURS provides meticulous file preparation for the Finnish embassy, ensuring your financial documents, travel insurance, and ties to Pakistan are clearly demonstrated.",
+    "intro": "Finland, consistently rated the world's happiest country, offers stunning lakes, magical Northern Lights, and world-class education. AL ARBAB TRAVEL AND TOURS provides meticulous file preparation for your Finland application (in Pakistan, Finland is represented by the Netherlands in visa matters), ensuring your financial documents, travel insurance, and ties to Pakistan are clearly demonstrated.",
     "docs": [
      "Original Passport (valid 6 months, 2 blank pages)",
      "Schengen Visa Application Form (completed and signed)",
@@ -889,7 +975,25 @@
      "Lapland",
      "Suomenlinna"
     ],
-    "image": "https://nordivatours.com/wp-content/uploads/2025/03/Finland.jpg"
+    "image": "https://nordivatours.com/wp-content/uploads/2025/03/Finland.jpg",
+    "facts": [
+     [
+      "In visa matters in Pakistan, Finland is represented by the Netherlands.",
+      "Finland Abroad: Pakistan - where to apply for a visa to Finland",
+      "https://finlandabroad.fi/web/pak/where-to-apply-for-a-visa-"
+     ],
+     [
+      "Netherlands Schengen applications in Pakistan are submitted at the VFS Global centres in Islamabad, Karachi and Lahore.",
+      "Netherlands Worldwide: Applying for a Schengen visa for the Netherlands in Pakistan",
+      "https://www.netherlandsworldwide.nl/visa-the-netherlands/schengen-visa/apply-pakistan"
+     ]
+    ],
+    "faq_extra": [
+     [
+      "Where do Pakistanis apply for a Finland visa?",
+      "Finland's Ministry for Foreign Affairs says Finland is represented by the Netherlands in visa matters in Pakistan. We check the current submission route with you and prepare the file."
+     ]
+    ]
    },
    {
     "slug": "hungary",
@@ -949,7 +1053,20 @@
      "Reykjavík",
      "Vatnajökull Glacier"
     ],
-    "image": "https://images.unsplash.com/photo-1476610182048-b716b8518aae?auto=format&fit=crop&q=80&w=800"
+    "image": "https://images.unsplash.com/photo-1476610182048-b716b8518aae?auto=format&fit=crop&q=80&w=800",
+    "facts": [
+     [
+      "The Embassy of Denmark in Islamabad handles visa applications to Iceland, Greenland and the Faroe Islands.",
+      "Embassy of Denmark in Pakistan: Visa",
+      "https://um.dk/pakistan/en/travel-and-residence/visa"
+     ]
+    ],
+    "faq_extra": [
+     [
+      "Where do Pakistanis apply for an Iceland visa?",
+      "Through the Embassy of Denmark in Islamabad, which handles visa applications for Iceland. You check VFS for an appointment and submit the online application on ApplyVisa. We prepare the file with you."
+     ]
+    ]
    },
    {
     "slug": "latvia",
@@ -1112,7 +1229,39 @@
      "Wieliczka Salt Mine",
      "Tatra Mountains"
     ],
-    "image": "https://images.unsplash.com/photo-1519197924294-4ba991a11128?auto=format&fit=crop&q=80&w=800"
+    "image": "https://images.unsplash.com/photo-1519197924294-4ba991a11128?auto=format&fit=crop&q=80&w=800",
+    "facts": [
+     [
+      "The Embassy of Poland accepts visa applications only directly at the embassy (Street 24, G-5/4, Diplomatic Enclave II, Islamabad), after booking an appointment on e-Konsulat.",
+      "Embassy of Poland in Islamabad: notice on registration of visa appointments (5 Jun 2025)",
+      "https://www.gov.pl/web/pakistan-en/notice-on-new-requirements-for-registration-of-visa-appointments"
+     ],
+     [
+      "New appointments open every Monday between 9:00 and 15:00 (the next working day if Monday is a holiday). Applications are accepted only if the correct appointment category is booked.",
+      "Embassy of Poland in Islamabad: notice on registration of visa appointments (5 Jun 2025)",
+      "https://www.gov.pl/web/pakistan-en/notice-on-new-requirements-for-registration-of-visa-appointments"
+     ],
+     [
+      "All applications must be submitted in person by the applicant. The embassy says it does not cooperate with travel agencies.",
+      "Embassy of Poland in Islamabad: notice on registration of visa appointments (5 Jun 2025)",
+      "https://www.gov.pl/web/pakistan-en/notice-on-new-requirements-for-registration-of-visa-appointments"
+     ],
+     [
+      "Schengen visa applications are for stays of less than 90 days; longer stays need a national visa.",
+      "Embassy of Poland in Islamabad: notice on registration of visa appointments (5 Jun 2025)",
+      "https://www.gov.pl/web/pakistan-en/notice-on-new-requirements-for-registration-of-visa-appointments"
+     ]
+    ],
+    "faq_extra": [
+     [
+      "How do I book a Poland visa appointment in Pakistan?",
+      "On e-Konsulat. The Embassy of Poland opens new appointments every Monday from 9:00 to 15:00, and you must choose the correct category. You then submit the application in person at the embassy in Islamabad."
+     ],
+     [
+      "Can a travel agent submit my Poland visa application?",
+      "No. The Embassy of Poland says applications must be submitted in person by the applicant and it does not cooperate with travel agencies. We can help you prepare and check your documents; you book and attend yourself."
+     ]
+    ]
    },
    {
     "slug": "slovakia",
