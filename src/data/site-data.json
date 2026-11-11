@@ -1702,7 +1702,34 @@
      "Luxury Resorts",
      "Baa Atoll"
     ],
-    "image": "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&q=80&w=800"
+    "image": "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&q=80&w=800",
+    "facts": [
+     [
+      "A tourist visa is granted on arrival in the Maldives; tourists do not need pre-approval.",
+      "Maldives Immigration: Tourist visa",
+      "https://immigration.gov.mv/visa/tourist-visa/"
+     ],
+     [
+      "You need a machine-readable passport with at least 1 month's validity, a complete itinerary with a confirmed return ticket, a prepaid confirmed booking at a registered facility and enough funds for the stay. A complete itinerary does not guarantee entry.",
+      "Maldives Immigration: Tourist visa",
+      "https://immigration.gov.mv/visa/tourist-visa/"
+     ],
+     [
+      "Every foreigner, including children, must submit an individual Traveller Declaration on the IMUGA portal within 96 hours before arrival.",
+      "Maldives Immigration: Tourist visa",
+      "https://immigration.gov.mv/visa/tourist-visa/"
+     ]
+    ],
+    "faq_extra": [
+     [
+      "What do I need for a Maldives visa on arrival?",
+      "Maldives Immigration asks for a machine-readable passport valid at least 1 month, a confirmed return ticket, a prepaid confirmed booking at a registered hotel or resort, and enough funds for your stay."
+     ],
+     [
+      "When do I fill the Maldives IMUGA Traveller Declaration?",
+      "Within 96 hours before arrival. Each traveller, including children, submits an individual declaration on the IMUGA portal. We can fill it with you."
+     ]
+    ]
    },
    {
     "slug": "nepal",
@@ -2504,7 +2531,25 @@
      "Sharm El Sheikh",
      "Alexandria"
     ],
-    "image": "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&q=80&w=800"
+    "image": "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&q=80&w=800",
+    "facts": [
+     [
+      "The Egypt e-Visa Portal lists the nationalities that may be issued an e-Visa on application. Pakistan is not on that list.",
+      "Egypt e-Visa Portal (Ministry of Interior): FAQ, who requires a visa",
+      "https://visa2egypt.gov.eg/eVisa/FAQ"
+     ],
+     [
+      "For listed nationalities, the e-Visa is applied for online, and a link to download it is sent by email. Passport authorities at the port of arrival check the e-Visa on their system.",
+      "Egypt e-Visa Portal (Ministry of Interior): FAQ, who requires a visa",
+      "https://visa2egypt.gov.eg/eVisa/FAQ"
+     ]
+    ],
+    "faq_extra": [
+     [
+      "Can Pakistanis get an Egypt e-Visa online?",
+      "Not on a Pakistani passport alone: Pakistan is not on the Egypt e-Visa Portal's list of nationalities that can be issued an e-Visa. Pakistani passport holders apply through the Egyptian embassy. We prepare the file and guide you through the submission."
+     ]
+    ]
    },
    {
     "slug": "morocco",
@@ -2652,7 +2697,29 @@
      "Mombasa",
      "Amboseli National Park"
     ],
-    "image": "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&q=80&w=800"
+    "image": "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&q=80&w=800",
+    "facts": [
+     [
+      "Pakistan is not on the Kenya eTA exemption lists, so Pakistani travellers apply for an Electronic Travel Authorisation (eTA) online before travel.",
+      "Kenya eTA: General information",
+      "https://www.etakenya.go.ke/general-information"
+     ],
+     [
+      "The official site recommends applying at least 2 weeks before travel. Processing is typically three working days, but it may take longer in some cases.",
+      "Kenya eTA: General information",
+      "https://www.etakenya.go.ke/general-information"
+     ]
+    ],
+    "faq_extra": [
+     [
+      "Do Pakistanis need an eTA for Kenya?",
+      "Yes. Pakistan is not on Kenya's eTA exemption lists, so you apply for the eTA online on the official site before you travel."
+     ],
+     [
+      "How long does the Kenya eTA take?",
+      "The official site says processing is typically three working days and recommends applying at least 2 weeks before travel."
+     ]
+    ]
    },
    {
     "slug": "seychelles",

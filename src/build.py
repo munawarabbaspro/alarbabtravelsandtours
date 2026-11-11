@@ -462,6 +462,9 @@ OFFICIAL["malaysia"].append(("Immigration Department of Malaysia: visa requireme
 OFFICIAL["south-korea"] = [("Embassy of the Republic of Korea in Pakistan: visa requirements", "https://overseas.mofa.go.kr/pk-en/wpge/m_3159/contents.do")] + OFFICIAL.get("south-korea", [])
 OFFICIAL["china"] = [("Embassy of China in Pakistan: instruction for Chinese visa application", "https://pk.china-embassy.gov.cn/eng/lsfw/va/202504/t20250428_11606290.htm"), ("Embassy of China in Pakistan: most common reasons for returned applications", "https://pk.china-embassy.gov.cn/eng/lsfw/va/202504/t20250428_11606302.htm")]
 OFFICIAL["hong-kong"] = [("Hong Kong Immigration Department: visit visa / entry permit", "https://www.immd.gov.hk/eng/services/visas/visit-transit/visit-visa-entry-permit.html")]
+OFFICIAL["egypt"] = [("Egypt e-Visa Portal: who requires a visa", "https://visa2egypt.gov.eg/eVisa/FAQ")]
+OFFICIAL["kenya"] = OFFICIAL.get("kenya", []) + [("Kenya eTA: general information", "https://www.etakenya.go.ke/general-information")]
+OFFICIAL["maldives"] = [("Maldives Immigration: tourist visa", "https://immigration.gov.mv/visa/tourist-visa/")]
 OFFICIAL["qatar"] = [("Visit Qatar: visas and visa check", "https://www.visitqatar.com/intl-en/practical-info/visas"), ("Hayya platform (official)", "https://www.hayya.qa/")]
 OFFICIAL["oman"].append(("Oman Ministry of Foreign Affairs: entry visas", "https://www.fm.gov.om/en/visitors/entry-visas/"))
 REGION_OFFICIAL = {
@@ -603,7 +606,9 @@ ROUTE_OVERRIDE = {"philippines": "Embassy / visa centre", "uzbekistan": "Embassy
                   "qatar": "Visa on arrival / e-visa",
                   "south-korea": "Embassy in person",   # Embassy of Korea in Pakistan: applicants must submit their own application in person
                   "hong-kong": "Visa centre or Hong Kong sponsor",   # ImmD: Chinese mission / visa centre, or ImmD by post or through a local sponsor
-                  "china": "Embassy / visa centre",   # visitqatar.com check for Pakistan: VoA with Discover Qatar hotel booking, or Hayya A1
+                  "china": "Embassy / visa centre",
+                  "maldives": "Visa on arrival / e-visa",   # Maldives Immigration: tourist visa granted on arrival
+                  "egypt": "Embassy / visa centre",   # Pakistan is not on the Egypt e-Visa Portal nationality list (visa2egypt.gov.eg FAQ, Nov 2026)   # visitqatar.com check for Pakistan: VoA with Discover Qatar hotel booking, or Hayya A1
                   "saudi-arabia": "Route depends on purpose",   # Pakistan is not on the 72-country tourist eVisa list (visa.visitsaudi.com, Nov 2026)
                   **{s: "Schengen visa (embassy / visa centre)" for s in ("germany", "france", "spain", "netherlands")}}   # DFA: temporary visitor visa applied for in person at the embassy
 
@@ -3039,8 +3044,8 @@ def build_country(c):
     faqs += [tuple(x) for x in c.get("faq_extra", [])]
     route = visa_route(c)
     faqs += [(f"Is the {c['name']} visa open for Pakistani passport holders?",
-              (f"Yes. We are handling {c['name']} applications for Pakistani passport holders from our Islamabad office ({re.sub(r'\s*\(.*?\)', '', route).strip().lower()}). " if tier == 1 else
-               f"Yes. We prepare {c['name']} visa files for Pakistani passport holders from our Islamabad office ({re.sub(r'\s*\(.*?\)', '', route).strip().lower()}). ") +
+              (f"Yes. We are handling {c['name']} applications for Pakistani passport holders from our Islamabad office ({re.sub(r'\s*\(.*?\)', '', route).strip().lower().replace(' eta', ' ETA')}). " if tier == 1 else
+               f"Yes. We prepare {c['name']} visa files for Pakistani passport holders from our Islamabad office ({re.sub(r'\s*\(.*?\)', '', route).strip().lower().replace(' eta', ' ETA')}). ") +
               "Rules can change at short notice, so message us on WhatsApp to confirm the current position before you book anything.")]
     siblings = by_rank([x for x in BY_REGION[c["region"]] if x["slug"] != c["slug"] and x["region"] == c["region"]])
     srcs = OFFICIAL.get(c["slug"], []) + REGION_OFFICIAL.get(c["region"], [])
