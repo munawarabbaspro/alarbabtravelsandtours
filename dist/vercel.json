@@ -11,6 +11,11 @@
    "source": "/consultation",
    "destination": "/eligibility-check",
    "permanent": true
+  },
+  {
+   "source": "/countries/middle-east/turkey",
+   "destination": "/countries/central-asia/turkey",
+   "permanent": true
   }
  ],
  "headers": [

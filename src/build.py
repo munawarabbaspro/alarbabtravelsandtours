@@ -266,7 +266,14 @@ def fit_desc(d):
     if len(d) < 110:
         d += " Free assessment at our Blue Area office, Islamabad."
     if len(d) > 160:
-        d = d[:157].rsplit(" ", 1)[0].rstrip(",.;:") + "…"
+        # end on a whole sentence or clause, never on "…" (Google shows a cut-off snippet as untidy)
+        cut = d[:159]
+        i = max(cut.rfind(". "), cut.rfind("! "), cut.rfind("? "))
+        if i >= 100:
+            d = cut[:i + 1]
+        else:
+            j = max(cut.rfind(", "), cut.rfind("; "), cut.rfind(": "))
+            d = (cut[:j] if j >= 100 else cut.rsplit(" ", 1)[0]).rstrip(",.;:&- ") + "."
     return d
 
 # ------------------------------------------------------------------ images
@@ -983,6 +990,22 @@ def an(word):
 # Titles and descriptions the owner specified (checked Oct 2026). Used by page() below.
 META_OVERRIDE = {
     # CTR round, Nov 2026 (Search Console: avg CTR 3.9%, avg position 20)
+    "/guides/noc-letter-for-visa-pakistan": ("NOC Letter for Visa from Pakistan: Format & Rules 2026",
+        "NOC letter for a visa from Pakistan: who needs one, what the employer or institute letter must say, and common mistakes. Free file check in Blue Area."),
+    "/countries/south-asia/vietnam": ("Vietnam Visa from Pakistan: e-Visa & Documents 2026",
+        "Vietnam visa from Pakistan: documents for the official e-Visa, photo and passport tips, and file help in Blue Area, Islamabad. WhatsApp 0315-2323811."),
+    "/guides/bank-statement-for-visa-from-pakistan": ("Bank Statement for Visa from Pakistan: What Embassies Check",
+        "Bank statement for a visa from Pakistan: how many months, maintenance certificate, sponsor statements and the mistakes that cause refusals."),
+    "/travel-agency-rawalpindi": ("Travel Agency for Rawalpindi Clients | AL ARBAB",
+        "Rawalpindi travellers: free visa document check on WhatsApp, then one visit to our Blue Area office. Visas, air tickets, Umrah and hotels."),
+    "/contact": ("Contact AL ARBAB Travel Islamabad | WhatsApp 0315-2323811",
+        "AL ARBAB TRAVEL AND TOURS, Eagle Plaza, Blue Area, Islamabad. WhatsApp 0315-2323811, landline 051-2000066. Open Mon–Sat, 9 AM to 8 PM."),
+    "/countries/schengen/netherlands": ("Netherlands Visa from Pakistan 2026: Documents | AL ARBAB",
+        "Netherlands Schengen visa from Pakistan: 11-document checklist, appointment help and bank statement tips. Free file check in Blue Area: 0309-9923232."),
+    "/countries/east-asia/hong-kong": ("Hong Kong Visa from Pakistan 2026: Documents | AL ARBAB",
+        "Hong Kong visa for Pakistanis: 6-document checklist, how to apply and refusal reasons. Free file check in Blue Area, Islamabad. WhatsApp 0315-2323811."),
+    "/countries/south-asia": ("Asia Visit Visa Agent Islamabad | Thailand, Malaysia, Sri Lanka",
+        "Asian visit visas from Islamabad: Thailand, Malaysia, Singapore, Sri Lanka, Nepal and more. We process your file from Blue Area. Free document check."),
     "/countries/schengen/spain": ("Spain Visa from Pakistan 2026: Documents & Appointment",
         "Spain Schengen visa from Pakistan: 11-document checklist, visa centre appointment help and bank statement tips. Free file check in Blue Area: 0309-9923232."),
     "/countries/south-asia/singapore": ("Singapore e-Visa from Pakistan 2026: Documents | AL ARBAB",
@@ -4160,7 +4183,8 @@ def write_all():
     open(os.path.join(OUT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\n\nSitemap: {BASE}/sitemap.xml\n")
     # hosting helpers: Netlify / Cloudflare Pages, Vercel, Apache (cPanel)
     REDIRECTS = [("/pakistan-visa", "/countries/south-asia/pakistan"),
-                 ("/consultation", "/eligibility-check")]   # old URL Google still requests (Search Console, Nov 2026)
+                 ("/consultation", "/eligibility-check"),
+                 ("/countries/middle-east/turkey", "/countries/central-asia/turkey")]   # old Turkey URL, 103 impressions at position 7.7   # old URL Google still requests (Search Console, Nov 2026)
     open(os.path.join(OUT, "_redirects"), "w").write("".join(f"{s}  {d}  301\n" for s, d in REDIRECTS))
     open(os.path.join(OUT, "_headers"), "w").write("/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n/*\n  X-Content-Type-Options: nosniff\n  X-Frame-Options: SAMEORIGIN\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()\n")
     _vc = ({"cleanUrls": True, "trailingSlash": False, "redirects": [{"source": s, "destination": d, "permanent": True} for s, d in REDIRECTS],
