@@ -210,7 +210,57 @@
      "Seville (Alcázar)",
      "Ibiza / Mallorca"
     ],
-    "image": "https://images.unsplash.com/photo-1543783207-ec64e4d95325?auto=format&fit=crop&q=80&w=800"
+    "image": "https://images.unsplash.com/photo-1543783207-ec64e4d95325?auto=format&fit=crop&q=80&w=800",
+    "facts": [
+     [
+      "Applications are submitted in person at the Consular Office or, when available, the Visa Application Centre. An appointment is needed in either case.",
+      "Embassy of Spain in Islamabad: Schengen visas",
+      "https://www.exteriores.gob.es/Embajadas/islamabad/en/ServiciosConsulares/Paginas/Consular/Visados-Schengen.aspx"
+     ],
+     [
+      "Apply between 6 months and 15 days before your travel date (seafarers up to 9 months).",
+      "Embassy of Spain in Islamabad: Schengen visas",
+      "https://www.exteriores.gob.es/Embajadas/islamabad/en/ServiciosConsulares/Paginas/Consular/Visados-Schengen.aspx"
+     ],
+     [
+      "The decision period is 15 calendar days from the day after submission, extendable to 45 days if an interview or more documents are needed.",
+      "Embassy of Spain in Islamabad: Schengen visas",
+      "https://www.exteriores.gob.es/Embajadas/islamabad/en/ServiciosConsulares/Paginas/Consular/Visados-Schengen.aspx"
+     ],
+     [
+      "Your passport must be valid at least 3 months after your planned departure, have at least two blank pages and have been issued within the last 10 years.",
+      "Embassy of Spain in Islamabad: Schengen visas",
+      "https://www.exteriores.gob.es/Embajadas/islamabad/en/ServiciosConsulares/Paginas/Consular/Visados-Schengen.aspx"
+     ],
+     [
+      "Travel medical insurance with cover of at least 30,000 euros is required.",
+      "Embassy of Spain in Islamabad: Schengen visas",
+      "https://www.exteriores.gob.es/Embajadas/islamabad/en/ServiciosConsulares/Paginas/Consular/Visados-Schengen.aspx"
+     ],
+     [
+      "A refusal is notified in writing. You can ask for reconsideration within 1 month or seek judicial review within 2 months.",
+      "Embassy of Spain in Islamabad: Schengen visas",
+      "https://www.exteriores.gob.es/Embajadas/islamabad/en/ServiciosConsulares/Paginas/Consular/Visados-Schengen.aspx"
+     ]
+    ],
+    "faq_extra": [
+     [
+      "How early should I apply for a Spain visa from Pakistan?",
+      "Between 6 months and 15 days before your travel date, according to the Embassy of Spain in Islamabad. Appointments fill up before summer, so start early."
+     ],
+     [
+      "How long does a Spain Schengen visa take?",
+      "The embassy's legal decision period is 15 calendar days from the day after you submit. It can be extended to 45 days if an interview or more documents are needed."
+     ],
+     [
+      "Is an old passport accepted for a Spain visa?",
+      "Only if it was issued within the last 10 years, is valid at least 3 months after you leave the Schengen area and has at least two blank pages."
+     ],
+     [
+      "What if my Spain visa is refused?",
+      "The refusal is given in writing. You can ask the embassy to reconsider within 1 month, or seek judicial review within 2 months. We review the refusal reasons with you before you decide."
+     ]
+    ]
    },
    {
     "slug": "netherlands",
@@ -240,7 +290,48 @@
      "Keukenhof Gardens",
      "The Hague"
     ],
-    "image": "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&q=80&w=800"
+    "image": "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&q=80&w=800",
+    "facts": [
+     [
+      "In Pakistan you apply at the VFS Global application centre in Islamabad, Karachi or Lahore. You must live in Pakistan or Afghanistan to apply there.",
+      "Netherlands Worldwide: Applying for a Schengen visa for the Netherlands in Pakistan (updated 19 Oct 2026)",
+      "https://www.netherlandsworldwide.nl/visa-the-netherlands/schengen-visa/apply-pakistan"
+     ],
+     [
+      "Appointments can only be made through the VFS Global appointment system. The Dutch government advises against using intermediaries for appointments.",
+      "Netherlands Worldwide: Applying for a Schengen visa for the Netherlands in Pakistan (updated 19 Oct 2026)",
+      "https://www.netherlandsworldwide.nl/visa-the-netherlands/schengen-visa/apply-pakistan"
+     ],
+     [
+      "You can apply up to 6 months before your trip, and at least 15 calendar days before you travel.",
+      "Netherlands Worldwide: Applying for a Schengen visa for the Netherlands in Pakistan (updated 19 Oct 2026)",
+      "https://www.netherlandsworldwide.nl/visa-the-netherlands/schengen-visa/apply-pakistan"
+     ],
+     [
+      "Always submit all required documents: an application can be rejected if you do not.",
+      "Netherlands Worldwide: Applying for a Schengen visa for the Netherlands in Pakistan (updated 19 Oct 2026)",
+      "https://www.netherlandsworldwide.nl/visa-the-netherlands/schengen-visa/apply-pakistan"
+     ],
+     [
+      "Fingerprints are taken, unless they were taken within the past 59 months. If a visa is refused, you receive a letter stating why.",
+      "Netherlands Worldwide: Applying for a Schengen visa for the Netherlands in Pakistan (updated 19 Oct 2026)",
+      "https://www.netherlandsworldwide.nl/visa-the-netherlands/schengen-visa/apply-pakistan"
+     ]
+    ],
+    "faq_extra": [
+     [
+      "Where do I apply for a Netherlands visa in Pakistan?",
+      "At the VFS Global application centre in Islamabad, Karachi or Lahore. Appointments are booked only through the VFS Global appointment system. We prepare your file; you attend the appointment yourself."
+     ],
+     [
+      "How early can I apply for a Netherlands Schengen visa?",
+      "Up to 6 months before your trip, and at least 15 calendar days before you travel."
+     ],
+     [
+      "Do I need to give fingerprints again for a Netherlands visa?",
+      "Not if your fingerprints were taken for a Schengen visa within the past 59 months. Otherwise they are taken at VFS."
+     ]
+    ]
    },
    {
     "slug": "switzerland",
@@ -1090,7 +1181,52 @@
      "Genting Highlands",
      "Penang"
     ],
-    "image": "https://ychef.files.bbci.co.uk/1920x1080/p0g712th.png"
+    "image": "https://ychef.files.bbci.co.uk/1920x1080/p0g712th.png",
+    "facts": [
+     [
+      "Pakistan is on the Immigration Department of Malaysia's list of countries whose citizens must have a visa to enter Malaysia.",
+      "Immigration Department of Malaysia: Visa requirement by country",
+      "https://www.imi.gov.my/index.php/en/main-services/visa/visa-requirement-by-country/"
+     ],
+     [
+      "For eVISA applications, the Immigration Department points to its official portal, malaysiavisa.imi.gov.my.",
+      "Immigration Department of Malaysia: Visa requirement by country",
+      "https://www.imi.gov.my/index.php/en/main-services/visa/visa-requirement-by-country/"
+     ],
+     [
+      "A Single Entry Visa is issued mainly for a social visit. It is normally valid for one entry within three months from the date of issue.",
+      "Immigration Department of Malaysia: Types of visas",
+      "https://www.imi.gov.my/index.php/en/main-services/visa/types-of-visas/"
+     ],
+     [
+      "Travellers who stay inside the airport and continue on the same flight do not need a transit visa.",
+      "Immigration Department of Malaysia: Types of visas",
+      "https://www.imi.gov.my/index.php/en/main-services/visa/types-of-visas/"
+     ],
+     [
+      "Since 1 January 2024 all foreign citizens travelling to Malaysia must complete the Malaysia Digital Arrival Card (MDAC) three days before arrival, with a few exceptions (such as Singapore citizens and diplomatic passport holders). It is submitted at imigresen-online.imi.gov.my.",
+      "Ministry of Foreign Affairs Malaysia: Malaysia Digital Arrival Card (MDAC)",
+      "https://www.kln.gov.my/web/aus_canberra/post/malaysia-digital-arrival-card-mdac--1"
+     ]
+    ],
+    "faq_extra": [
+     [
+      "Do Pakistanis need a visa for Malaysia?",
+      "Yes. Pakistan is on the Immigration Department of Malaysia's list of countries whose citizens need a visa to enter Malaysia."
+     ],
+     [
+      "Where do I apply for the Malaysia eVISA?",
+      "On the Immigration Department's official eVISA portal, malaysiavisa.imi.gov.my. We prepare your documents and fill the application with you."
+     ],
+     [
+      "How long is a Malaysia single entry visa valid?",
+      "The Immigration Department says a Single Entry Visa, issued mainly for social visits, is normally valid for one entry within three months from the date of issue."
+     ],
+     [
+      "What is the MDAC for Malaysia?",
+      "The Malaysia Digital Arrival Card. Foreign visitors, including Pakistanis, must complete it online at imigresen-online.imi.gov.my three days before arrival. It does not replace your visa."
+     ]
+    ]
    },
    {
     "slug": "sri-lanka",
@@ -1134,6 +1270,20 @@
       "To stay longer than 30 days, you apply for a visa extension and pay the visa fee that applies.",
       "Sri Lanka ETA official website (Department of Immigration & Emigration)",
       "https://www.eta.gov.lk/slvisa/"
+     ]
+    ],
+    "faq_extra": [
+     [
+      "Is the Sri Lanka visa free for Pakistanis?",
+      "Yes, for tourism. From 25 May 2026 Pakistan is one of 40 countries whose nationals get the 30-day tourist visa (ETA) free of charge, according to the official ETA website."
+     ],
+     [
+      "Do Pakistanis still need an ETA for Sri Lanka?",
+      "Yes. Every foreign national, including the 40 free-visa countries, must get an Electronic Travel Authorization (ETA) before arriving in Sri Lanka."
+     ],
+     [
+      "How long can I stay in Sri Lanka on the free tourist visa?",
+      "30 days. Double entry is allowed within that 30-day validity, counted from the date of first arrival. To stay longer you apply for a visa extension and pay the fee that applies."
      ]
     ]
    },
@@ -1298,6 +1448,24 @@
       "Viet Nam pre-arrival form (Immigration Department)",
       "https://prearrival.immigration.gov.vn/"
      ]
+    ],
+    "faq_extra": [
+     [
+      "How do Pakistanis apply for a Vietnam visa?",
+      "Online, on the official e-Visa website evisa.gov.vn: fill in the form, pay online and receive the e-Visa online. We fill the form with you and check your photo and passport scan first."
+     ],
+     [
+      "How long is the Vietnam e-Visa valid?",
+      "Up to 90 days, for single or multiple entry."
+     ],
+     [
+      "Is the Vietnam e-Visa fee refunded if the visa is refused?",
+      "No. The official website says the fee is not refunded if the visa is not granted, so it pays to get the form right the first time."
+     ],
+     [
+      "Can I enter Vietnam through any airport on an e-Visa?",
+      "No. e-Visa holders must enter and leave through the international border gates the government designates. The Immigration Department also recommends completing the pre-arrival form before you travel."
+     ]
     ]
    },
    {
@@ -1384,6 +1552,22 @@
      [
       "Which passports can apply for the Cambodia e-Visa?",
       "The official e-Visa pages do not list eligible nationalities, and the application form does the check. Confirm it on the official website before you pay, and tell us on WhatsApp if the form does not accept your passport."
+     ],
+     [
+      "Do Pakistanis need a visa for Cambodia?",
+      "Yes. Pakistan is not on the visa-exemption list for the tourist visa (Visa T), so you need a visa before you travel."
+     ],
+     [
+      "How long can I stay in Cambodia on the tourist e-Visa?",
+      "The tourist e-Visa is single entry, valid for 3 months from the date of issue, with a stay of 1 month."
+     ],
+     [
+      "What do I need for the Cambodia e-Visa?",
+      "A passport valid for more than six months at entry, a recent passport-size photo in digital format (JPEG or PNG), and a Visa or MasterCard credit card for payment."
+     ],
+     [
+      "Do I need to fill an arrival form for Cambodia?",
+      "Yes. All travellers, including e-Visa holders, must submit the Cambodia e-Arrival form online. The official portal recommends doing it within 7 days before arrival."
      ]
     ]
    },
@@ -1529,6 +1713,18 @@
      [
       "Where do I apply for a Philippines visa from Pakistan?",
       "The official eVisaPH check says Pakistani travellers may apply at the Philippine Embassy in Islamabad, or at the embassy where they legally reside. The DFA says a temporary visitor's visa application is made in person."
+     ],
+     [
+      "Do I have to apply in person for a Philippines visa?",
+      "Yes. A temporary visitor's visa application is made in person, normally at the embassy or consulate that covers your place of residence. For Pakistan that is the Philippine Embassy in Islamabad, Sector G-5, Diplomatic Enclave."
+     ],
+     [
+      "What documents do I need for a Philippines visit visa?",
+      "A passport valid at least six months beyond your stay, the application form, two passport photos, proof that you are a genuine tourist or businessman, a confirmed return or onward ticket, and the visa fee. The embassy can ask for more."
+     ],
+     [
+      "Is my old handwritten passport accepted for a Philippines visa?",
+      "No. Embassies accept only electronic and machine-readable passports."
      ]
     ]
    }
@@ -1593,6 +1789,22 @@
      [
       "Can a Pakistani citizen get a Turkey e-Visa?",
       "Only with a valid Schengen, USA, UK or Ireland visa or residence permit, according to the Turkish Ministry of Foreign Affairs. Otherwise you apply for a sticker visa through the Turkish mission."
+     ],
+     [
+      "Do Pakistanis need a visa for Turkey?",
+      "Yes. Türkiye's Ministry of Foreign Affairs says ordinary passport holders from Pakistan need a visa to enter."
+     ],
+     [
+      "How do I apply for a Turkey sticker visa from Pakistan?",
+      "You start in the official Pre-Application System (visa.gov.tr), then take the signed form, your passport and original documents to the Turkish mission. We prepare the file and fill the pre-application with you."
+     ],
+     [
+      "How long must my passport be valid for Turkey?",
+      "The Ministry advises at least 6 months from the date of arrival. The legal minimum is 60 days beyond the visa's duration of stay."
+     ],
+     [
+      "Can I use the Turkey e-Visa for study or work?",
+      "No. The e-Visa is only for tourism or commerce. Visas for work, study and other purposes are given by Turkish embassies or consulates."
      ]
     ]
    },
@@ -1653,6 +1865,18 @@
      [
       "Do Pakistani citizens get the Azerbaijan e-Visa?",
       "A single e-Visa is only issued to citizens of the countries on the official list on evisa.gov.az. Check it for your passport. Otherwise, the Embassy of Azerbaijan in Islamabad issues tourist visas and publishes the documents it requires."
+     ],
+     [
+      "How long can I stay in Azerbaijan on the e-Visa?",
+      "A single-entry e-Visa allows up to 30 days. A multiple-entry e-Visa allows up to 90 days."
+     ],
+     [
+      "How fast is the Azerbaijan e-Visa?",
+      "The standard single e-Visa is issued within 3 business days. An accelerated one can be requested within 3 hours on evisa.gov.az."
+     ],
+     [
+      "What does the Azerbaijan Embassy in Islamabad ask for a tourist visa?",
+      "The application form, your passport (original and copy) valid at least three months after departure, two photos, hotel booking, flight tickets, medical insurance and proof of sufficient funds. It accepts only complete applications and may ask for more."
      ]
     ]
    },
@@ -1843,6 +2067,18 @@
      [
       "Do I need a separate permit to visit the Pamir (GBAO) region?",
       "Yes. The official e-Visa FAQ says Gorno-Badakhshan (GBAO) needs a special permit in addition to the e-Visa."
+     ],
+     [
+      "Can I apply for the Tajikistan e-Visa after arriving?",
+      "No. You can apply only while you are outside Tajikistan."
+     ],
+     [
+      "How long must my passport be valid for a Tajikistan e-Visa?",
+      "At least six months after the validity of the e-Visa you request."
+     ],
+     [
+      "What happens if I make a mistake on the Tajikistan e-Visa form?",
+      "The details must match your passport exactly, or the e-Visa is invalid. The fee is not refunded if an application is denied, so we check every field with you before you pay."
      ]
     ]
    }
@@ -2179,7 +2415,43 @@
      "Salalah",
      "Nizwa"
     ],
-    "image": "https://cdn.prod.website-files.com/64875621443d761c9809134e/677860c605bf69bf990045d8_oamn2.jpg"
+    "image": "https://cdn.prod.website-files.com/64875621443d761c9809134e/677860c605bf69bf990045d8_oamn2.jpg",
+    "facts": [
+     [
+      "Visas for visitors to Oman are managed by the Royal Oman Police (ROP), and applications are made online on the ROP eVisa website.",
+      "Ministry of Foreign Affairs of Oman: Entry visas",
+      "https://www.fm.gov.om/en/visitors/entry-visas/"
+     ],
+     [
+      "For tourists, the Ministry says the Tourist Visit Visa (Unsponsored) will usually be appropriate.",
+      "Ministry of Foreign Affairs of Oman: Entry visas",
+      "https://www.fm.gov.om/en/visitors/entry-visas/"
+     ],
+     [
+      "Pakistan is not on the Ministry's lists of nationalities exempt from an entry visa for stays of up to 14 days.",
+      "Ministry of Foreign Affairs of Oman: Entry visas",
+      "https://www.fm.gov.om/en/visitors/entry-visas/"
+     ],
+     [
+      "The ROP eVisa call centre: 80080011 (toll free inside Oman), +968 22848200 from outside Oman, email Info-OmaneVisa@rop.gov.om.",
+      "Ministry of Foreign Affairs of Oman: Entry visas",
+      "https://www.fm.gov.om/en/visitors/entry-visas/"
+     ]
+    ],
+    "faq_extra": [
+     [
+      "Do Pakistanis need a visa for Oman?",
+      "Yes. Pakistan is not on the Oman Ministry of Foreign Affairs' lists of nationalities that can enter without a visa for up to 14 days."
+     ],
+     [
+      "Who issues the Oman visit visa?",
+      "The Royal Oman Police (ROP). Applications are made online on the ROP eVisa website, and for tourists the Ministry says the Tourist Visit Visa (Unsponsored) will usually be appropriate. We check your eligibility and prepare the application with you."
+     ],
+     [
+      "How can I contact the Oman eVisa helpline from Pakistan?",
+      "The ROP eVisa call centre is +968 22848200 from outside Oman, or email Info-OmaneVisa@rop.gov.om."
+     ]
+    ]
    },
    {
     "slug": "kuwait",
@@ -2201,7 +2473,52 @@
      "The Avenues",
      "Al Hamra Tower"
     ],
-    "image": "https://images.trvl-media.com/place/6144602/8c3d0d17-b5c2-4d5b-b3ea-a66b228beaf8.jpg"
+    "image": "https://images.trvl-media.com/place/6144602/8c3d0d17-b5c2-4d5b-b3ea-a66b228beaf8.jpg",
+    "facts": [
+     [
+      "Kuwait visas are applied for online on the Ministry of Interior's Kuwait Visa portal: create an account, complete your profile, submit the application and track it.",
+      "Kuwait Ministry of Interior: Kuwait Visa portal",
+      "https://kuwaitvisa.moi.gov.kw/"
+     ],
+     [
+      "Tourist visa (single visit): passport valid for at least 6 months; the entry permit is valid 30 days from issue; stay of no more than 90 days from entry; work is prohibited.",
+      "Kuwait Ministry of Interior: Kuwait Visa portal",
+      "https://kuwaitvisa.moi.gov.kw/"
+     ],
+     [
+      "Generally required: a valid passport (at least 6 months), a recent passport-size photo, a confirmed round-trip ticket and a hotel booking or proof of accommodation. More documents may be asked for depending on visa type and nationality.",
+      "Kuwait Ministry of Interior: Kuwait Visa portal",
+      "https://kuwaitvisa.moi.gov.kw/"
+     ],
+     [
+      "The portal says tourist visas typically take 1 to 2 business days, depending on visa type and nationality.",
+      "Kuwait Ministry of Interior: Kuwait Visa portal",
+      "https://kuwaitvisa.moi.gov.kw/"
+     ],
+     [
+      "Pakistan is not on the portal's list of countries whose citizens can get a tourist visa on arrival.",
+      "Kuwait Ministry of Interior: Kuwait Visa portal",
+      "https://kuwaitvisa.moi.gov.kw/"
+     ]
+    ],
+    "faq_extra": [
+     [
+      "Can Pakistanis get a Kuwait visa on arrival?",
+      "No. Pakistan is not on the Ministry of Interior's list of countries whose citizens can get a tourist visa on arrival. Apply online before you travel."
+     ],
+     [
+      "How long can I stay in Kuwait on a tourist visa?",
+      "Up to 90 days from the date of entry. The entry permit itself is valid for 30 days from issue, so you must enter within that time."
+     ],
+     [
+      "What documents do I need for a Kuwait tourist visa?",
+      "A passport valid at least 6 months, a recent passport-size photo, a confirmed round-trip ticket and a hotel booking or proof of accommodation. The Ministry may ask for more depending on your nationality."
+     ],
+     [
+      "How long does a Kuwait tourist visa take?",
+      "The Ministry of Interior portal says tourist visas typically take 1 to 2 business days. We check your file before you submit so it is not held up."
+     ]
+    ]
    },
    {
     "slug": "qatar",
@@ -2454,6 +2771,22 @@
      [
       "Where do I apply for a Japan visa in Pakistan?",
       "According to the Embassy of Japan in Pakistan, applications go through VFS Global / Gerry's Visa, not the embassy desk. Residents of Sindh and Balochistan apply at the Consulate General in Karachi."
+     ],
+     [
+      "Can I apply for a Japan visa at the embassy in Islamabad?",
+      "No. Since 1 April 2024 applications go to VFS Global / Gerry's Visa. The embassy does not accept visa applications directly, except diplomatic and official visas."
+     ],
+     [
+      "How long does a Japan visa take from Pakistan?",
+      "The embassy gives the standard processing period as 6 working days at the earliest, from applying at VFS until the visa is issued. Incomplete files take longer, sometimes several months."
+     ],
+     [
+      "What photo size is needed for a Japan visa?",
+      "One recent photo, 45 mm x 45 mm, with a light, preferably white, background."
+     ],
+     [
+      "Can I reapply after a Japan visa refusal?",
+      "Yes, 6 months after the refusal. The embassy does not give the reason for a refusal, so the new file should be checked carefully before you apply again."
      ]
     ]
    },
