@@ -452,7 +452,14 @@ OFFICIAL = {
  "tajikistan": [("Tajikistan e-Visa portal (Ministry of Foreign Affairs)", "https://www.evisa.tj/"), ("Tajikistan e-Visa: Get informed", "https://www.evisa.tj/#/getinformed"),
                 ("Tajikistan e-Visa: FAQ", "https://www.evisa.tj/#/help")],
  "australia": [("Visitor visa subclass 600 (Home Affairs)", "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600")],
+ "kuwait": [("Kuwait Ministry of Interior: Kuwait Visa portal", "https://kuwaitvisa.moi.gov.kw/")],
+ "germany": [("German Missions in Pakistan: short-term / Schengen visa", "https://pakistan.diplo.de/pk-en/service/visa-shortterm-1673126")],
+ "france": [("Embassy of France in Pakistan: visa appointments with TLScontact (10 Nov 2026)", "https://pk.diplomatie.gouv.fr/fr/aller-en-france/prendre-rendez-vous-pour-deposer-une-demande-de-visa-avec-tlscontact"), ("France-Visas (official)", "https://france-visas.gouv.fr/")],
+ "spain": [("Embassy of Spain in Islamabad: Schengen visas", "https://www.exteriores.gob.es/Embajadas/islamabad/en/ServiciosConsulares/Paginas/Consular/Visados-Schengen.aspx")],
+ "netherlands": [("Netherlands Worldwide: Schengen visa in Pakistan", "https://www.netherlandsworldwide.nl/visa-the-netherlands/schengen-visa/apply-pakistan")],
 }
+OFFICIAL["malaysia"].append(("Immigration Department of Malaysia: visa requirement by country", "https://www.imi.gov.my/index.php/en/main-services/visa/visa-requirement-by-country/"))
+OFFICIAL["oman"].append(("Oman Ministry of Foreign Affairs: entry visas", "https://www.fm.gov.om/en/visitors/entry-visas/"))
 REGION_OFFICIAL = {
  "united-kingdom": [("UK Standard Visitor visa (GOV.UK)", "https://www.gov.uk/standard-visitor")],
  "united-states": [("US visitor visas (travel.state.gov)", "https://travel.state.gov/content/travel/en/us-visas/tourism-visit/visitor.html"), ("DS-160 online form (CEAC)", "https://ceac.state.gov/genniv/")],
@@ -571,7 +578,8 @@ def group_docs(docs):
     return [(g, xs) for g, xs in out.items() if xs]
 
 ROUTE_PHRASE = {"Online e-visa": "an online e-visa", "Online ETA": "an online ETA", "Visa on arrival / e-visa": "a visa on arrival or e-visa",
-                "Schengen visa (embassy / visa centre)": "a Schengen visa at the embassy or its visa centre", "Embassy / visa centre": "the embassy or its visa centre"}
+                "Schengen visa (embassy / visa centre)": "a Schengen visa at the embassy or its visa centre", "Embassy / visa centre": "the embassy or its visa centre",
+                "Route depends on purpose": "the visa route that fits your purpose (Umrah, family visit or tourist visa)"}
 
 def proc_phrase(vv):
     p = (vv["processingTime"] if vv else "").strip().rstrip(".")
@@ -581,7 +589,9 @@ def proc_phrase(vv):
 
 ONLINE_ROUTE = {"sri-lanka": "Online ETA", "kenya": "Online ETA"}
 ROUTE_OVERRIDE = {"philippines": "Embassy / visa centre", "uzbekistan": "Embassy / visa centre", "japan": "Embassy / visa centre",
-                  "turkey": "E-visa or embassy", "azerbaijan": "E-visa or embassy"}   # DFA: temporary visitor visa applied for in person at the embassy
+                  "turkey": "E-visa or embassy", "azerbaijan": "E-visa or embassy",
+                  "saudi-arabia": "Route depends on purpose",   # Pakistan is not on the 72-country tourist eVisa list (visa.visitsaudi.com, Nov 2026)
+                  **{s: "Schengen visa (embassy / visa centre)" for s in ("germany", "france", "spain", "netherlands")}}   # DFA: temporary visitor visa applied for in person at the embassy
 
 def visa_route(c):
     if c["slug"] in ROUTE_OVERRIDE:
