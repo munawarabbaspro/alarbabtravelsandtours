@@ -2993,7 +2993,7 @@ def build_region_visa(r, v):
 
 def build_country(c):
     r = REGIONS[c["region"]]
-    vv = visit_visa(c["region"])
+    vv = visit_visa(c["region"]) if c["slug"] not in ("ireland",) else None   # Ireland sits under the UK region; UK (GOV.UK) times don't apply
     docs = "".join(f"<li>{e(x)}</li>" for x in c["docs_clean"])
     grouped = "".join(f'<h3>{e(g)}</h3><ul class="docs">' + "".join(f"<li>{e(x)}</li>" for x in xs) + "</ul>" for g, xs in group_docs(c["docs_clean"]))
     checks = "".join(f"<li><b>{e(a)}</b><span>{b}</span></li>" for a, b in embassy_checks(c))

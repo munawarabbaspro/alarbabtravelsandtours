@@ -4164,6 +4164,26 @@
    ],
    "faqs": [
     {
+     "q": "How long can I stay in the UK on a Standard Visitor visa?",
+     "a": "GOV.UK says you can usually stay for up to 6 months. You cannot live in the UK through frequent or successive visits, or claim public funds."
+    },
+    {
+     "q": "When can I apply for a UK visit visa?",
+     "a": "Online, before you travel. GOV.UK says the earliest you can apply is 3 months before your travel date."
+    },
+    {
+     "q": "How long does a UK visit visa take from Pakistan?",
+     "a": "GOV.UK says you will usually get a decision within 3 weeks of proving your identity at the visa application centre. You can check on GOV.UK whether a faster decision is available for you."
+    },
+    {
+     "q": "What happens at the UK visa application centre?",
+     "a": "You show your passport, and your fingerprints and photo are taken. GOV.UK says your passport is returned the same day, though the centre may keep some other documents while your application is processed."
+    },
+    {
+     "q": "I visit the UK often. Is there a longer visa?",
+     "a": "Yes. GOV.UK says regular visitors can apply for a long-term Standard Visitor visa instead of the 6-month visa. We check whether your travel history supports it."
+    },
+    {
      "q": "Do I need an interview for a UK Visit Visa?",
      "a": "Generally, no. Decisions are made based on your submitted documents."
     },
@@ -4197,7 +4217,7 @@
       "Polio Vaccination Card (Yellow card)"
      ],
      "fees": "£135 Embassy Fee + Service Charges",
-     "processingTime": "Typically 3 weeks (Priority options available for 5 working days).",
+     "processingTime": "Usually within 3 weeks after your visa centre appointment (GOV.UK).",
      "tips": [
       "The UKVI is very strict about the source of funds; ensure all large deposits are explained.",
       "Provide a clear, day-by-day itinerary in your cover letter.",
@@ -4268,6 +4288,22 @@
    ],
    "faqs": [
     {
+     "q": "How do I apply for a Canada visitor visa from Pakistan?",
+     "a": "Online, through the IRCC portal. You get a personalised document checklist in the portal. After you apply, wait for your biometrics instruction letter before booking the biometrics appointment."
+    },
+    {
+     "q": "How long must my passport be valid for a Canada visa?",
+     "a": "IRCC says it should be valid for at least 6 months from your planned travel date. A visa can be valid for up to 10 years, but not beyond your passport or biometrics expiry."
+    },
+    {
+     "q": "What bank statement does Canada need?",
+     "a": "IRCC says bank statements show whether you have enough money to support yourself during your stay, and asks for at least 6 months of account details."
+    },
+    {
+     "q": "What should my employer letter for a Canada visa say?",
+     "a": "IRCC says an employer letter can show you have a stable job and will return to it. It should be on official letterhead and dated no earlier than 3 months before you apply."
+    },
+    {
      "q": "Can I apply for a Canada visa online?",
      "a": "Yes, almost all Canada visa applications are now submitted online via the IRCC portal."
     },
@@ -4300,7 +4336,7 @@
       "Proof of Assets (Property, Cars, Investments in Pakistan)"
      ],
      "fees": "Official Embassy Fee: $185 CAD (IRCC + Biometrics) + Complete Consultancy",
-     "processingTime": "Typically 4 to 12 weeks depending on embassy workload.",
+     "processingTime": "Varies by case. IRCC publishes current processing times on canada.ca.",
      "tips": [
       "Your SOP is the most important part of your application; make it convincing.",
       "Ensure all translations (if any) are from authorized translators.",
