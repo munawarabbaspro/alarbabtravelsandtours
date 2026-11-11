@@ -4232,6 +4232,9 @@ if __name__ == "__main__":
     herotitle_previews()
     galaxy_previews()
     splash_home()
+    # Draft/preview pages are for owner review only: keep them out of the deployed site.
+    for _u in [u for u in PAGES if u.startswith("/preview")]:
+        del PAGES[_u]
     write_all()
     total = sum(len(h) for h, _, _ in PAGES.values())
     print(f"built {len(PAGES)} pages ({len(COUNTRIES)} countries, {len(DATA['regions'])} regions) - {total/1024:.0f} KB HTML")
