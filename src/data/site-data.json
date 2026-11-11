@@ -557,7 +557,39 @@
      "Ghent (Gravensteen)",
      "Antwerp"
     ],
-    "image": "https://images.goway.com/production/hero_image/Grand%20Place%20Brussels%20Belgium_iStock_1922966419-compressed.jpg?VersionId=rWP7fyDnAGzr0K9ztfHds_GEISI14L.4"
+    "image": "https://images.goway.com/production/hero_image/Grand%20Place%20Brussels%20Belgium_iStock_1922966419-compressed.jpg?VersionId=rWP7fyDnAGzr0K9ztfHds_GEISI14L.4",
+    "facts": [
+     [
+      "Short-stay and long-stay visa forms must be filled out online on Visa On Web and submitted electronically.",
+      "Embassy of Belgium in Pakistan: Online visa application procedure (updated 10 Mar 2025)",
+      "https://pakistan.diplomatie.belgium.be/en/travel-belgium/visa-belgium-and-grand-duchy-luxembourg/online-visa-application-procedure"
+     ],
+     [
+      "Appointments are made only through the Visa On Web portal, which redirects you to the VFS booking site. You print the form and go to the visa application centre you chose.",
+      "Embassy of Belgium in Pakistan: Online visa application procedure (updated 10 Mar 2025)",
+      "https://pakistan.diplomatie.belgium.be/en/travel-belgium/visa-belgium-and-grand-duchy-luxembourg/online-visa-application-procedure"
+     ],
+     [
+      "The online form expires if it is not confirmed at the visa application centre within 30 days.",
+      "Embassy of Belgium in Pakistan: Online visa application procedure (updated 10 Mar 2025)",
+      "https://pakistan.diplomatie.belgium.be/en/travel-belgium/visa-belgium-and-grand-duchy-luxembourg/online-visa-application-procedure"
+     ],
+     [
+      "At the centre your photo is taken live and fingerprints are taken if required. The application is processed at the Belgian Embassy, and you can track it through VFS Global or the Belgian Ministry of Interior.",
+      "Embassy of Belgium in Pakistan: Online visa application procedure (updated 10 Mar 2025)",
+      "https://pakistan.diplomatie.belgium.be/en/travel-belgium/visa-belgium-and-grand-duchy-luxembourg/online-visa-application-procedure"
+     ]
+    ],
+    "faq_extra": [
+     [
+      "How do I apply for a Belgium visa from Pakistan?",
+      "Fill the form online on Visa On Web, book the appointment through that portal (it redirects to VFS), print the form and take it with your documents to the visa centre you chose. We prepare the form and the file with you."
+     ],
+     [
+      "How long is the Belgium online visa form valid?",
+      "30 days. The Embassy of Belgium says the form expires if it is not confirmed at the visa application centre within 30 days, so book the appointment soon after you fill it."
+     ]
+    ]
    },
    {
     "slug": "denmark",
@@ -752,7 +784,25 @@
      "Icehotel (Kiruna)",
      "Vasa Museum"
     ],
-    "image": "https://images.unsplash.com/photo-1509356843151-3e7d96241e11?auto=format&fit=crop&q=80&w=800"
+    "image": "https://images.unsplash.com/photo-1509356843151-3e7d96241e11?auto=format&fit=crop&q=80&w=800",
+    "facts": [
+     [
+      "Since 7 July 2025, Pakistani citizens and residents of Pakistan can apply in Islamabad for a visa to visit Sweden for up to 90 days.",
+      "Embassy of Sweden in Islamabad: visa applications in Islamabad (7 Jul 2025)",
+      "https://www.swedenabroad.se/en/embassies/pakistan-islamabad/current/news/if-you-need-to-apply-for-a-visa-you-can-now-do-so-in-islamabad/"
+     ],
+     [
+      "Applications are handled by the external provider VFS Global in Islamabad; you contact VFS to make an appointment.",
+      "Embassy of Sweden in Islamabad: visa applications in Islamabad (7 Jul 2025)",
+      "https://www.swedenabroad.se/en/embassies/pakistan-islamabad/current/news/if-you-need-to-apply-for-a-visa-you-can-now-do-so-in-islamabad/"
+     ]
+    ],
+    "faq_extra": [
+     [
+      "Can I apply for a Sweden visit visa in Pakistan?",
+      "Yes. Since 7 July 2025 Pakistani citizens and residents can apply in Islamabad for visits of up to 90 days, through VFS Global, according to the Embassy of Sweden."
+     ]
+    ]
    },
    {
     "slug": "czech-republic",
@@ -989,7 +1039,20 @@
      "The Grund",
      "Mullerthal Trail"
     ],
-    "image": "https://images.trvl-media.com/place/2167/ec8f2543-aeb2-4765-a5af-7961e748ce4e.jpg"
+    "image": "https://images.trvl-media.com/place/2167/ec8f2543-aeb2-4765-a5af-7961e748ce4e.jpg",
+    "facts": [
+     [
+      "The Embassy of Belgium in Pakistan handles visas for Belgium and the Grand-Duchy of Luxembourg in one section. Forms are filled online on Visa On Web and appointments are booked through it, which redirects to VFS.",
+      "Embassy of Belgium in Pakistan: Online visa application procedure (updated 10 Mar 2025)",
+      "https://pakistan.diplomatie.belgium.be/en/travel-belgium/visa-belgium-and-grand-duchy-luxembourg/online-visa-application-procedure"
+     ]
+    ],
+    "faq_extra": [
+     [
+      "Where do Pakistanis apply for a Luxembourg visa?",
+      "Through the Embassy of Belgium in Pakistan, whose visa section covers Belgium and the Grand-Duchy of Luxembourg. You fill the form online on Visa On Web and book the VFS appointment through it. We prepare the file with you."
+     ]
+    ]
    },
    {
     "slug": "malta",
