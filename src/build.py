@@ -536,13 +536,22 @@ COUNTRY_PAA = {
 
 # priority Asian destinations: bespoke title/description, a "how we prepare your file" block, extra FAQs and sources (official facts only, no fees, no approval promises)
 COUNTRY_SEO = {
- "south-korea": ("South Korea Visa from Pakistan: Documents & Process 2026",
-                 "South Korea visit visa from Pakistan: the 7-document checklist, funds and travel-history tips, and how we prepare your file in Blue Area, Islamabad. WhatsApp {PHONE_D}"),
- "japan": ("Japan Visa from Pakistan: Documents & Process 2026",
-           "Japan visit visa from Pakistan: the checklist, itinerary and funds tips, and how we prepare your file in Blue Area, Islamabad. Free file check on WhatsApp {PHONE_D}"),
- "vietnam": ("Vietnam Visa from Pakistan: e-Visa & Documents 2026",
+ "thailand": ("Thailand Visa from Pakistan: Apply from Islamabad 2026",
+              "Thailand visa from Pakistan: documents, e-Visa steps and how we prepare your file in Blue Area, Islamabad. Free file check on WhatsApp {PHONE_D}"),
+ "malaysia": ("Malaysia e-Visa from Pakistan: Islamabad File Help",
+              "Malaysia e-Visa from Pakistan: document checklist, eVISA steps and file help from our Blue Area, Islamabad office. Free check on WhatsApp {PHONE_D}"),
+ "singapore": ("Singapore e-Visa from Pakistan: Islamabad File Help",
+               "Singapore e-Visa from Pakistan: documents, how to apply and file help from our Blue Area, Islamabad office. Free check on WhatsApp {PHONE_D}"),
+ "indonesia": ("Indonesia Visa from Pakistan: Islamabad Visa Help",
+               "Indonesia visa from Pakistan: documents, e-Visa steps and file help from our Blue Area, Islamabad office. Free check on WhatsApp {PHONE_D}"),
+ "vietnam": ("Vietnam e-Visa from Pakistan: Islamabad Application Help",
              "Vietnam visa from Pakistan: documents for the official e-Visa, photo and passport tips, and file help in Blue Area, Islamabad. Free check on WhatsApp {PHONE_D}"),
+ "japan": ("Japan Visa from Pakistan: Islamabad File Preparation",
+           "Japan visit visa from Pakistan: the checklist, itinerary and funds tips, and how we prepare your file in Blue Area, Islamabad. Free file check on WhatsApp {PHONE_D}"),
+ "south-korea": ("South Korea Visa from Pakistan: Islamabad File Help",
+                 "South Korea visit visa from Pakistan: the 7-document checklist, funds and travel-history tips, and how we prepare your file in Blue Area, Islamabad. WhatsApp {PHONE_D}"),
 }
+COUNTRY_H1 = {}   # H1 stays 'X visa from Pakistan'; the Islamabad file-help wording sits in the first paragraph (see build_country)
 COUNTRY_FOCUS = {
  "south-korea": ("How we prepare your South Korea visit visa file",
                  "South Korean officers read the whole file together, so each paper has to tell the same story. This is what we check before you submit.",
@@ -1070,6 +1079,19 @@ META_OVERRIDE = {
         "AL ARBAB Travel and Tours, Eagle Plaza, Blue Area, Islamabad. Visa help, air tickets and Umrah. Get a free document check on WhatsApp today."),
 }
 
+_CITY_NOTE_VISA = '<section class="sec reveal"><p class="note">Need help with your own file? Talk to our <a class="il" href="/visa-consultant-islamabad">visa consultants in Islamabad</a> (Blue Area office) or <a class="il" href="/eligibility-check">check your eligibility for free</a>.</p></section>'
+_CITY_NOTE_TRAVEL = '<section class="sec reveal"><p class="note">AL ARBAB is a <a class="il" href="/travel-agency-islamabad">travel agency in Islamabad</a> (Blue Area, DTS licensed): visas, air tickets, hotels and Umrah from one office.</p></section>'
+_CITY_VISA_PREFIX = ("/guides/",)
+_CITY_TRAVEL_PREFIX = ("/air-ticketing", "/hotel-booking", "/flight-hotel-reservation-for-visa", "/umrah", "/packages", "/honeymoon-packages", "/tours/", "/pakistan-tours", "/partner-airlines", "/travel-insurance")
+
+def city_links(url, html):
+    """Add one contextual sentence (before the closing call-to-action band) that links to the Islamabad money pages."""
+    mark = '<section class="sec reveal"><div class="band">'
+    if mark not in html or url in ("/visa-consultant-islamabad", "/travel-agency-islamabad"):
+        return html
+    note = _CITY_NOTE_VISA if url.startswith(_CITY_VISA_PREFIX) else _CITY_NOTE_TRAVEL if url.startswith(_CITY_TRAVEL_PREFIX) else ""
+    return html.replace(mark, note + mark, 1) if note else html
+
 def page(url, title, desc, body, ld=None, kw="", image=None, extra_head="", extra_script="", priority="0.7", noindex=False, home=False):
     title, desc = META_OVERRIDE.get(url, (title, desc))   # title, description, og:title, og:description and twitter tags all use these
     canon = BASE + url
@@ -1122,6 +1144,7 @@ def page(url, title, desc, body, ld=None, kw="", image=None, extra_head="", extr
 <script src="{APPJS}" defer></script>
 </body>
 </html>'''
+    html = city_links(url, html)
     html = route_wa(url, finish_icons(html).replace("@N@", str(len(COUNTRIES))))
     html = re.sub(r"https://flagcdn\.com/(w\d+)/([a-z-]+)\.png", lambda m: f"/assets/flags/{m.group(1)}/{m.group(2)}.png" if os.path.exists(os.path.join(ROOT, "assets", "flags", m.group(1), m.group(2) + ".png")) else m.group(0), html)   # flags are self-hosted
     PAGES[url] = (html, priority, noindex)
@@ -1184,7 +1207,7 @@ def pkg_card(p):
     return f'''<article class="book" tabindex="0">
 <div class="page"><span class="tag">{e(SHORT_COUNTRY.get(p["country"], p["country"]))}</span><h3>{e(p["title"])}</h3><p><b>{e(p["duration"])}</b><br>{e(p["amenities"])}</p><ul>{li}</ul>
 <a class="more" href="{p["url"]}">View package details <span>→</span></a></div>
-<div class="cover" aria-hidden="true">{picture(p["img"], "", 600, 800, "(max-width:600px) 100vw, 300px", widths=(400, 600, 900))}
+<div class="cover" aria-hidden="true">{picture(p["img"], p["title"] + " holiday package photo", 600, 800, "(max-width:600px) 100vw, 300px", widths=(400, 600, 900))}
 <span class="cv"><small>{e(p["duration"])}</small><b>{e(p["title"])}</b><i>Open ›</i></span></div>
 </article>'''
 
@@ -3156,7 +3179,7 @@ def build_country(c):
     facts = f'<div class="facts"><div><small>How you apply</small><b>{e(visa_route(c))}</b></div><div><small>Documents</small><b>{len(c["docs_clean"])} on the checklist</b></div><div><small>Processing</small><b>{e(proc)}</b></div><div><small>Region</small><b>{e(r["name"])}</b></div><div><small>Our service</small><b>{"Visit visa processing &amp; follow-up" if tier == 1 else "File preparation &amp; guidance"}</b></div>' + (f'<div><small>Track record</small><b>{e(SUCCESS_CLAIM)}</b></div></div><p class="note" style="margin-top:12px">{e(SUCCESS_NOTE)}</p>' if asian_claim(c) else '<div><small>First check</small><b>Free on WhatsApp</b></div></div>')
     content = f'<div class="layout">{main}{aside}</div>{rel}' + cta_band(f"Start your {e(c['name'])} journey today")
     acts = f'<a class="btn wa" href="{wa("Hi, I want to apply for a " + c["name"] + " visa.")}" target="_blank" rel="noopener">💬 Free assessment</a><a class="btn light" href="tel:{PHONE_I}">📞 {PHONE}</a>'
-    ph = pagehead(f'{e(r["name"])} · Updated {upd_of(c)}', f'{e(c["name"])} visa from Pakistan', e(c["description"]) + f' Prepared by our visa consultants in Blue Area, Islamabad.', c["img"], c["code"], (f"{c['gallery'][0][0]}, {c['name']}" if c["gallery"] else f"{c['name']} – " + (c["popularPlaces"][0] if c["popularPlaces"] else "visa from Pakistan")), acts) + facts
+    ph = pagehead(f'{e(r["name"])} · Updated {upd_of(c)}', COUNTRY_H1.get(c["slug"], f'{e(c["name"])} visa from Pakistan'), ('Visa file help in Islamabad: ' if c["slug"] in COUNTRY_SEO else '') + e(c["description"]) + f' Prepared by our visa consultants in Blue Area, Islamabad.', c["img"], c["code"], (f"{c['gallery'][0][0]}, {c['name']}" if c["gallery"] else f"{c['name']} – " + (c["popularPlaces"][0] if c["popularPlaces"] else "visa from Pakistan")), acts) + facts
     body = shell("/countries", [("Home", "/"), ("Destinations", "/countries"), (r["name"], f"/countries/{r['slug']}"), (c["name"], None)], ph, content)
     ld = [crumbs_ld([("Home", "/"), ("Destinations", "/countries"), (r["name"], f"/countries/{r['slug']}"), (c["name"], c["url"])]),
           service_ld(f"{c['name']} visa consultancy in Islamabad", c["description"], c["url"],
@@ -3368,10 +3391,11 @@ def build_hotel():
 <h3>What embassies check in a hotel booking</h3><ul class="checks"><li>Your name exactly as in the passport</li><li>Every night of the stay covered, city by city</li><li>Dates that match the flight reservation and cover letter</li><li>Hotel address and contact details the embassy can verify</li></ul>
 <p>Need flights too? See our <a class="link" href="/flight-hotel-reservation-for-visa">flight &amp; hotel reservation for visa</a> service.</p>
 <p>Beyond visa compliance, we offer exceptional deals for holidaymakers and corporate travelers. Whether you need a luxury 5-star resort in Dubai, a boutique hotel in Paris, or a budget-friendly stay in London, our international partnerships help us offer strong rates.</p></div></section>
+{hotel_extra()}
 {cta_band()}'''
     ph = pagehead("Hotels", "Stay where you love,<br>save where it matters", "From 5-star icons to boutique gems and value stays — we book it all, including verifiable reservations for visa files.", UNS["sg"], alt="Hotel booking – Singapore", actions=WA_HERO)
     body = shell("/hotel-booking", [("Home", "/"), ("Hotel Booking", None)], ph, content)
-    ld = [crumbs_ld([("Home", "/"), ("Hotel Booking", "/hotel-booking")]), service_ld("Hotel booking", "Hotel reservations worldwide, including verifiable bookings for visa applications.", "/hotel-booking", {"serviceType": "Hotel booking"})]
+    ld = [faq_ld(HOTEL_FAQS), crumbs_ld([("Home", "/"), ("Hotel Booking", "/hotel-booking")]), service_ld("Hotel booking", "Hotel reservations worldwide, including verifiable bookings for visa applications.", "/hotel-booking", {"serviceType": "Hotel booking"})]
     page("/hotel-booking", "Hotel Booking Agent Islamabad | Visa Hotel Reservations",
          "Verifiable hotel reservations for visa applications and holidays. Luxury, mid-range and budget stays worldwide, booked by our Blue Area office.",
          body, ld, "hotel booking islamabad, hotel reservation for visa, hotel booking agent pakistan", priority="0.7")
@@ -3426,13 +3450,137 @@ def build_about():
 {sec("The foundation of our success", "The core principles that drive every application we process and every ticket we book.", f'<div class="grid">{vh}</div>')}
 {sec("Meet our visa consultants", "The people who check your file.", '<div class="cards">' + "".join(f'<figure class="quote">{(chr(60) + "img src=" + chr(34) + m["photo"] + chr(34) + " alt=" + chr(34) + e(m["name"]) + chr(34) + " width=" + chr(34) + "96" + chr(34) + " height=" + chr(34) + "96" + chr(34) + " loading=" + chr(34) + "lazy" + chr(34) + " class=" + chr(34) + "avatar" + chr(34) + ">") if m.get("photo") else ""}<figcaption><b>{e(m["name"])}</b>{e(m.get("role", ""))}</figcaption><blockquote>{e(m.get("bio", ""))}</blockquote></figure>' for m in TEAM) + "</div>") if TEAM else ""}
 {sec("Comprehensive global expertise", "We strategically build your profile to ensure maximum approval chances across travel sectors.", f'<div class="grid g4">{ex}</div>')}
+{about_extra()}
 {cta_band("Visit our Blue Area office", f"{ADDR}. {HOURS}. Book a dedicated 1-on-1 consultation.")}'''
     ph = pagehead("Our story", "Visa consultancy<br>from the heart of Islamabad", f"{NAME} helps travelers with visas, flights and travel plans from Blue Area, Islamabad, with {len(COUNTRIES)} country guides.", f'/assets/cards/about-hero.webp?v={asset_hash("cards/about-hero.webp")}', alt="A flight map and flight overview seen from an aeroplane window", actions=WA_HERO)
     body = shell("/about", [("Home", "/"), ("About Us", None)], ph, content)
-    ld = [crumbs_ld([("Home", "/"), ("About Us", "/about")]), {"@context": "https://schema.org", "@type": "AboutPage", "name": f"About {NAME}", "url": BASE + "/about", "about": {"@id": BASE + "/#org"}}]
+    ld = [faq_ld(ABOUT_FAQS), crumbs_ld([("Home", "/"), ("About Us", "/about")]), {"@context": "https://schema.org", "@type": "AboutPage", "name": f"About {NAME}", "url": BASE + "/about", "about": {"@id": BASE + "/#org"}}]
     page("/about", "About Us | Visa & Travel Agency in Blue Area | AL ARBAB",
          f"AL ARBAB TRAVEL AND TOURS is a DTS-licensed travel agency in Blue Area, Islamabad: visas, air tickets, Umrah, hotels and insurance, with {len(COUNTRIES)} country guides.",
          body, ld, priority="0.6")
+
+# ---- prompt 02: content for the thin pages. Only facts that already appear elsewhere on the site.
+STEPS4 = [("WhatsApp your details", "Tell us the country and travel dates; send passport and documents as photos."),
+          ("Free document check", "An adviser checks your file and tells you what is missing and the full price."),
+          ("One office visit", "Visit Blue Area to sign forms and hand over originals when the file is ready."),
+          ("Submission & tracking", "We book the appointment, prepare the file and track it until the decision.")]
+GETTING_THERE = ("Our office is in Eagle Plaza, Mezzanine No. 121, on Fazal-e-Haq Road, Blue Area, just off Jinnah Avenue. The Rawalpindi–Islamabad Metrobus runs along Jinnah Avenue through Blue Area, "
+                 "and Islamabad Expressway or Murree Road connect Rawalpindi to Blue Area by car. Message us before you leave and we will confirm your adviser is free when you arrive.")
+OFFICIAL_NOTE = ('The embassy or consulate makes the final decision on every visa, and no agency can promise one. Our guides link the official portal or embassy page they are based on; '
+                 'see <a class="il" href="/sources">official sources</a> and our <a class="il" href="/editorial-policy">editorial policy</a>.')
+SERVICES_LIST = [("/visa-services", "Visa consultancy", "Schengen, UK, USA, Canada, Australia, Gulf and Asia visas with document review and appointments."),
+                 ("/air-ticketing", "Air tickets", "Air tickets on major airlines, group and student fares, changes handled Mon–Sat, 9am–8pm."),
+                 ("/umrah", "Umrah packages", "Economy to 5-star packages with visa, flights and hotels."),
+                 ("/flight-hotel-reservation-for-visa", "Hotels and reservations", "Verifiable hotel and flight reservations for visa files, plus holiday stays."),
+                 ("/travel-insurance", "Travel insurance", "Schengen-compliant policies from licensed Pakistani insurers."),
+                 ("/visa-appointments", "Visa appointments", "VFS Global, BLS, Gerry's and embassy appointment booking.")]
+
+def svc_list():
+    return '<ul class="checks">' + "".join(f'<li><a class="il" href="{u}">{n}</a>: {d}</li>' for u, n, d in SERVICES_LIST) + "</ul>"
+
+CONTACT_FAQS = [
+    (f"Where is {NAME} located?", f"{ADDR}. Open {HOURS}."),
+    ("Can I start without visiting the office?", "Yes. Send your documents on WhatsApp for a free check. You visit the office only when your file is ready to submit."),
+    ("Do you charge for the first consultation?", "No. The first consultation and document check are free; we quote the full price before you pay anything."),
+    ("Are you a licensed travel agency?", "Yes. We are licensed by the Department of Tourist Services (DTS), Government of Pakistan."),
+    ("Is approval certain once my file is submitted?", "No. The embassy or consulate makes the final decision. We check that your file is complete and consistent before you submit it."),
+]
+ABOUT_FAQS = [
+    (f"Who is behind {NAME}?", f"{NAME} is a DTS-licensed travel agency and visa consultancy in Blue Area, Islamabad. One office handles visa files, flights, hotels, insurance and Umrah."),
+    ("What is the difference between processing and preparing a visa file?", "For Asian visit visas such as Thailand, Malaysia, Singapore and Indonesia we process your visa and follow it up. For Schengen, UK, USA, Canada and Australia we prepare your file and guide you through the submission. In both cases the embassy decides."),
+    ("Do you publish visa fees?", "No. Embassy charges change often, so we do not post a fixed number. Send us your destination and travel dates and we confirm the current cost for your case before you pay anything."),
+    ("How can I check the information on your guides?", "Each country guide links the official portal or embassy page it is based on. They are collected on our official sources page."),
+]
+HOTEL_FAQS = [
+    ("Do embassies accept reservations instead of paid tickets?", "Many embassies, including most Schengen states, ask for a flight reservation and hotel booking rather than a paid ticket. The US embassy recommends not buying tickets before your visa is approved. We confirm what your embassy expects."),
+    ("Are your hotel reservations verifiable?", "Yes. We provide reservations that the embassy can verify, covering every night of your stay."),
+    ("How fast can I get a hotel reservation for my visa file?", "Usually the same day, once we have your passport details and travel dates."),
+    ("Can you book flights and insurance as well?", "Yes. See our flight and hotel reservation for visa service, our air ticketing page and Schengen-compliant travel insurance."),
+]
+PKT_FAQS = [
+    ("When should I plan a northern Pakistan trip?", "Seasons differ by altitude: higher places open in summer and are closed by snow in winter. Tell us your dates and we confirm what is accessible."),
+    ("How much does a Pakistan tour cost?", "It depends on your dates, group size and hotel category, so we quote on WhatsApp after you share your plan."),
+    ("Can you plan a trip for a family or a group?", "Yes. Send the number of travellers and ages and we plan transport and stays around them."),
+    ("Do flights and roads ever change the plan?", "Flights to Skardu depend on weather, and mountain roads can be affected by landslides, so keep a buffer day in your plan."),
+]
+ELIG_FAQS = [
+    ("Is the eligibility check free?", "Yes. The check is free and so is the first file review on WhatsApp."),
+    ("Does the check promise a visa?", "No. It gives you the document list for your case. The embassy makes the final decision on every application."),
+    ("Where do the document lists come from?", "From the embassy or official portal requirements linked in our country guides. See our official sources page."),
+    ("What should I do after I get my list?", "Gather the documents, then send them as photos on WhatsApp. An adviser checks your file for free and tells you what is missing."),
+]
+
+def contact_extra():
+    return (
+     '<section class="sec reveal"><div class="block"><h2>What to send us first</h2>'
+     '<p>Tell us the country and your travel dates, and send your passport and documents as photos on WhatsApp. An adviser checks your file for free and tells you what is missing and the full price before you pay anything.</p>'
+     '<ul class="checks"><li>The photo page of your passport</li><li>Your destination and approximate travel dates</li><li>Any documents you already have: bank statement, job or business letter, family documents</li><li>Earlier visas, if you have travelled before</li></ul>'
+     '<p>Not sure which documents your visa needs? Use our <a class="il" href="/eligibility-check">free eligibility check</a> or read <a class="il" href="/guides/visa-documents-explained">visa documents explained</a>.</p></div></section>'
+     '<section class="sec reveal"><div class="block"><h2>What happens after you contact us</h2><ol class="steps">' + steps_html(STEPS4) + '</ol></div></section>'
+     '<section class="sec reveal"><div class="block"><h2>What you can ask us about</h2>' + svc_list() + '</div></section>'
+     '<section class="sec reveal"><div class="block"><h2>Getting to our office</h2><p>' + GETTING_THERE + '</p><p>Office hours: ' + HOURS + '.</p></div></section>'
+     '<section class="sec reveal"><div class="block"><h2>Contact FAQs</h2>' + faq_html(CONTACT_FAQS) + '</div></section>')
+
+def about_extra():
+    return (
+     '<section class="sec reveal"><div class="block"><h2>How we work</h2>'
+     '<p>We work in two ways. For Asian countries such as Thailand, Malaysia, Singapore and Indonesia we process your visit visa and follow it up. For Schengen, UK, USA, Canada and Australia we prepare your file and guide you through the submission. '
+     'Our <a class="il" href="/visa-services">visa services</a> page explains which one applies to you.</p><p>' + OFFICIAL_NOTE + '</p></div></section>'
+     '<section class="sec reveal"><div class="block"><h2>Our process in four steps</h2><ol class="steps">' + steps_html(STEPS4) + '</ol></div></section>'
+     '<section class="sec reveal"><div class="block"><h2>Straight answers</h2><ul class="checks">'
+     '<li>The first consultation and the document check are free.</li><li>We quote the full price before you pay anything.</li>'
+     '<li>We do not promise visas; the embassy decides.</li><li>Fees change often, so we confirm the current cost for your case instead of posting a fixed number. See <a class="il" href="/fees-and-refunds">fees and refunds</a>.</li>'
+     '<li>We are licensed by the Department of Tourist Services (DTS), Government of Pakistan. Details are on our <a class="il" href="/compliance">compliance</a> page.</li></ul></div></section>'
+     '<section class="sec reveal"><div class="block"><h2>Find us in Blue Area</h2><p>' + GETTING_THERE + '</p><p>Office hours: ' + HOURS + '. See the <a class="il" href="/contact">contact page</a> for phone, email and WhatsApp.</p></div></section>'
+     '<section class="sec reveal"><div class="block"><h2>About FAQs</h2>' + faq_html(ABOUT_FAQS) + '</div></section>')
+
+def hotel_extra():
+    return (
+     '<section class="sec reveal"><div class="block"><h2>How a hotel reservation for your visa works</h2><ol class="steps">' + steps_html([
+         ("Send details", "Passport copy, travel dates and cities on WhatsApp."),
+         ("We draft the plan", "Hotels and itinerary that fit your visa type."),
+         ("Receive documents", "Verifiable reservations, usually the same day."),
+         ("File check", "We check everything matches before you submit.")]) + '</ol></div></section>'
+     '<section class="sec reveal"><div class="block"><h2>What to send us</h2><ul class="checks"><li>A copy of your passport, so the name matches exactly</li><li>Your travel dates and the cities you will visit</li>'
+     '<li>The number of travellers</li><li>Your cover letter or itinerary, if you already have one, so the dates line up</li></ul>'
+     '<p>Embassies, particularly Schengen and US, check that your flights and hotels match your itinerary and cover the full stay. Read how to write a <a class="il" href="/guides/visa-cover-letter-pakistan">visa cover letter</a> so the file tells one consistent story.</p></div></section>'
+     '<section class="sec reveal"><div class="block"><h2>Hotels for visas and for holidays</h2><p>For a visa file we provide verifiable reservations that cover every night of your stay, with dates that match your flight reservation and cover letter. '
+     'For holidays we book luxury, mid-range and budget stays worldwide through our international partnerships. Tell us which one you need when you message us on WhatsApp, and we reply during office hours (' + HOURS + ').</p></div></section>'
+     '<section class="sec reveal"><div class="block"><h2>Related services</h2><ul class="checks">'
+     '<li><a class="il" href="/flight-hotel-reservation-for-visa">Flight and hotel reservation for visa</a></li><li><a class="il" href="/air-ticketing">Air ticketing</a></li>'
+     '<li><a class="il" href="/travel-insurance">Travel insurance</a></li><li><a class="il" href="/visa-appointments">Visa appointments</a></li><li><a class="il" href="/travel-agency-islamabad">Travel agency in Islamabad</a></li></ul></div></section>'
+     '<section class="sec reveal"><div class="block"><h2>Hotel booking FAQs</h2>' + faq_html(HOTEL_FAQS) + '</div></section>')
+
+def eligibility_extra():
+    return (
+     '<section class="sec reveal"><div class="block"><h2>What decides a visa file</h2>'
+     '<p>Officers judge the same things on every file: the purpose of the trip, enough funds, reasons to return and consistent documents. Your checklist tells you which papers show each of these for your country and situation.</p>'
+     '<ul class="checks"><li><b>Purpose of the trip:</b> a clear plan, with flight and hotel reservations that match it.</li>'
+     '<li><b>Funds:</b> a bank statement that fits your income. See the <a class="il" href="/guides/bank-statement-for-visa-from-pakistan">bank statement guide</a>.</li>'
+     '<li><b>Reasons to return:</b> employment, business or family documents, for example an <a class="il" href="/guides/noc-letter-for-visa-pakistan">NOC letter</a>.</li>'
+     '<li><b>Consistency:</b> dates, employer and income must match across every document. A <a class="il" href="/guides/visa-cover-letter-pakistan">cover letter</a> ties them together.</li></ul></div></section>'
+     '<section class="sec reveal"><div class="block"><h2>After you get your list</h2>'
+     '<p>Gather the documents, then send them as photos on WhatsApp. An adviser checks your file for free and tells you what is missing. When your file is ready, you visit our Blue Area office once to sign forms and hand over originals.</p>'
+     '<p>' + OFFICIAL_NOTE + '</p></div></section>'
+     '<section class="sec reveal"><div class="block"><h2>Guides that help</h2><ul class="checks">'
+     '<li><a class="il" href="/guides/visa-documents-explained">Visa documents explained</a></li><li><a class="il" href="/guides/schengen-visa-requirements-from-pakistan">Schengen visa requirements from Pakistan</a></li>'
+     '<li><a class="il" href="/guides/visa-interview-preparation-pakistan">Visa interview preparation</a></li><li><a class="il" href="/guides/visa-appointment-booking-pakistan">Visa appointment booking</a></li>'
+     '<li><a class="il" href="/visa-consultant-islamabad">Visa consultant in Islamabad</a></li></ul></div></section>'
+     '<section class="sec reveal"><div class="block"><h2>Eligibility check FAQs</h2>' + faq_html(ELIG_FAQS) + '</div></section>')
+
+def pkt_extra():
+    notes = "".join(f'<li><a class="il" href="/pakistan-tours/{t["slug"]}"><b>{e(t["name"])}</b></a> ({e(t["region"])}): {e(", ".join(t["places"]))}. {e(t["note"])}</li>' for t in PK_TOURS)
+    return (
+     '<section class="sec reveal"><div class="block"><h2>How we plan a northern Pakistan trip</h2><p>We plan trips to Hunza, Skardu, Swat and Naran from Islamabad around your dates and group. Each plan covers:</p><ul class="checks">' +
+     "".join(f"<li>{e(x)}</li>" for x in ("Transport from Islamabad or your city, planned around your group size", "Hotels or guest houses to the category you choose", "A day-by-day plan with the places you want and the timing that suits the season", "Help with road, weather and permit questions before you leave")) +
+     '</ul></div></section>'
+     '<section class="sec reveal"><div class="block"><h2>Places and season notes</h2><ul class="checks">' + notes + '</ul></div></section>'
+     '<section class="sec reveal"><div class="block"><h2>Not sure where to start?</h2><p>Start with the place that fits your season. Higher places open in summer and are closed by snow in winter, so tell us your dates and we confirm what is accessible. '
+     'Open the page of each destination to see the places you can include and the season and road notes, then send us your plan. We reply during office hours (' + HOURS + ').</p></div></section>'
+     '<section class="sec reveal"><div class="block"><h2>What to send us on WhatsApp</h2><ul class="checks"><li>Your travel dates and how many nights you have</li><li>The number of travellers and their ages</li><li>The hotel category you prefer</li>'
+     '<li>Whether you prefer to travel by road on the Karakoram Highway or, for Skardu, by flight when weather allows</li></ul>'
+     '<p>Prices depend on dates, group size and hotels, so we quote on WhatsApp after you share your plan. We are a <a class="il" href="/travel-agency-islamabad">travel agency in Islamabad</a> (Blue Area, DTS licensed); you can also see our <a class="il" href="/packages">holiday packages</a> for international trips.</p></div></section>'
+     '<section class="sec reveal"><div class="block"><h2>Pakistan tours FAQs</h2>' + faq_html(PKT_FAQS) + '</div></section>')
 
 def build_contact():
     info = [("📍", "Office", f'<a href="{MAP_URL}" target="_blank" rel="noopener">{ADDR}</a>'), ("📞", "Phone", f'<a href="tel:{PHONE_I}">{PHONE}</a> | <a href="tel:{LAND_I}">{LAND}</a>'), ("✉", "Email", f'<a href="mailto:{EMAIL}">{EMAIL}</a>'),
@@ -3446,10 +3594,11 @@ def build_contact():
 <div class="row"><div><label for="phone">WhatsApp number</label><input id="phone" name="phone" type="tel" required autocomplete="tel"></div><div><label for="dest">Target destination</label><select id="dest" name="dest">{opts}</select></div></div>
 <div><label for="msg">Travel plans &amp; details</label><textarea id="msg" name="msg" rows="4"></textarea></div>
 <div><button class="btn wa" type="submit">Send your inquiry via WhatsApp</button></div></form></div></section>
+{contact_extra()}
 {sec("Not sure which service you need?", "", '<div class="block"><p>See what our <a class="il" href="/travel-agency-islamabad">travel agency in Islamabad</a> and our <a class="il" href="/visa-consultant-islamabad">visa consultants in Islamabad</a> can do for your trip, then message us on WhatsApp for a free document check.</p></div>')}'''
     ph = pagehead("Contact", "We'd love<br>to hear from you", "Walk in, call, email or message us on WhatsApp. We reply during office hours.", actions=WA_HERO)
     body = shell("/contact", [("Home", "/"), ("Contact", None)], ph, content)
-    ld = [crumbs_ld([("Home", "/"), ("Contact", "/contact")]), {"@context": "https://schema.org", "@type": "ContactPage", "name": f"Contact {NAME}", "url": BASE + "/contact", "about": {"@id": BASE + "/#org"}}]
+    ld = [faq_ld(CONTACT_FAQS), crumbs_ld([("Home", "/"), ("Contact", "/contact")]), {"@context": "https://schema.org", "@type": "ContactPage", "name": f"Contact {NAME}", "url": BASE + "/contact", "about": {"@id": BASE + "/#org"}}]
     page("/contact", "AL ARBAB Travel Islamabad Contact Number & WhatsApp",
          f"Visit AL ARBAB TRAVEL AND TOURS at Eagle Plaza, Blue Area, Islamabad. Call {PHONE} / {LAND}, email or WhatsApp. Open Mon–Sat 9 AM–8 PM.",
          body, ld, priority="0.8")
@@ -3529,9 +3678,7 @@ def build_policies():
         page(url, title, desc, body, [crumbs_ld([("Home", "/"), (name, url)])], priority="0.4")
 
 def build_misc():
-    body = f'<main id="main"><div class="wrap"><div class="shell"><div class="inner">{header("")}<div class="ph" style="grid-template-columns:1fr"><div><h1>Pakistan visa</h1><p class="lead2">This page has moved to <a class="link" href="/countries/south-asia/pakistan">Pakistan visa services</a>.</p></div></div></div></div></div></main>'
-    page("/pakistan-visa", "Pakistan Visa Services | AL ARBAB", "Pakistan visa services have moved.", body,
-         extra_head='<meta http-equiv="refresh" content="0; url=/countries/south-asia/pakistan">', noindex=True)
+    # /pakistan-visa has no page any more: it is a 301 to /countries/south-asia/pakistan (vercel.json, _redirects, .htaccess)
     body = f'<main id="main"><div class="wrap"><div class="shell"><div class="inner">{header("")}<div class="ph" style="grid-template-columns:1fr"><div><h1>Page not<br>found</h1><p class="lead2">The page you are looking for does not exist. Try our visa services, destinations or Umrah packages.</p><div class="actions"><a class="btn" href="/">Back to home</a><a class="btn light" href="/countries">All destinations</a></div></div></div></div></div></div></main>'
     page("/404", "Page not found | AL ARBAB TRAVEL AND TOURS", "Page not found.", body, noindex=True)
 
@@ -3583,11 +3730,11 @@ def build_eligibility():
 <div><button class="btn" type="submit">Show my checklist</button></div></div></form>
 <div class="block" id="eligOut" hidden aria-live="polite"></div>
 <div class="block"><h2>How the free check works</h2><ol class="steps">{steps_html([("Choose your trip", "Pick the country, purpose and your situation above."), ("Read your list", "You get the document list for your case, built from embassy requirements."), ("Free file check", "Send the documents on WhatsApp; an adviser checks them for refusal risks."), ("Apply with us", "We book the appointment, prepare the file and track it to the decision.")])}</ol></div>
-</div><aside class="aside">{ctacard("visa eligibility")}</aside></div></section>'''
+</div><aside class="aside">{ctacard("visa eligibility")}</aside></div></section>{eligibility_extra()}'''
     ph = pagehead("Free tool", "Free visa eligibility<br>&amp; documents check", "Answer four questions and get the document checklist for your visa from Pakistan, then send your file to an adviser on WhatsApp for a free review.", actions=WA_HERO)
     body = shell("/eligibility-check", [("Home", "/"), ("Free Eligibility Check", None)], ph, content)
     script = "<script>window.ELIG=" + json.dumps(elig, ensure_ascii=False, separators=(",", ":")) + ";</script>"
-    ld = [crumbs_ld([("Home", "/"), ("Free Eligibility Check", "/eligibility-check")]),
+    ld = [faq_ld(ELIG_FAQS), crumbs_ld([("Home", "/"), ("Free Eligibility Check", "/eligibility-check")]),
           {"@context": "https://schema.org", "@type": "WebApplication", "name": "Free visa eligibility & documents check", "url": BASE + "/eligibility-check",
            "applicationCategory": "TravelApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "PKR"}, "provider": {"@id": BASE + "/#org"}}]
     page("/eligibility-check", "Free Visa Eligibility & Documents Check | AL ARBAB",
@@ -3595,14 +3742,14 @@ def build_eligibility():
          body, ld, "visa eligibility check pakistan, visa documents checklist, free visa assessment islamabad", extra_script=script, priority="0.8")
 
 CITY_PAGES = [
- ("/travel-agency-islamabad", "Islamabad", "Travel Agency in Islamabad", "Travel agency in<br>Blue Area, Islamabad",
+ ("/travel-agency-islamabad", "Islamabad", "Travel Agency in Islamabad", "Travel agency in Islamabad,<br>Blue Area",
   "Visas, air tickets, Umrah, hotels and travel insurance from one DTS-licensed office in Eagle Plaza, Blue Area.",
-  "Travel Agency in Islamabad (Blue Area) | AL ARBAB",
+  "Travel Agency in Islamabad, Blue Area | Visas & Umrah",
   "DTS-licensed travel agency in Blue Area, Islamabad: visas, air tickets, Umrah, hotels & insurance. Free WhatsApp consultation: 0315-2323811",
-  "travel agency islamabad, travel agency blue area, best travel agency in islamabad, licensed travel agent islamabad"),
- ("/visa-consultant-islamabad", "Islamabad", "Visa Consultant in Islamabad", "Visa consultant<br>in Islamabad",
+  "travel agency islamabad, travel agency blue area, licensed travel agent islamabad"),
+ ("/visa-consultant-islamabad", "Islamabad", "Visa Consultant in Islamabad", "Visa Consultant in Islamabad:<br>Free Visa File Check",
   "Schengen, UK, USA, Canada, Australia and Asia visas prepared at our Blue Area office, with a free document check before you apply.",
-  "Visa Consultant in Islamabad | Free File Check | AL ARBAB",
+  "Visa Consultant in Islamabad, Blue Area | Free File Check",
   f"Visa consultant in Blue Area, Islamabad: Schengen, UK, USA, Canada, Dubai & Asia visas. Free document check on WhatsApp {PHONE_D}",
   "visa consultant islamabad, visa agent islamabad, visa consultancy blue area, visa consultant in islamabad"),
  ("/travel-agency-rawalpindi", "Rawalpindi", "Travel Agency for Rawalpindi", "Travel agency for<br>Rawalpindi clients",
@@ -4197,10 +4344,10 @@ def build_pakistan_tours():
              body, [crumbs_ld([("Home", "/"), ("Pakistan tours", "/pakistan-tours"), (t["name"], url)]), faq_ld(faqs)], f"{t['name'].lower()} tour from islamabad, {t['name'].lower()} tour package", image=None, priority="0.6")
         cards += ncard(url, PKPIC[t["img"]], t["name"], "Pakistan tour", "See the tour →", f'<b style="font:900 20px/1 Archivo,sans-serif;color:#073b40">{e(t["name"][0])}</b>', t["name"], t["region"], "From", "Islamabad", "Quote", "On WhatsApp")
     ph = pagehead("Pakistan tours", "Pakistan tours<br>from Islamabad", "Northern Pakistan trips planned around your dates, from our Blue Area office.", PKPIC["pk-valley"], alt="Pakistan tours")
-    body = shell("/pakistan-tours", [("Home", "/"), ("Pakistan tours", None)], ph, sec("Choose a destination", "Prices depend on dates, group size and hotels, so we quote on WhatsApp.", f'<div class="rgrid">{cards}</div>') + cta_band())
+    body = shell("/pakistan-tours", [("Home", "/"), ("Pakistan tours", None)], ph, sec("Choose a destination", "Prices depend on dates, group size and hotels, so we quote on WhatsApp.", f'<div class="rgrid">{cards}</div>') + pkt_extra() + cta_band())
     page("/pakistan-tours", "Pakistan Tours from Islamabad: Hunza, Skardu, Swat | AL ARBAB",
          "Pakistan tours from Islamabad: Hunza, Skardu, Swat and Naran Kaghan planned around your dates and group by AL ARBAB, Blue Area. Plan on WhatsApp.",
-         body, [crumbs_ld([("Home", "/"), ("Pakistan tours", "/pakistan-tours")])], "pakistan tour packages from islamabad, hunza tour, skardu tour, swat tour, naran kaghan tour", priority="0.7")
+         body, [faq_ld(PKT_FAQS), crumbs_ld([("Home", "/"), ("Pakistan tours", "/pakistan-tours")])], "pakistan tour packages from islamabad, hunza tour, skardu tour, swat tour, naran kaghan tour", priority="0.7")
 
 REVIEWED = f"Updated {UPDATED}. Rules change; we confirm the latest requirements for your case."
 
