@@ -3137,6 +3137,21 @@ def region_guides_block(r):
     return (f'<div class="block" id="guides"><h2>Guides for your {e(r["name"])} visa file</h2><p>These guides explain the papers almost every file needs, whatever the destination:</p><ul class="checks">{gl}</ul>'
             f'<p style="margin-top:12px">Start with the <a class="il" href="/eligibility-check">free eligibility check</a> or message our <a class="il" href="/visa-consultant-islamabad">visa consultants in Islamabad</a>.</p></div>')
 
+SCHENGEN_CAPITAL = {"Austria": "Vienna", "Belgium": "Brussels", "Bulgaria": "Sofia", "Croatia": "Zagreb", "Czech Republic": "Prague", "Czechia": "Prague", "Denmark": "Copenhagen", "Estonia": "Tallinn",
+                    "Finland": "Helsinki", "France": "Paris", "Germany": "Berlin", "Greece": "Athens", "Hungary": "Budapest", "Iceland": "Reykjavik", "Italy": "Rome", "Latvia": "Riga",
+                    "Liechtenstein": "Vaduz", "Lithuania": "Vilnius", "Luxembourg": "Luxembourg City", "Malta": "Valletta", "Netherlands": "Amsterdam", "Norway": "Oslo", "Poland": "Warsaw",
+                    "Portugal": "Lisbon", "Romania": "Bucharest", "Slovakia": "Bratislava", "Slovenia": "Ljubljana", "Spain": "Madrid", "Sweden": "Stockholm", "Switzerland": "Bern"}
+
+def capital_block(c):
+    cap = SCHENGEN_CAPITAL.get(c["name"]) if c["region"] == "schengen" else None
+    if not cap:
+        return ""
+    docs = [d.split("(")[0].strip().rstrip(",;") for d in c["docs_clean"][:5]]
+    return (f'<div class="block" id="capital"><h2>{e(cap)} visa requirements for Pakistani travellers</h2>'
+            f'<p>If you are searching for {e(cap)} visa requirements, they are the requirements of the {e(c["name"])} Schengen visa. The checklist on this page has {len(c["docs_clean"])} documents, '
+            f'including {e(", ".join(docs[:-1]).lower())} and {e(docs[-1].lower())}. Apply to the embassy of the country where you will spend the most nights. '
+            f'The embassy decides every application, and rules can change, so check the official page before you submit.</p></div>')
+
 def build_country(c):
     r = REGIONS[c["region"]]
     vv = visit_visa(c["region"]) if c["slug"] not in ("ireland",) else None   # Ireland sits under the UK region; UK (GOV.UK) times don't apply
@@ -3212,7 +3227,7 @@ def build_country(c):
 {tier_block(c["name"], tier, note=c.get("tier_note", ""))}
 {official_facts(c)}
 <div class="block" id="about"><h2>{e(c["name"])} visa services in Islamabad</h2><p>{e(c["intro"])}</p></div>
-{focus_block}
+{focus_block}{capital_block(c)}
 <div class="block" id="fee"><h2>{e(c["name"])} visa cost &amp; processing time</h2><div class="feebox" style="grid-template-columns:repeat(2,minmax(0,1fr))"><div><small>Processing time</small><b>{e(proc)}</b></div><div><small>Cost</small><b>Today's price on WhatsApp</b></div></div>
 <p style="margin-top:12px">Embassy charges change with exchange rates and policy, so we don't publish them. Send us your travel dates and we confirm the current all-in cost for your case. No payment until you agree.</p>
 <p style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;align-items:center"><a class="btn wa" href="{wa("Hi, what is the total cost for a " + c["name"] + " visa?")}" target="_blank" rel="noopener">💬 Ask today's price</a><a class="link" href="/guides/visa-requirements-for-pakistani-passport">Compare {len(COUNTRIES)} country guides →</a></p></div>
@@ -3563,6 +3578,13 @@ def build_hotel():
          "Verifiable hotel reservations for visa applications and holidays. Luxury, mid-range and budget stays worldwide, booked by our Blue Area office.",
          body, ld, "hotel booking islamabad, hotel reservation for visa, hotel booking agent pakistan", priority="0.7")
 
+INS_FAQS = [
+ ("Is this travel insurance for people travelling from Pakistan?", "Yes. This page covers travel insurance for people travelling from Pakistan abroad, for example for a Schengen visa application."),
+ ("What minimum medical cover do Schengen embassies ask for?", "Schengen states require at least €30,000 medical cover valid for the whole stay. Other countries may ask for it too."),
+ ("Which insurers do you arrange policies from?", "We arrange policies from licensed Pakistani insurers and check the dates, the countries covered and the medical cover against your visa application."),
+ ("Can the embassy verify my policy?", "Yes. We issue verifiable travel insurance from our Blue Area office, and we check it matches your visa file before you submit."),
+]
+
 def build_insurance():
     cov = "".join(feat(*x) for x in [("🩺", "Medical Coverage", "Medical emergencies, hospital stays and repatriation abroad, up to the limit of the policy you choose."), ("🧳", "Trip Protection", "Cover for trip cancellations, delays or lost baggage, depending on the policy."), ("🇪🇺", "Schengen Compliant", "Policies that meet the €30,000 minimum medical cover Schengen embassies require.")])
     covers = "".join(f"<li>{x}</li>" for x in ["Emergency medical expenses and hospital stays", "Medical evacuation and repatriation", "Trip cancellations and severe delays", "Loss of passport or checked baggage"])
@@ -3573,11 +3595,12 @@ def build_insurance():
 <div><h3>A policy the embassy can check</h3><p>We arrange your policy from a licensed Pakistani insurer and check the dates, the countries covered and the medical cover against your visa application. Ask us how the embassy can verify your policy before you pay.</p></div></div>
 <h3>What our policies cover</h3><ul class="checks">{covers}</ul>
 <h3>Issued from our Blue Area office</h3><p>Whether you need coverage for a USA visa, a UK family visit, or a European tour, send us a picture of your passport via WhatsApp or visit our office in Blue Area, Islamabad. We issue your verifiable travel insurance certificate once we have your details. We reply during office hours.</p></div></section>
+<section class="sec reveal"><div class="block"><h2>Travel insurance FAQs</h2>{faq_html(INS_FAQS)}</div></section>
 {cta_band("Insure your journey today", "Get your verifiable travel insurance over WhatsApp or at our Blue Area office.")}'''
     acts = f'<a class="btn wa" href="{wa("Hi, I need a travel insurance quote.")}" target="_blank" rel="noopener">💬 Get insurance quote</a>'
     ph = pagehead("Travel insurance", "Travel covered.<br>Mind at ease.", "Schengen-compliant policies, global medical cover and trip cancellation protection from licensed Pakistani insurers.", UNS["it"], alt="Schengen travel insurance", actions=acts)
     body = shell("/travel-insurance", [("Home", "/"), ("Travel Insurance", None)], ph, content)
-    ld = [crumbs_ld([("Home", "/"), ("Travel Insurance", "/travel-insurance")]), service_ld("Travel insurance", "Schengen-compliant, embassy-verifiable travel insurance issued from Islamabad.", "/travel-insurance", {"serviceType": "Travel insurance"})]
+    ld = [faq_ld(INS_FAQS), crumbs_ld([("Home", "/"), ("Travel Insurance", "/travel-insurance")]), service_ld("Travel insurance", "Schengen-compliant, embassy-verifiable travel insurance issued from Islamabad.", "/travel-insurance", {"serviceType": "Travel insurance"})]
     page("/travel-insurance", "Travel Insurance Pakistan | Schengen Compliant | AL ARBAB",
          "Schengen-compliant travel insurance from licensed Pakistani insurers, with the €30,000 minimum medical cover, arranged from our Blue Area office in Islamabad.",
          body, ld, "travel insurance pakistan, schengen travel insurance islamabad, travel insurance for visa", priority="0.7")
@@ -3944,6 +3967,14 @@ def build_cities():
             ("🏨", "Hotels & reservations", "Verifiable hotel and flight reservations for visa files, plus holiday stays.", "/flight-hotel-reservation-for-visa"),
             ("🛡", "Travel insurance", "Schengen-compliant policies from licensed Pakistani insurers.", "/travel-insurance"),
             ("📅", "Visa appointments", "VFS Global, BLS, Gerry's and embassy appointment booking.", "/visa-appointments")])
+        _what = "visa consultant" if visa else "travel agency"
+        choose_block = (f'<div class="block"><h2>How to choose a {_what} in {e(city)}</h2><p>Whoever you choose, ask these questions before you pay:</p><ul class="checks">'
+                        '<li><b>Licence:</b> is the agency licensed by the Department of Tourist Services (DTS)? Ours is DTS licensed; see our <a class="il" href="/compliance">compliance</a> page.</li>'
+                        '<li><b>Quote first:</b> will you get the full price in writing before you pay anything? We quote the full price after the free document check.</li>'
+                        '<li><b>Clear scope:</b> does the agency process your visa, or prepare your file and guide you? For Asian visit visas we process and follow up; for Schengen, UK, USA, Canada and Australia we prepare your file and guide you.</li>'
+                        '<li><b>No promises:</b> the embassy decides every visa, so be careful with anyone who promises approval.</li>'
+                        '<li><b>Where to find them:</b> a real office with hours. Ours is in Eagle Plaza, Blue Area, open Monday to Saturday, 9am to 8pm.</li>'
+                        '<li><b>Refunds:</b> read the agency\'s policy first. See our <a class="il" href="/fees-and-refunds">fees and refunds</a> page.</li></ul></div>')
         steps = steps_html([("WhatsApp your details", "Tell us the country and travel dates; send passport and documents as photos."),
                             ("Free document check", "An adviser checks your file and tells you what is missing and the full price."),
                             ("One office visit", "Visit Blue Area to sign forms and hand over originals when the file is ready."),
@@ -3967,6 +3998,7 @@ def build_cities():
 {'<div class="block"><h2>Visa regions we handle</h2><div class="rgrid">' + regions + '</div></div>' if visa else '<div class="block"><h2>Everything under one roof</h2><div class="grid">' + services + '</div></div>'}
 <div class="block"><h2>How it works{' for ' + city + ' clients' if rawal else ''}</h2><ol class="steps">{steps}</ol></div>
 {getting}
+{choose_block}
 <div class="block"><h2>Popular destinations</h2><div class="tiles">{"".join(tile(c) for c in popular)}</div><p style="margin-top:12px"><a class="link" href="/countries">All {len(COUNTRIES)} country guides →</a></p></div>
 {office_block()}
 <div class="block"><h2>FAQs</h2>{faq_html(faqs)}</div>
@@ -4474,6 +4506,7 @@ GUIDES2 = [
       desc="NOC letter for a visa from Pakistan: when employers or institutes are asked for one, what the letter should contain and common mistakes.",
       kw="noc letter for visa pakistan, employer noc visa, noc for visit visa, job letter for visa pakistan",
       sections=[
+       ("What is an NOC in Pakistan?", "<p>In Pakistan, a No Objection Certificate (NOC) is a letter from an authority, employer or institute saying it has no objection to something you want to do. In a visa file it usually means a letter from your employer or institute saying you may travel and will return. This page covers the NOC for a visa.</p>"),
        ("What an NOC is", "<p>A No Objection Certificate (NOC) is a letter from your employer or institute saying you are allowed to travel and that you will return to your job or studies. Embassies ask for it, or for an equivalent employment letter, to confirm your ties to Pakistan.</p>"),
        ("What the letter should contain", _ul(["<b>Your details</b>: full name as on the passport, CNIC number, designation and joining date", "<b>Travel purpose and dates</b>: country, approximate dates and the approved leave period", "<b>Return statement</b>: that you will resume duty after the trip", "<b>Company details</b>: letterhead, stamp, signature and a contact number or email"])),
        ("Common mistakes", _ul(["Name or designation that does not match the salary slips or bank statement", "Leave dates that do not match the trip dates in the application", "A letter with no stamp, no signature or no contact details", "Unsigned copies sent instead of the original"])),
