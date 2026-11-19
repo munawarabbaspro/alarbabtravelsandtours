@@ -456,7 +456,8 @@ OFFICIAL = {
  "bahrain": [("Bahrain e-Visa (official)", "https://www.evisa.gov.bh/"), ("Bahrain e-Visa: countries eligible online", "https://www.evisa.gov.bh/list-of-online-visa-country.html"), ("Bahrain e-Visa: process for obtaining a visa", "https://www.evisa.gov.bh/VisaBhr2En.html")],
  "uzbekistan": [("Uzbekistan e-Visa portal", "https://e-visa.gov.uz/"), ("Embassy of Uzbekistan in Pakistan: consular services", "https://pakistan.mfa.uz/en/page/consular-services")],
  "japan": [("Embassy of Japan in Pakistan: visa information", "https://www.pk.emb-japan.go.jp/itpr_ja/VisaInfo.html")],
- "saudi-arabia": [("Saudi visa platform", "https://visa.visitsaudi.com/")],
+ "saudi-arabia": [("Saudi visa platform", "https://visa.visitsaudi.com/"), ("Nusuk Umrah (official platform)", "https://umrah.nusuk.sa/"),
+                   ("Saudi Ministry of Health: health regulations for Umrah travellers", "https://www.moh.gov.sa/en/HealthAwareness/Pilgrims-Health/Documents/Health-Regulations-Umrah-EN.pdf")],
  "kenya": [("Kenya eTA (official)", "https://www.etakenya.go.ke/")],
  "philippines": [("Philippine DFA: visa general information", "https://consular.dfa.gov.ph/visa-general-info/"), ("Philippine DFA: visa FAQs", "https://consular.dfa.gov.ph/visa-faqs/"),
                  ("eVisaPH: check if you need a visa", "https://evisa.gov.ph/"), ("eVisaPH: Philippine visa policy", "https://evisa.gov.ph/page/policy")],
@@ -3353,6 +3354,108 @@ def build_air():
          "Air ticketing in Islamabad. Flights to London, Dubai, Toronto, Jeddah & more on major airlines. E-tickets, group & student fares. Fares on WhatsApp.",
          body, ld, "air ticketing islamabad, flight tickets islamabad, licensed travel agent pakistan, pia booking islamabad, emirates tickets islamabad", priority="0.9")
 
+# ---- prompt 04: Umrah hub, package pages and Ramadan Umrah. Facts only from the site's own package data and the official Saudi pages listed in UMRAH_SOURCES.
+UMRAH_SOURCES = [("Nusuk Umrah (official platform)", "https://umrah.nusuk.sa/"), ("Saudi visa platform", "https://visa.visitsaudi.com/"),
+                 ("Saudi Ministry of Health: health regulations for Umrah travellers", "https://www.moh.gov.sa/en/HealthAwareness/Pilgrims-Health/Documents/Health-Regulations-Umrah-EN.pdf")]
+
+def umrah_sources_block(h="Official sources for your Umrah"):
+    return (f'<div class="block" id="sources"><h2>{h}</h2><p>Visa types, entry rules and health requirements for Umrah are set by the Saudi authorities and can change. Read the current official pages before you book and again before you travel:</p><ul class="srcs">'
+            + "".join(f'<li><a href="{u}" target="_blank" rel="noopener nofollow">{e(n)} ↗</a></li>' for n, u in UMRAH_SOURCES)
+            + '</ul><p>All our official links are collected on the <a class="il" href="/sources">official sources</a> page.</p></div>')
+
+UMRAH_FAQS2 = [
+ ("What do I send you to start my Umrah visa file?", "Send a clear photo of each passport, passport-size photos, your travel dates, the number of travellers with their names exactly as on the passports, and whether you travel as a family or group. We tell you the current requirements of the Saudi authorities for your dates and prepare the file."),
+ ("Can I choose my hotels in Makkah and Madinah?", "Yes. Choose your hotels in both cities and change the number of nights in each. Hotel distance is listed on each package, and exact hotels and distances are confirmed for your dates before you pay."),
+ ("What is the difference between the Economy and the 3 Star package?", "Economy lists standard hotels (1km+) and shared transport. The 3 Star package lists 3 Star hotels (600m), luxury transport and breakfast included. Both list visa processing; the Economy package also lists return flights."),
+ ("Is the visa included in the package?", "Visa processing is listed in the Economy and 3 Star packages, and visa and insurance in the 4 Star package. For the 5 Star package and custom plans, ask us what is included for your dates. The Saudi authorities issue the visa and make the final decision."),
+ ("Can I travel as a family or as a group?", "Yes. Plans can be made as a group or as a private family package, with stays of 7, 10, 15 or 30 days."),
+ ("Do I need vaccinations for Umrah?", "Health requirements for Umrah travellers are set by the Saudi Ministry of Health and can change. Read the current Umrah health regulations on the official page linked on this page and check your vaccination certificate before you travel."),
+ ("Where do I check the official Umrah rules?", "On the official Saudi pages linked in the sources section of this page: the Nusuk Umrah platform, the Saudi visa platform and the Saudi Ministry of Health regulations for Umrah travellers."),
+]
+
+def umrah_compare_table(cur=None):
+    rows = ""
+    for o in DATA["umrah"]:
+        ft = o["features"]
+        b = ' style="background:#eef7f7"' if cur is not None and o is cur else ""
+        rows += (f'<tr{b}><td><a class="il" href="{umrah_url(o)}">{e(o["title"])}</a></td><td>{e(ft[0])}</td><td>{e(ft[1])}</td><td>{e(ft[2])}</td><td>{e("; ".join(ft[3:]))}</td></tr>')
+    return ('<div style="overflow-x:auto"><table class="tbl"><thead><tr><th>Package</th><th>Duration</th><th>Hotels</th><th>Transport</th><th>Also listed</th></tr></thead><tbody>'
+            + rows + '</tbody></table></div>')
+
+def umrah_hub_extra():
+    return (
+     '<section class="sec reveal"><div class="block"><h2>How Umrah with AL ARBAB works, step by step</h2><ol class="steps">' + steps_html([
+        ("Message us your dates", "Send your travel dates, the number of travellers and whether you travel as a family or group on WhatsApp."),
+        ("Choose a package", "Economy, 3 Star, 4 Star or 5 Star Luxury, or a customized plan with your own hotels and nights."),
+        ("Send your documents", "Passport photos and the details we ask for. We check them and prepare your Umrah visa file."),
+        ("Hotels confirmed", "We confirm your Makkah and Madinah hotels for your dates, and tell you the hotel location before you pay."),
+        ("Flights and transport", "We arrange return flights quoted for your dates, and shared or private transport as listed in your package."),
+        ("Travel with support", "WhatsApp and phone support Mon–Sat, 9am–8pm. The Saudi authorities issue the visa and make the final decision.")]) + '</ol></div></section>'
+     '<section class="sec reveal"><div class="block"><h2>What to send us for your Umrah visa file</h2><ul class="checks">'
+     '<li>A clear photo of each passport</li><li>Passport-size photos</li><li>Your travel dates, or the month you prefer</li>'
+     '<li>The number of travellers, with names exactly as on the passports</li><li>Whether you travel as a family or as a group</li></ul>'
+     '<p>Entry rules for Umrah are set by the Saudi authorities and can change. We tell you the current requirement for your dates and check your file before it is submitted. See the <a class="il" href="#sources">official sources</a> below.</p></div></section>'
+     '<section class="sec reveal"><div class="block"><h2>When to start planning</h2><p>Start as soon as you know your dates or your preferred month. Hotels and flights are quoted for your exact dates, and prices change with the season, airfare and hotel availability, so we quote on the day. '
+     'The earlier you send your dates, the more hotel and flight choices we can check for you. If you want to travel in Ramadan, read our <a class="il" href="/umrah/ramadan-umrah">Ramadan Umrah</a> page.</p></div></section>'
+     '<section class="sec reveal"><div class="block"><h2>Hotels, distance and transport explained</h2>'
+     '<p>Each package lists the hotel category and its distance, and the transport type. Exact hotels and distances are confirmed for your dates before you pay. Here is how the four packages compare:</p>' + umrah_compare_table() +
+     '<ul class="checks" style="margin-top:12px"><li><b>Hotels:</b> Economy lists standard hotels (1km+), the 3 Star package 3 Star hotels (600m), the 4 Star package walking distance, and the 5 Star Luxury package front-row 5 Star hotels.</li>'
+     '<li><b>Transport:</b> shared transport in Economy, luxury transport in 3 Star, private transport in 4 Star and VIP private transport in 5 Star. For a customized plan you can choose private GMC or luxury bus transport.</li>'
+     '<li><b>Ziarat:</b> the 4 Star package lists breakfast and ziarat.</li>'
+     '<li><b>Stay length:</b> packages list 7 to 15 days, and customized plans can be 7, 10, 15 or 30 days. You can change the number of nights in Makkah and in Madinah.</li></ul></div></section>'
+     '<section class="sec reveal"><div class="block"><h2>Ramadan or the rest of the year</h2><p>Ramadan dates follow the Islamic calendar and moon sighting, so confirm your dates before you book anything. '
+     'The same packages are available for Ramadan and for the rest of the year; what changes is the dates, the hotel and flight availability and the price on the day. '
+     'Tell us which dates you prefer and we quote for them. Details are on our <a class="il" href="/umrah/ramadan-umrah">Ramadan Umrah packages</a> page.</p></div></section>'
+     '<section class="sec reveal">' + umrah_sources_block() + '</section>')
+
+def umrah_pkg_extra(u):
+    ft = u["features"]
+    return (
+     '<div class="block"><h2>Hotels and transport in the ' + e(u["title"]) + '</h2><p>Duration: <b>' + e(ft[0]) + '</b>. Hotels: <b>' + e(ft[1]) + '</b>. Transport: <b>' + e(ft[2]) +
+     '</b>. Exact hotels and distances are confirmed for your dates before you pay, and you can change the number of nights in Makkah and in Madinah. Other items listed in this package: ' + e("; ".join(ft[3:])) + '.</p></div>'
+     '<div class="block"><h2>How the ' + e(u["title"]) + ' compares with the other packages</h2>' + umrah_compare_table(u) +
+     '<p style="margin-top:10px">See all options on the <a class="il" href="/umrah">Umrah packages</a> page, or the <a class="il" href="/umrah/ramadan-umrah">Ramadan Umrah</a> page if you plan to travel in Ramadan.</p></div>'
+     '<div class="block"><h2>What to send us</h2><ul class="checks"><li>A clear photo of each passport and passport-size photos</li><li>Your travel dates and the number of travellers</li><li>Names exactly as on the passports</li></ul>'
+     '<p>We prepare your Umrah visa file. The Saudi authorities issue the visa and make the final decision. Prices change with dates, airfare and hotel availability, so we quote on the day.</p></div>'
+     + umrah_sources_block("Check the official rules"))
+
+RAMADAN_FAQS = [
+ ("When is Ramadan Umrah?", "Ramadan follows the Islamic calendar and moon sighting, so the exact start depends on the sighting. Confirm your dates before you book, and send them to us so we can check hotel and flight availability."),
+ ("How much does a Ramadan Umrah package cost?", "Prices change with the season, airfare and hotel availability, so we quote on the day for your dates. Choose Economy, 3 Star, 4 Star or 5 Star and send your dates on WhatsApp for today's price."),
+ ("Which package should I choose for Ramadan?", "Choose by hotel distance, transport and stay length. The packages list standard hotels (1km+), 3 Star hotels (600m), walking distance or front-row 5 Star hotels. Use the comparison table on this page."),
+ ("Is the visa included?", "Visa processing is listed in the Economy and 3 Star packages, and visa and insurance in the 4 Star package. The Saudi authorities issue the visa and make the final decision."),
+ ("Can my family travel together?", "Yes. Plans can be made as a group or as a private family package."),
+ ("Where do I check the official rules?", "On the official Saudi pages linked on this page."),
+]
+
+def build_ramadan_umrah():
+    url = "/umrah/ramadan-umrah"
+    main = ('<div class="stack">'
+     '<div class="block answer" id="answer"><h2>Ramadan Umrah from Islamabad: quick answer</h2><p>AL ARBAB TRAVEL AND TOURS arranges Umrah packages from Islamabad: hotels in Makkah and Madinah, return flights, transport and Umrah visa file preparation. '
+     'To travel in Ramadan, send us your preferred dates early. We check hotel and flight availability for those dates and quote the price on the day. The Saudi authorities issue the visa and make the final decision.</p></div>'
+     '<div class="block"><h2>Planning Ramadan Umrah</h2><p>Ramadan dates follow the Islamic calendar and moon sighting, so the start date can move by a day. Confirm your dates before you book flights or hotels, and tell us the nights you want in Makkah and in Madinah. '
+     'The earlier you send your dates, the more hotels and flights we can check for you.</p><ul class="checks"><li>Send your preferred dates and the number of travellers on WhatsApp</li><li>Choose the package that fits your hotel distance and transport</li>'
+     '<li>Send passport photos and the details we ask for, so we can prepare your visa file</li><li>We confirm your hotels for your dates and tell you the hotel location before you pay</li></ul></div>'
+     '<div class="block"><h2>Ramadan or the rest of the year</h2><ul class="checks"><li><b>Dates:</b> Ramadan follows moon sighting; other months follow the calendar you choose.</li>'
+     '<li><b>Availability:</b> we check hotels and flights for your exact dates.</li><li><b>Price:</b> prices change with the season, airfare and hotel availability, so we quote on the day.</li>'
+     '<li><b>Packages:</b> the same four packages and customized plans are available all year.</li><li><b>Stay length:</b> 7 to 15 days in the packages, and 7, 10, 15 or 30 days for customized plans.</li></ul></div>'
+     '<div class="block"><h2>Choose your package</h2>' + umrah_compare_table() + '</div>'
+     '<div class="block"><h2>Hotels, transport and flights explained</h2><p>Each package lists the hotel category and distance and the transport type. Exact hotels and distances are confirmed for your dates before you pay. '
+     'We arrange return flights from Islamabad quoted for your dates, and shared or private transport as listed in your package. The 4 Star package lists breakfast and ziarat. For a customized plan you can choose private GMC or luxury bus transport.</p></div>'
+     + umrah_sources_block() +
+     '<div class="block" id="faqs"><h2>Ramadan Umrah FAQs</h2>' + faq_html(RAMADAN_FAQS) + '</div></div>')
+    ol = "".join(f'<a href="{umrah_url(o)}">{e(o["title"])} <span>→</span></a>' for o in DATA["umrah"])
+    aside = f'<aside class="aside">{ctacard("Ramadan Umrah")}<nav class="mini"><h3>Umrah packages</h3><a href="/umrah">All Umrah packages <span>→</span></a>{ol}</nav></aside>'
+    content = f'<div class="layout">{main}{aside}</div>{cta_band("Begin your sacred journey")}'
+    ph = pagehead("Umrah 2026", "Ramadan Umrah packages<br>from Islamabad", "Send your preferred Ramadan dates and we check hotels and flights for them. Visa file, hotels, flights and transport arranged from Blue Area, Islamabad.", UMRAH_IMG,
+                  alt="Ramadan Umrah – Makkah", actions=f'<a class="btn wa" href="{wa("Hi, I want Ramadan Umrah package details.")}" target="_blank" rel="noopener">💬 Ramadan Umrah on WhatsApp</a>')
+    body = shell("/umrah", [("Home", "/"), ("Umrah Packages", "/umrah"), ("Ramadan Umrah", None)], ph, content)
+    ld = [crumbs_ld([("Home", "/"), ("Umrah Packages", "/umrah"), ("Ramadan Umrah", url)]),
+          service_ld("Ramadan Umrah packages from Islamabad", "Umrah packages with hotels, flights, transport and Umrah visa file preparation.", url, {"serviceType": "Umrah package"}), faq_ld(RAMADAN_FAQS)]
+    page(url, "Ramadan Umrah Packages from Islamabad | AL ARBAB",
+         "Ramadan Umrah packages from Islamabad: plan your dates, compare hotel distance and transport, and get your visa file prepared. Price on WhatsApp.",
+         body, ld, "ramadan umrah packages from islamabad, ramadan umrah packages, umrah packages islamabad", image=AU(UMRAH_IMG, 1200), priority="0.8")
+
 def build_umrah():
     pk = ""
     for n_, u in enumerate(DATA["umrah"]):
@@ -3372,12 +3475,13 @@ def build_umrah():
 <div class="two"><div><h3>Economy &amp; budget Umrah 2026</h3><p>Our Economy packages suit families looking for a lower-cost option. Hotel distance and transport are listed on each package.</p></div>
 <div><h3>5 Star Umrah</h3><p>Our 5 Star packages use hotels close to the Haram, with private transport. Exact hotels and distances are confirmed for your dates.</p></div></div>
 <h2>Why book your Umrah with us?</h2><ul class="checks">{why}</ul></div></section>
-{sec("Frequently asked questions", "", faq_html(FAQ_UMRAH))}
+{umrah_hub_extra()}
+{sec("Frequently asked questions", "", faq_html(FAQ_UMRAH + UMRAH_FAQS2))}
 {cta_band("Begin your sacred journey")}'''
     acts = f'<a class="btn wa" href="{wa("Hi, I want Umrah package details.")}" target="_blank" rel="noopener">💬 Umrah enquiry</a>'
     ph = pagehead("Spiritual journey", "Umrah packages designed<br>for peace of mind", "Economy to 5-star Umrah packages 2026 from Islamabad: hotels, flights and Umrah visa file preparation. Support: Mon–Sat, 9am–8pm.", UMRAH_IMG, alt="Kaaba, Makkah – Umrah 2026", actions=acts)
     body = shell("/umrah", [("Home", "/"), ("Umrah Packages", None)], ph, content)
-    ld = [crumbs_ld([("Home", "/"), ("Umrah Packages", "/umrah")]), faq_ld(FAQ_UMRAH),
+    ld = [crumbs_ld([("Home", "/"), ("Umrah Packages", "/umrah")]), faq_ld(FAQ_UMRAH + UMRAH_FAQS2),
           {"@context": "https://schema.org", "@type": "ItemList", "name": "Umrah packages 2026", "itemListElement": [{"@type": "ListItem", "position": i + 1, "item": {"@type": "Service", "name": f"Umrah {u['title']}", "provider": {"@id": BASE + "/#org"},
             }} for i, u in enumerate(DATA["umrah"])]}]
     page("/umrah", "Umrah Packages 2026 from Pakistan | AL ARBAB",
@@ -3889,14 +3993,15 @@ def build_umrah_packages():
         others = [o for o in DATA["umrah"] if o is not u]
         faqs = [(f"What is included in the {u['title']}?", ", ".join(u["features"]) + "."),
                 (f"How much does the {u['title']} cost?", "Prices change with dates, airfare and hotel availability, so we quote on the day. Send your dates and family size on WhatsApp for today's price."),
-                FAQ_UMRAH[1]]
+                FAQ_UMRAH[1], UMRAH_FAQS2[3], UMRAH_FAQS2[1]]
         main = f'''<div class="stack">
 <div class="block"><h2>{e(u["title"])} at a glance</h2><div class="feebox"><div><small>Price</small><b>Today's price on WhatsApp</b></div><div><small>Duration</small><b>{e(u["features"][0])}</b></div><div><small>Hotels</small><b>{e(u["features"][1])}</b></div></div></div>
 <div class="block"><h2>What's included</h2><ul class="checks">{f}</ul></div>
 <div class="block"><h2>Make it yours</h2><p>Choose your hotels in Makkah and Madinah, change the number of nights in each city, or upgrade transport. Tell us your dates and family size on WhatsApp for a tailored quote.</p>
 <p style="margin-top:12px"><a class="btn wa" href="{wa(f"Hi, I want to book the {u['title']} Umrah package. Please send today's price.")}" target="_blank" rel="noopener">💬 Book this package</a></p></div>
+{umrah_pkg_extra(u)}
 <div class="block"><h2>FAQs</h2>{faq_html(faqs)}</div></div>'''
-        ol = "".join(f'<a href="{umrah_url(o)}">{e(o["title"])} <span>→</span></a>' for o in others)
+        ol = "".join(f'<a href="{umrah_url(o)}">{e(o["title"])} <span>→</span></a>' for o in others) + '<a href="/umrah/ramadan-umrah">Ramadan Umrah <span>→</span></a>'
         content = f'<div class="layout">{main}<aside class="aside">{ctacard(u["title"] + " Umrah")}<nav class="mini"><h3>Other Umrah packages</h3><a href="/umrah">All Umrah packages <span>→</span></a>{ol}</nav></aside></div>{cta_band("Begin your sacred journey")}'
         ph = pagehead("Umrah 2026", f"Umrah {e(u['title'])}", e(", ".join(u["features"][:3])) + ". Visa, flights and hotels arranged from Islamabad.", UMRAH_IMG, alt=f"Umrah {u['title']} – Makkah",
                       actions=f'<a class="btn wa" href="{wa(f"Hi, I want the {u['title']} Umrah package.")}" target="_blank" rel="noopener">💬 Book on WhatsApp</a>')
@@ -4494,7 +4599,7 @@ ExpiresByType font/woff2 "access plus 1 year"
 if __name__ == "__main__":
     build_home(); build_visa_updates(); build_countries_hub(); build_packages(); build_visa_services(); build_air(); build_umrah()
     build_hotel(); build_insurance(); build_airlines(); build_about(); build_contact(); build_policies(); build_misc()
-    build_eligibility(); build_cities(); build_appointments(); build_reservation(); build_routes(); build_umrah_packages(); build_guides()
+    build_eligibility(); build_cities(); build_appointments(); build_reservation(); build_routes(); build_umrah_packages(); build_ramadan_umrah(); build_guides()
     for r in DATA["regions"]:
         build_region(r)
     for c in COUNTRIES.values():
