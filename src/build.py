@@ -3308,6 +3308,7 @@ def build_package(p):
 <p style="margin-top:14px">{e(p["title"])} — {e(p["duration"])} with {e(p["amenities"].replace(" | ", " and "))}. Curated by {NAME} for travelers from Pakistan, with visa guidance, flights and hotels arranged by one team.</p></div>
 <div class="block"><h2>Highlights</h2><ul class="checks">{li}</ul></div>
 <div class="block"><h2>Visa &amp; travel documents</h2><p>We handle the visa process for this trip as part of your booking. See the full document checklist on the <a class="link" href="{link}">{e(p["country"])} page</a>.</p></div>
+{trip_extra(trip_country(link), p["country"], "package")}
 <div class="block"><h2>Price &amp; availability</h2><p>Prices depend on travel dates, hotel category and group size. Send your dates on WhatsApp and we reply with a complete quote. We reply during office hours.</p><p style="margin-top:14px"><a class="btn wa" href="{wa(f"Hi, please send me a quote for the {p['title']} package ({p['duration']}).")}" target="_blank" rel="noopener">💬 Get price on WhatsApp</a></p></div>
 </div>'''
     ol = "".join(f'<a href="{o["url"]}">{e(o["title"])} <span>→</span></a>' for o in others[:6])
@@ -4351,6 +4352,40 @@ ROUTE_SHORT = {"Online e-visa": "E-visa", "Online ETA": "ETA", "Visa on arrival 
 def tour_url(slug):
     return "/tours/" + slug
 
+# ---- prompt 05: tour and package pages. Visa facts come from the country guide (official sources, each with its link); nothing is invented.
+def trip_country(c_or_link):
+    if isinstance(c_or_link, dict):
+        return c_or_link
+    for x in COUNTRIES.values():
+        if x["url"] == c_or_link:
+            return x
+    return None
+
+def trip_extra(c, name, kind="tour"):
+    """Visa-for-Pakistanis block, what to send, related services and more trips. c may be None for pages without a country guide."""
+    out = ""
+    if c and c.get("facts") and c["slug"] != "united-arab-emirates":
+        li = "".join(f'<li><span>{e(t)}<br><a class="link" href="{u}" target="_blank" rel="noopener nofollow">Source: {e(n)} ↗</a></span></li>' for t, n, u in c["facts"][:4])
+        out += (f'<div class="block" id="visa-facts"><h2>Visa for Pakistanis: what the official sources say</h2><ul class="checks">{li}</ul>'
+                f'<p class="note" style="margin-top:12px">Rules change, so check the official site before you apply. Final decision rests with the embassy. Full checklist: <a class="il" href="{c["url"]}">{e(c["name"])} visa from Pakistan</a>.</p></div>')
+    elif c:
+        out += f'<div class="block" id="visa-facts"><h2>Visa for this trip</h2><p>See the document checklist and how to apply on our <a class="il" href="{c["url"]}">{e(c["name"])} visa page</a>. Rules change, so confirm them before you book.</p></div>'
+    out += ('<div class="block"><h2>What to send us to plan this trip</h2><ul class="checks"><li>Your travel dates and how many nights you want</li><li>The number of travellers, with ages for children</li>'
+            '<li>Your budget and the hotel category you prefer</li><li>The city you fly from: Islamabad, Lahore or Karachi</li><li>A photo of each passport, so we can prepare the visa file</li></ul>'
+            '<p>We reply with flights, hotels and the visa costed for your dates. Prices change with dates, airfare and hotel availability, so we quote on the day.</p></div>')
+    out += ('<div class="block"><h2>Flights, hotels and insurance</h2><ul class="checks"><li><a class="il" href="/air-ticketing">Air tickets</a> on major airlines, with group and student fares</li>'
+            '<li><a class="il" href="/hotel-booking">Hotel booking</a> for holiday stays</li><li><a class="il" href="/flight-hotel-reservation-for-visa">Flight and hotel reservation for visa</a> if your embassy asks for one</li>'
+            '<li><a class="il" href="/travel-insurance">Travel insurance</a> from licensed Pakistani insurers</li><li><a class="il" href="/guides/visa-documents-explained">Visa documents explained</a></li></ul></div>')
+    more = [(tour_url(sl), nm) for sl, cs, nm, hn, pid in TOURS if (not c or cs != c["slug"]) and cs != "united-arab-emirates"][:5]
+    if more:
+        out += '<div class="block"><h2>More trips from Islamabad</h2><ul class="checks">' + "".join(f'<li><a class="il" href="{u}">{e(n)} tour package</a></li>' for u, n in more) + '</ul></div>'
+    return out
+
+def trip_facts_faq(c):
+    if c and c.get("facts") and c["slug"] != "united-arab-emirates":
+        return [(f"What do the official sources say about the {c['name']} visa for Pakistanis?", " ".join(t for t, _, _ in c["facts"][:3]) + " The source links are on this page and on our visa page.")]
+    return []
+
 def build_tours():
     pk = {p["id"]: p for p in PACKAGES}
     cards = []
@@ -4379,7 +4414,8 @@ def build_tours():
 <div class="block" id="included"><h2>What we arrange</h2><ul class="checks">{"".join(f"<li>{e(x)}</li>" for x in ARRANGE)}</ul></div>
 <div class="block" id="visa"><h2>{e(c["name"])} visa for this trip</h2><p>{e(c["name"])} checklist: {len(c["docs_clean"])} documents. How you apply: {e(route.lower())}. <a class="link" href="{c["url"]}">See the full {e(c["name"])} visa requirements →</a></p></div>
 <div class="block" id="how"><h2>How booking works</h2><ol class="steps">{steps_html([("Share your plan", "Dates, number of travellers and budget on WhatsApp."), ("Get a quote", "Flights, hotels and visa costed for your dates."), ("Visa & bookings", "We prepare the visa file and confirm flights and hotels."), ("Travel", "Documents and WhatsApp support for the trip, Mon–Sat, 9am–8pm.")])}</ol></div>
-<div class="block" id="faqs"><h2>FAQs</h2>{faq_html(faqs)}</div>
+{trip_extra(c, name)}
+<div class="block" id="faqs"><h2>FAQs</h2>{faq_html(faqs + trip_facts_faq(c))}</div>
 </div>'''
         others = "".join(f'<a href="{tour_url(t[0])}">{e(t[2])} tour <span>→</span></a>' for t in TOURS if t[0] != slug)
         aside = f'<aside class="aside">{ctacard(name + " tour")}<nav class="mini"><h3>More tours</h3><a href="/honeymoon-packages">Honeymoon packages <span>→</span></a>{others}</nav></aside>'
@@ -4389,7 +4425,7 @@ def build_tours():
         ld = [crumbs_ld([("Home", "/"), ("Packages", "/packages"), (f"{name} tour", url)]),
               {"@context": "https://schema.org", "@type": "TouristTrip", "name": f"{name} tour package from Pakistan", "description": f"Flights, hotels and visa for {name}, planned to your dates.",
                "touristType": ["Couples", "Families"] if honey else ["Families", "Groups"], "provider": {"@id": BASE + "/#org"}, "image": AU(c["img"], 1200) if c["img"] else LOGO,
-               "itinerary": {"@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": g[0]} for i, g in enumerate(c["gallery"])]}}, faq_ld(faqs)]
+               "itinerary": {"@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": g[0]} for i, g in enumerate(c["gallery"])]}}, faq_ld(faqs + trip_facts_faq(c))]
         title = f"{name} Tour Package from Pakistan 2026 | AL ARBAB"
         if len(title) > 65:
             title = f"{name} Tour Package from Pakistan | AL ARBAB"
