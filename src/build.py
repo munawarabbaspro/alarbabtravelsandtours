@@ -537,20 +537,39 @@ COUNTRY_PAA = {
 
 # priority Asian destinations: bespoke title/description, a "how we prepare your file" block, extra FAQs and sources (official facts only, no fees, no approval promises)
 COUNTRY_SEO = {
- "thailand": ("Thailand Visa from Pakistan: Apply from Islamabad 2026",
-              "Thailand visa from Pakistan: documents, e-Visa steps and how we prepare your file in Blue Area, Islamabad. Free file check on WhatsApp {PHONE_D}"),
+ # Competitor titles/descriptions (checked 19 Nov 2026) lead with the official route, the processing time and the forms; ours do the same, using only facts already on each page. No fees (policy).
+ "thailand": ("Thailand e-Visa from Pakistan: Documents & Islamabad Help",
+              "Thailand e-Visa for Pakistanis: apply on the official e-Visa portal, documents checklist and file help in Blue Area, Islamabad. Free check on WhatsApp {PHONE_D}"),
  "malaysia": ("Malaysia e-Visa from Pakistan: Islamabad File Help",
               "Malaysia e-Visa from Pakistan: document checklist, eVISA steps and file help from our Blue Area, Islamabad office. Free check on WhatsApp {PHONE_D}"),
  "singapore": ("Singapore e-Visa from Pakistan: Islamabad File Help",
                "Singapore e-Visa from Pakistan: documents, how to apply and file help from our Blue Area, Islamabad office. Free check on WhatsApp {PHONE_D}"),
- "indonesia": ("Indonesia Visa from Pakistan: Islamabad Visa Help",
-               "Indonesia visa from Pakistan: documents, e-Visa steps and file help from our Blue Area, Islamabad office. Free check on WhatsApp {PHONE_D}"),
+ "indonesia": ("Indonesia Visa from Pakistan: C1 Tourist Visa & Documents",
+               "Indonesia visa from Pakistan: C1 tourist visa (60 days), arrival card within 3 days of travel, documents and file help in Islamabad. WhatsApp {PHONE_D}"),
+ "japan": ("Japan Visa from Pakistan: VFS Process & Documents 2026",
+           "Japan visa from Pakistan: applications go to VFS Global / Gerry's Visa since 1 April 2024, 6 working days at the earliest. Documents and file help in Islamabad."),
+ "south-korea": ("South Korea Visa from Pakistan: Documents & Embassy Steps",
+                 "South Korea visa from Pakistan: in-person embassy application, minimum 8 weeks processing, 7-document checklist and file help in Blue Area, Islamabad."),
+ "sri-lanka": ("Sri Lanka ETA from Pakistan: 30-Day Tourist Visa 2026",
+               "Sri Lanka tourist visa for Pakistanis: from 25 May 2026 the 30-day ETA tourist visa is free of charge. ETA steps, documents and file help in Islamabad."),
+ "cambodia": ("Cambodia e-Visa from Pakistan: Visa T Documents 2026",
+              "Cambodia tourist e-Visa (Visa T) from Pakistan: single entry, valid 3 months from issue, 1-month stay. Documents, photo and card rules, file help in Islamabad."),
+ "philippines": ("Philippines Visa from Pakistan: Embassy Application 2026",
+                 "Philippines visa from Pakistan: temporary visitor visa applied in person at the Philippine Embassy in Islamabad. 7-document checklist and file help in Blue Area."),
+ "azerbaijan": ("Azerbaijan e-Visa from Pakistan: ASAN Visa & Documents",
+                "Azerbaijan e-Visa: single entry up to 30 days through ASAN Visa, or a tourist visa at the embassy in Islamabad. Documents checklist and file help in Blue Area."),
+ "bahrain": ("Bahrain e-Visa from Pakistan: Official Portal & Documents",
+             "Bahrain visa for Pakistanis: Pakistan is on the official e-Visa list (conditions apply). Documents checklist and file help in Blue Area, Islamabad."),
+ "turkey": ("Turkey Visa from Pakistan: e-Visa or Sticker Visa 2026",
+            "Turkey visa from Pakistan: a one-month e-Visa for holders of a valid Schengen, USA, UK or Ireland visa, a sticker visa for everyone else. File help in Islamabad."),
+ "uzbekistan": ("Uzbekistan Visa from Pakistan: Embassy Route & Documents",
+                "Uzbekistan visa for Pakistanis: Pakistan is not on the e-Visa citizenship list, so apply through the Embassy of Uzbekistan in Islamabad. File help in Blue Area."),
+ "tajikistan": ("Tajikistan e-Visa from Pakistan: evisa.tj Documents 2026",
+                "Tajikistan e-Visa for Pakistanis: apply on the official evisa.tj portal while outside Tajikistan, passport valid six months beyond the e-Visa. File help in Islamabad."),
+ "china": ("China Visa from Pakistan: Online Form & Gerry's Centre",
+           "China visa from Pakistan: fill the online form, then submit at Gerry's Center in Islamabad, Karachi or Lahore. 7-document checklist and file help in Blue Area."),
  "vietnam": ("Vietnam e-Visa from Pakistan: Islamabad Application Help",
              "Vietnam visa from Pakistan: documents for the official e-Visa, photo and passport tips, and file help in Blue Area, Islamabad. Free check on WhatsApp {PHONE_D}"),
- "japan": ("Japan Visa from Pakistan: Islamabad File Preparation",
-           "Japan visit visa from Pakistan: the checklist, itinerary and funds tips, and how we prepare your file in Blue Area, Islamabad. Free file check on WhatsApp {PHONE_D}"),
- "south-korea": ("South Korea Visa from Pakistan: Islamabad File Help",
-                 "South Korea visit visa from Pakistan: the 7-document checklist, funds and travel-history tips, and how we prepare your file in Blue Area, Islamabad. WhatsApp {PHONE_D}"),
 }
 COUNTRY_H1 = {}   # H1 stays 'X visa from Pakistan'; the Islamabad file-help wording sits in the first paragraph (see build_country)
 COUNTRY_FOCUS = {
@@ -3018,6 +3037,7 @@ def build_region(r):
 <div class="block"><h2>Select your visa type</h2><div class="grid" style="margin-top:12px">{vt}</div></div>
 <div class="block"><h2>General requirements</h2><ul class="docs">{reqs}</ul></div>
 <div class="block"><h2>Application process</h2><ol class="steps">{steps_html([(s["title"], s["desc"]) for s in r["stepByStep"]])}</ol></div>
+{region_guides_block(r)}
 {fb}
 {"" if r["slug"] not in REGION_OFFICIAL else '<div class="block"><h2>Official sources</h2><ul class="srcs">' + "".join(f'<li><a href="{u}" target="_blank" rel="noopener nofollow">{e(n)} ↗</a></li>' for n, u in REGION_OFFICIAL[r["slug"]]) + "</ul></div>"}
 <div class="block"><h2>Why choose {NAME} in Islamabad?</h2><p>As a DTS-licensed visa consultant in Blue Area, Islamabad, we check your documents for free before you apply. We provide transparent, end-to-end guidance without hidden fees or false promises.</p><div class="chipsrow" style="margin-top:12px"><span>DTS Licensed Travel Agency</span><span>Free first document check</span></div></div>
@@ -3085,6 +3105,36 @@ def build_region_visa(r, v):
         t = f"{r['name']} {v['name']} from Pakistan | AL ARBAB"
     page(url, t, v["seoDescription"], body, ld, v["keywords"], priority="0.6")
 
+GUIDE_LINKS = [("/guides/visa-documents-explained", "Visa documents explained"), ("/guides/bank-statement-for-visa-from-pakistan", "Bank statement for a visa"),
+               ("/guides/noc-letter-for-visa-pakistan", "NOC letter for a visa"), ("/guides/visa-cover-letter-pakistan", "Visa cover letter"),
+               ("/guides/visa-interview-preparation-pakistan", "Visa interview preparation"), ("/guides/visa-appointment-booking-pakistan", "Visa appointment booking")]
+
+def related_links_for(c):
+    out = []
+    for pk_ in PACKAGES:
+        if pk_.get("country", "").lower() == c["name"].lower() or c["slug"] in pk_["url"]:
+            out.append((pk_["url"], f"{c['name']} holiday package")); break
+    for slug, cs, name, honey, pid in TOURS:
+        if cs == c["slug"]:
+            out.append((tour_url(slug), f"{c['name']} tour package from Islamabad")); break
+    return out
+
+def country_guides_block(c, tier):
+    how = (f"We process and follow up your {c['name']} visit visa from Blue Area, Islamabad." if tier == 1 else
+           f"We prepare your {c['name']} file and guide you through the submission from Blue Area, Islamabad.")
+    gl = "".join(f'<li><a class="il" href="{u}">{n}</a></li>' for u, n in GUIDE_LINKS)
+    rl = "".join(f'<li><a class="il" href="{u}">{n}</a></li>' for u, n in related_links_for(c))
+    return (f'<div class="block" id="guides"><h2>Guides for your {e(c["name"])} file</h2><p>{how} The embassy or the issuing authority makes the final decision. '
+            f'These guides explain the papers every file needs:</p><ul class="checks">{gl}</ul>'
+            f'<p style="margin-top:12px">Not sure what applies to you? Use the <a class="il" href="/eligibility-check">free eligibility check</a>, or talk to our '
+            f'<a class="il" href="/visa-consultant-islamabad">visa consultants in Islamabad</a>.</p>'
+            + (f'<ul class="checks" style="margin-top:8px">{rl}</ul>' if rl else "") + '</div>')
+
+def region_guides_block(r):
+    gl = "".join(f'<li><a class="il" href="{u}">{n}</a></li>' for u, n in GUIDE_LINKS)
+    return (f'<div class="block" id="guides"><h2>Guides for your {e(r["name"])} visa file</h2><p>These guides explain the papers almost every file needs, whatever the destination:</p><ul class="checks">{gl}</ul>'
+            f'<p style="margin-top:12px">Start with the <a class="il" href="/eligibility-check">free eligibility check</a> or message our <a class="il" href="/visa-consultant-islamabad">visa consultants in Islamabad</a>.</p></div>')
+
 def build_country(c):
     r = REGIONS[c["region"]]
     vv = visit_visa(c["region"]) if c["slug"] not in ("ireland",) else None   # Ireland sits under the UK region; UK (GOV.UK) times don't apply
@@ -3145,6 +3195,9 @@ def build_country(c):
     srcs = OFFICIAL.get(c["slug"], []) + ([] if c["slug"] == "ireland" else REGION_OFFICIAL.get(c["region"], []))   # Ireland is filed under the UK region; GOV.UK links don't apply
     src_block = (f'<div class="block" id="sources"><h2>Official sources</h2><p>Always confirm the latest rules on the official portal. We check every file against these requirements before submission. <a class="link" href="/editorial-policy">How we keep this page accurate →</a></p><ul class="srcs">'
                  + "".join(f'<li><a href="{u}" target="_blank" rel="noopener nofollow">{e(n)} ↗</a></li>' for n, u in srcs) + "</ul></div>") if srcs else ""
+    guides_blk = country_guides_block(c, tier) if (tier == 1 or c["region"] == "schengen") else ""
+    if c.get("facts"):
+        faqs.append((f"What do the official sources say about the {c['name']} visa for Pakistanis?", " ".join(t for t, _, _ in c["facts"][:3]) + " The source links are in the official sources section of this page."))
     refusal = "".join(f"<li><b>{e(a)}</b><span>{e(b)}</span></li>" for a, b in REFUSAL)
     toc_items = [("service", "Our service"), ("official", "Official facts") if c.get("facts") else None, ("about", "Overview"), ("fee", "Cost & processing"), ("documents", "Documents"), ("places", "Places to visit") if places_block else None,
                  ("process", "How to apply"), ("checks", "Before you apply"), ("sources", "Official sources") if src_block else None, ("faqs", "FAQs")]
@@ -3167,6 +3220,7 @@ def build_country(c):
 <div class="block" id="process"><h2>How the {e(c["name"])} application works</h2><p>Your file goes through consultation, documentation, appointment or online submission, and tracking. The full step-by-step process for {e(REGIONS[c["region"]]["name"])} visas is on the <a class="link" href="/countries/{c["region"]}">{e(REGIONS[c["region"]]["name"])} visa guide</a>.</p></div>
 <div class="block" id="checks"><h2>Before you apply for the {e(c["name"])} visa</h2><p>Officers judge the same things on every file: purpose of the trip, enough funds, reasons to return and consistent documents. Read our short guides, then send your file for a free check.</p><div class="chipsrow" style="margin-top:12px"><a href="/guides/bank-statement-for-visa-from-pakistan">Bank statement rules</a><a href="/guides/visa-cover-letter-pakistan">Cover letter template</a><a href="/guides/visa-refused-what-to-do">If a visa is refused</a><a href="/guides/visa-documents-explained">Documents explained</a></div></div>
 {src_block}
+{guides_blk}
 <div class="block" id="faqs"><h2>{e(c["name"])} visa FAQs</h2>{faq_html(faqs)}</div>
 <p class="note">Updated {upd_of(c)}. Rules change; we confirm the latest requirements for your case. {NAME} is licensed by the Department of Tourist Services (DTS). We are not an embassy or government office, and no agency can guarantee a visa: the decision is made by the embassy. <a class="link" href="/disclaimer">Disclaimer</a> · <a class="link" href="/fees-and-refunds">Fees &amp; refund policy</a> · <a class="link" href="/compliance">Compliance commitment</a></p>
 </div>'''
