@@ -3128,7 +3128,9 @@ def country_guides_block(c, tier):
             f'These guides explain the papers every file needs:</p><ul class="checks">{gl}</ul>'
             f'<p style="margin-top:12px">Not sure what applies to you? Use the <a class="il" href="/eligibility-check">free eligibility check</a>, or talk to our '
             f'<a class="il" href="/visa-consultant-islamabad">visa consultants in Islamabad</a>.</p>'
-            + (f'<ul class="checks" style="margin-top:8px">{rl}</ul>' if rl else "") + '</div>')
+            + (f'<ul class="checks" style="margin-top:8px">{rl}</ul>' if rl else "")
+            + (('<p style="margin-top:12px">Planning more than one country? Other major Asian visas we handle:</p><ul class="checks">'
+                + "".join(f'<li><a class="il" href="{x["url"]}">{e(x["name"])} visa from Pakistan</a></li>' for x in asian_priority()[:8] if x["slug"] != c["slug"])+ '</ul>') if tier == 1 else "") + '</div>')
 
 def region_guides_block(r):
     gl = "".join(f'<li><a class="il" href="{u}">{n}</a></li>' for u, n in GUIDE_LINKS)
@@ -3398,12 +3400,13 @@ def build_air():
 <div><h3>Special student discounts</h3><p>Discounted tickets with extra baggage allowances on airlines like Virgin Atlantic, Etihad, and British Airways. Bring your university offer letter and save on your first journey abroad.</p></div></div>
 <h3>Ticketing checklist</h3><ul class="checks">{chk}</ul>
 <h3>Changes &amp; cancellations</h3><p>Flight cancelled? Need a date change? Message us on WhatsApp and we handle it as the airline's fare rules allow. Support: Mon–Sat, 9am–8pm.</p></div></section>
-{sec("Frequently asked questions", "Everything you need to know about booking flights with us.", faq_html(FAQ_AIR))}
+{air_hub_extra()}
+{sec("Frequently asked questions", "Everything you need to know about booking flights with us.", faq_html(FAQ_AIR + AIR_FAQS2))}
 {cta_band("Ready to fly?")}'''
     acts = f'<a class="btn wa" href="{wa("Hi, I need a flight quote.")}" target="_blank" rel="noopener">💬 Get a fare quote</a><a class="btn light" href="/partner-airlines">Airlines we book</a>'
     ph = pagehead("Air ticketing", "Air tickets on every<br>major airline", "Tickets on major airlines, domestic and international. Support: Mon–Sat, 9am–8pm.", PGPIC["pg-air"], alt="Airliner at an airport at sunset", actions=acts)
     body = shell("/air-ticketing", [("Home", "/"), ("Air Ticketing", None)], ph, content)
-    ld = [crumbs_ld([("Home", "/"), ("Air Ticketing", "/air-ticketing")]), faq_ld(FAQ_AIR), service_ld("Air ticketing in Islamabad", "Air ticketing on major airlines, with e-tickets.", "/air-ticketing", {"serviceType": "Air ticketing"})]
+    ld = [crumbs_ld([("Home", "/"), ("Air Ticketing", "/air-ticketing")]), faq_ld(FAQ_AIR + AIR_FAQS2), service_ld("Air ticketing in Islamabad", "Air ticketing on major airlines, with e-tickets.", "/air-ticketing", {"serviceType": "Air ticketing"})]
     page("/air-ticketing", "Air Ticketing Agency Islamabad | Flight Tickets | AL ARBAB",
          "Air ticketing in Islamabad. Flights to London, Dubai, Toronto, Jeddah & more on major airlines. E-tickets, group & student fares. Fares on WhatsApp.",
          body, ld, "air ticketing islamabad, flight tickets islamabad, licensed travel agent pakistan, pia booking islamabad, emirates tickets islamabad", priority="0.9")
@@ -3456,6 +3459,7 @@ def umrah_hub_extra():
      '<ul class="checks" style="margin-top:12px"><li><b>Hotels:</b> Economy lists standard hotels (1km+), the 3 Star package 3 Star hotels (600m), the 4 Star package walking distance, and the 5 Star Luxury package front-row 5 Star hotels.</li>'
      '<li><b>Transport:</b> shared transport in Economy, luxury transport in 3 Star, private transport in 4 Star and VIP private transport in 5 Star. For a customized plan you can choose private GMC or luxury bus transport.</li>'
      '<li><b>Ziarat:</b> the 4 Star package lists breakfast and ziarat.</li>'
+     '<li><b>Flights:</b> see <a class="il" href="/air-ticketing/islamabad-to-jeddah">Islamabad to Jeddah flights</a>, or ask us to include return flights from Islamabad in your plan.</li>'
      '<li><b>Stay length:</b> packages list 7 to 15 days, and customized plans can be 7, 10, 15 or 30 days. You can change the number of nights in Makkah and in Madinah.</li></ul></div></section>'
      '<section class="sec reveal"><div class="block"><h2>Ramadan or the rest of the year</h2><p>Ramadan dates follow the Islamic calendar and moon sighting, so confirm your dates before you book anything. '
      'The same packages are available for Ramadan and for the rest of the year; what changes is the dates, the hotel and flight availability and the price on the day. '
@@ -3469,6 +3473,7 @@ def umrah_pkg_extra(u):
      '</b>. Exact hotels and distances are confirmed for your dates before you pay, and you can change the number of nights in Makkah and in Madinah. Other items listed in this package: ' + e("; ".join(ft[3:])) + '.</p></div>'
      '<div class="block"><h2>How the ' + e(u["title"]) + ' compares with the other packages</h2>' + umrah_compare_table(u) +
      '<p style="margin-top:10px">See all options on the <a class="il" href="/umrah">Umrah packages</a> page, or the <a class="il" href="/umrah/ramadan-umrah">Ramadan Umrah</a> page if you plan to travel in Ramadan.</p></div>'
+     '<div class="block"><h2>Flights for this package</h2><p>We arrange return flights from Islamabad quoted for your dates. See the <a class="il" href="/air-ticketing/islamabad-to-jeddah">Islamabad to Jeddah</a> page for the airlines we quote on this route.</p></div>'
      '<div class="block"><h2>What to send us</h2><ul class="checks"><li>A clear photo of each passport and passport-size photos</li><li>Your travel dates and the number of travellers</li><li>Names exactly as on the passports</li></ul>'
      '<p>We prepare your Umrah visa file. The Saudi authorities issue the visa and make the final decision. Prices change with dates, airfare and hotel availability, so we quote on the day.</p></div>'
      + umrah_sources_block("Check the official rules"))
@@ -4015,20 +4020,88 @@ def build_reservation():
          body, [crumbs_ld([("Home", "/"), ("Flight & Hotel Reservation", "/flight-hotel-reservation-for-visa")]), service_ld("Flight & hotel reservation for visa", "Verifiable reservations for visa applications.", "/flight-hotel-reservation-for-visa"), faq_ld(faqs)],
          "flight reservation for visa, hotel booking for visa, dummy ticket for visa pakistan, schengen hotel reservation", priority="0.7")
 
+# ---- air ticketing focus: route pages and hub get their own content from the airline data on the site (name, region, hub) and the site's own ticketing facts. No fares, no flight times.
+def airline_rows(airlines_str):
+    out = []
+    for tok in [t.strip().upper() for t in airlines_str.split(",")]:
+        for a in DATA["airlines"]:
+            c_, n_ = a["code"].upper(), a["name"].upper()
+            if tok == c_ or tok.startswith(c_) or c_.startswith(tok) or n_.startswith(tok):
+                out.append(a); break
+    return out
+
+def route_extra(city, code, airlines_str, vlink):
+    rows = airline_rows(airlines_str)
+    tbl = ""
+    if rows:
+        tbl = ('<div style="overflow-x:auto"><table class="tbl"><thead><tr><th>Airline</th><th>Type</th><th>Hub</th></tr></thead><tbody>'
+               + "".join(f'<tr><td>{e(a["name"])}</td><td>{e(a["category"])}</td><td>{e(a["hub"])}</td></tr>' for a in rows) + '</tbody></table></div>')
+    jed = ('<p>Travelling for Umrah? See our <a class="il" href="/umrah">Umrah packages</a> (hotels in Makkah and Madinah, transport and visa file) and the <a class="il" href="/umrah/ramadan-umrah">Ramadan Umrah</a> page. '
+           'You can book your flight with the package or on its own.</p>') if city == "Jeddah" else ""
+    visa = (f'<p>Need a visa for {e(city)}? See our <a class="il" href="{vlink}">{e(city)} visa guide</a> for the document checklist, and ask us for a verifiable '
+            f'<a class="il" href="/flight-hotel-reservation-for-visa">flight and hotel reservation for your visa file</a>. Many embassies ask for a reservation rather than a paid ticket, so confirm what your embassy expects before you buy.</p>') if vlink else \
+           ('<p>Need a flight and hotel reservation for a visa file? See our <a class="il" href="/flight-hotel-reservation-for-visa">flight and hotel reservation for visa</a> service.</p>')
+    return (
+     f'<div class="block"><h2>Airlines we book on Islamabad to {e(city)}</h2><p>These are the airlines we quote most often on this route. The table shows the type of airline and its hub, so you can see where a one-stop option would connect. Ask us for direct and one-stop options for your dates.</p>{tbl}'
+     f'<p style="margin-top:10px">See all <a class="il" href="/partner-airlines">airlines we book</a>.</p></div>'
+     f'<div class="block"><h2>How your Islamabad to {e(city)} ticket request works</h2><ol class="steps">' + steps_html([
+        ("Send your route and dates", f"Message us the passport name, your dates and the number of travellers for Islamabad to {city}."),
+        ("We compare fares", "We check the airlines above and others, direct and one-stop, with baggage allowance and fare rules."),
+        ("You choose and pay", "Confirm the option you want. The e-ticket is issued after payment."),
+        ("Changes and support", "If you need a date change or a cancellation, message us. We handle it as the airline's fare rules allow, Mon–Sat, 9am–8pm.")]) + '</ol></div>'
+     f'<div class="block"><h2>Ticket, visa and hotel together</h2>{visa}{jed}'
+     f'<p>We also arrange <a class="il" href="/hotel-booking">hotels</a> and <a class="il" href="/travel-insurance">travel insurance</a>, and we are a <a class="il" href="/travel-agency-islamabad">travel agency in Islamabad</a> (Blue Area, DTS licensed).</p></div>')
+
+def route_faqs(city, code, al, vlink):
+    f = [(f"Which airlines fly from Islamabad to {city}?", f"Popular options on this route include {al}. We compare direct and one-stop fares and send you the options with baggage allowance and fare rules."),
+         (f"How do I get a good fare on an Islamabad to {city} ticket?", "Book early, stay flexible on dates and compare one-stop routes via hubs like Dubai, Doha or Istanbul. Our ticketing officers check these for you."),
+         ("When do I get my e-ticket?", "The e-ticket is issued after payment. Send your passport name and dates first so we can check the fare."),
+         ("Do you offer group or student fares?", "Yes. Group and student fares are available on some airlines. Send your details on WhatsApp and we check what applies."),
+         ("Can I change or cancel my ticket?", "Message us on WhatsApp and we handle it as the airline's fare rules allow. Support: Mon–Sat, 9am–8pm.")]
+    if vlink:
+        f.append((f"Do I need a visa for {city}?", f"It depends on your passport and the purpose of your trip. See our {city} visa guide for the checklist. We can book your ticket and prepare your visa file together."))
+    return f
+
+AIR_FAQS2 = [
+ ("When do I get my e-ticket?", "The e-ticket is issued after payment. Send your route, dates and passport name first so we can quote the fare."),
+ ("Do you offer group and student fares?", "Yes. Group and student fares are available on some airlines. Send your details on WhatsApp and we check what applies."),
+ ("Can you book a flight reservation for my visa file?", "Yes. See our flight and hotel reservation for visa service. Many embassies ask for a reservation rather than a paid ticket, so confirm what your embassy expects before you buy."),
+ ("What time can I reach you?", "Support is available Monday to Saturday, 9am to 8pm, on WhatsApp and phone."),
+]
+
+def air_hub_extra():
+    cats = {}
+    for a in DATA["airlines"]:
+        cats.setdefault(a["category"], []).append(a["name"])
+    reg = "".join(f"<li><b>{e(k)}:</b> {e(', '.join(v))}</li>" for k, v in cats.items())
+    rt = "".join(f'<tr><td><a class="il" href="{route_url(n)}">Islamabad to {e(n)}</a></td><td>{e(c)}</td><td>{e(", ".join(a.title() for a in al.split(", ")))}</td></tr>' for n, c, al in ROUTES)
+    return (
+     '<section class="sec reveal"><div class="block"><h2>Popular routes and the airlines we quote</h2><div style="overflow-x:auto"><table class="tbl"><thead><tr><th>Route</th><th>Code</th><th>Airlines we quote</th></tr></thead><tbody>' + rt + '</tbody></table></div></div></section>'
+     '<section class="sec reveal"><div class="block"><h2>How a ticket request works</h2><ol class="steps">' + steps_html([
+        ("Send your route and dates", "Message us the passport name, your dates and the number of travellers."),
+        ("We compare fares", "We check airlines on your route, direct and one-stop, with baggage allowance and fare rules."),
+        ("You choose and pay", "Confirm the option you want. The e-ticket is issued after payment."),
+        ("Changes and support", "We handle date changes and cancellations as the airline's fare rules allow, Mon–Sat, 9am–8pm.")]) + '</ol></div></section>'
+     '<section class="sec reveal"><div class="block"><h2>Airlines we book, by region</h2><ul class="checks">' + reg + '</ul><p style="margin-top:10px">Details for each airline are on the <a class="il" href="/partner-airlines">airlines we book</a> page.</p></div></section>'
+     '<section class="sec reveal"><div class="block"><h2>Tickets with visas, hotels and Umrah</h2><ul class="checks">'
+     '<li><a class="il" href="/flight-hotel-reservation-for-visa">Flight and hotel reservation for visa</a>: verifiable reservations that match your visa file</li>'
+     '<li><a class="il" href="/air-ticketing/islamabad-to-jeddah">Islamabad to Jeddah flights</a> and our <a class="il" href="/umrah">Umrah packages</a></li>'
+     '<li><a class="il" href="/hotel-booking">Hotel booking</a> and <a class="il" href="/travel-insurance">travel insurance</a></li>'
+     '<li><a class="il" href="/visa-consultant-islamabad">Visa consultants in Islamabad</a> for the visa behind the trip</li></ul></div></section>')
+
 def build_routes():
     for city, code, airlines in ROUTES:
         url = route_url(city)
         vlink = ROUTE_LINKS.get(city)
         al = ", ".join(a.title() for a in airlines.split(", "))
-        faqs = [(f"Which airlines fly from Islamabad to {city}?", f"Popular options on this route include {al}. We compare direct and one-stop fares and send you the best options."),
-                (f"How do I get a good fare on an Islamabad to {city} ticket?", "Book early, stay flexible on dates and compare one-stop routes via hubs like Dubai, Doha or Istanbul. Our ticketing officers check these for you."),
-                FAQ_AIR[5] if len(FAQ_AIR) > 5 else FAQ_AIR[0]]
+        faqs = route_faqs(city, code, al, vlink) + [FAQ_AIR[5] if len(FAQ_AIR) > 5 else FAQ_AIR[0]]
         main = f'''<div class="stack">
 <div class="block"><h2>Islamabad to {e(city)} flights</h2><div class="facts" style="margin-top:0"><div><small>Route</small><b>{e(code)}</b></div><div><small>Popular airlines</small><b>{e(al)}</b></div><div><small>E-ticket</small><b>Issued after payment</b></div><div><small>Support</small><b>Mon–Sat, 9am–8pm</b></div></div>
-<p style="margin-top:14px">We see live fares on {e(al)} and other carriers serving {e(city)}. Send your dates on WhatsApp and we reply with the best direct and one-stop options, baggage allowance and fare rules.</p>
+<p style="margin-top:14px">We see live fares on {e(al)} and other carriers serving {e(city)}. Send your dates on WhatsApp and we reply with the direct and one-stop options, baggage allowance and fare rules.</p>
 <p style="margin-top:12px"><a class="btn wa" href="{wa(f"Hi, I need a fare for Islamabad to {city} ({code}). My dates are: ")}" target="_blank" rel="noopener">💬 Get today's fare</a></p></div>
 {f'<div class="block"><h2>Visa for {e(city)}</h2><p>Need a visa for this trip? See the document checklist and fees on our <a class="link" href="{vlink}">visa page</a>. We can book your ticket and handle the visa together.</p></div>' if vlink else ""}
 <div class="block"><h2>Before you book</h2><ul class="checks"><li>Passport validity must be at least 6 months.</li><li>Check transit visa requirements for layovers.</li><li>Ensure your name matches your passport exactly.</li><li>Verify baggage allowance (2PC vs 30KG).</li></ul></div>
+{route_extra(city, code, airlines, vlink)}
 <div class="block"><h2>FAQs</h2>{faq_html(faqs)}</div></div>'''
         others = "".join(f'<a href="{route_url(c)}">Islamabad → {c} <span>→</span></a>' for c, *_ in ROUTES if c != city)
         content = f'<div class="layout">{main}<aside class="aside">{ctacard("Islamabad to " + city + " ticket")}<nav class="mini"><h3>Other routes</h3>{others}</nav></aside></div>{cta_band("Ready to fly?")}'
