@@ -129,19 +129,20 @@ ADDR = B["address"]
 HOURS = "Monday – Saturday: 9:00 AM – 8:00 PM"
 MAP_URL = B["mapUrl"]
 LOGO = BASE + "/assets/logo.png"          # absolute (schema, Open Graph)
-import hashlib
+import hashlib, functools
+@functools.lru_cache(maxsize=None)
 def _v(name):
     return hashlib.md5(open(os.path.join(ROOT, "assets", name), "rb").read()).hexdigest()[:8]
 asset_hash = _v   # _v is reused as a loop variable further down
 LOGO_SRC = f"/assets/logo-80.png?v={_v('logo-80.png')}"   # 80px header logo (~3 KB)
 ORBIT_MARK = f"/assets/brand/mark1-plane.png?v={_v('brand/mark1-plane.png')}"
 LOGO_FULL = f"/assets/brand/logo1-plane.png?v={_v('brand/logo1-plane.png')}"
-AL_MARK = f"/assets/brand/al-mark.png?v={_v('brand/al-mark.png')}"   # the owner's own AL mark (red + silver, with plane)
-AL_MARK_S = f"/assets/brand/al-mark-s.png?v={_v('brand/al-mark-s.png')}"
+AL_MARK = f"/assets/brand/al-mark.webp?v={_v('brand/al-mark.webp')}"   # the owner's own AL mark (red + silver, with plane)
+AL_MARK_S = f"/assets/brand/al-mark-s.webp?v={_v('brand/al-mark-s.webp')}"
 AL_TILE = f"/assets/brand/al-glass-60.png?v={_v('brand/al-glass-60.png')}"      # glass icon tile: 1x
 AL_TILE2 = f"/assets/brand/al-glass-120.png?v={_v('brand/al-glass-120.png')}"   # 2x
 AL_TILE3 = f"/assets/brand/al-glass-360.png?v={_v('brand/al-glass-360.png')}"   # splash
-AL_MARK_M = f"/assets/brand/al-mark-m.png?v={_v('brand/al-mark-m.png')}"   # footer size
+AL_MARK_M = f"/assets/brand/al-mark-m.webp?v={_v('brand/al-mark-m.webp')}"   # footer size
 LOGO_STICKER = f"/assets/brand/sticker.png?v={_v('brand/sticker.png')}"
 LOGO_STICKER_S = f"/assets/brand/sticker-s.png?v={_v('brand/sticker-s.png')}"   # 2x of the header size, resized properly so it stays sharp   # the cream + gold logo, works on any background
 LOGO_LIGHT = f"/assets/brand/logo1-plane-light.png?v={_v('brand/logo1-plane-light.png')}"
@@ -302,13 +303,25 @@ def uns_id(url):
     m = re.match(r"https://images\.unsplash\.com/photo-([\w-]+)", url or "")
     return m.group(1) if m else None
 
+UNS_W = (400, 800, 1200)   # local WebP copies made by tools/localize_unsplash.py (src/assets/uns/<id>-<w>.webp)
+def uns_bucket(w):
+    return next((x for x in UNS_W if x >= w), UNS_W[-1])
+def uns_local(pid, w):
+    f = f"uns/{pid}-{uns_bucket(w)}.webp"
+    return f"/assets/{f}?v={asset_hash(f)}" if os.path.exists(os.path.join(ROOT, "assets", f)) else None
+
 def U(pid, w):
     if pid.startswith("/"):            # owner's own photo in assets/ (one size, already cache-busted)
         return pid
-    return f"https://images.unsplash.com/photo-{pid}?auto=format&fit=crop&q=70&w={w}"
+    return uns_local(pid, w) or f"https://images.unsplash.com/photo-{pid}?auto=format&fit=crop&q=70&w={w}"
 
 def picture(pid, alt, w=800, h=533, sizes="(max-width:600px) 100vw, 400px", lazy=True, cls="", widths=(400, 800, 1200), high=False):
-    srcset = pid if pid.startswith("/") else ", ".join(f"{U(pid, x)} {x}w" for x in widths)
+    if pid.startswith("/"):
+        srcset = pid
+    elif uns_local(pid, w):
+        srcset = ", ".join(f"{U(pid, x)} {x}w" for x in sorted({uns_bucket(x) for x in widths}))
+    else:
+        srcset = ", ".join(f"{U(pid, x)} {x}w" for x in widths)
     attrs = 'loading="lazy" decoding="async"' if lazy else ('fetchpriority="high" decoding="async"' if high else 'decoding="async"')
     c = f' class="{cls}"' if cls else ""
     return f'<img{c} src="{U(pid, w)}" srcset="{srcset}" sizes="{sizes}" alt="{e(alt)}" width="{w}" height="{h}" {attrs}>'
@@ -771,6 +784,10 @@ if NCARD_THEME:
     _gl = re.sub(r"/\*.*?\*/", "", open(os.path.join(ROOT, "assets", f"ncard-{NCARD_THEME}.css"), encoding="utf-8").read(), flags=re.S)
     _gl = re.sub(r"\s*[\r\n]+\s*", "", _gl)
     CSS += re.sub(r"\s*([{};,>])\s*", r"\1", _gl).replace(";}", "}")
+# Speed (Lighthouse Nov 2026: Style & Layout 0.8-1.5 s on mobile): the browser skips layout and paint of sections that are
+# not on screen yet. contain-intrinsic-size keeps the scrollbar height stable, so nothing jumps (CLS stays 0).
+CSS += ("main .sec~.sec,main .stack>.block:nth-child(n+4),footer.fB{content-visibility:auto;contain-intrinsic-size:auto 720px}"
+        "footer.fB{contain-intrinsic-size:auto 900px}")
 SVG_DEFS = '<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="lgmark" viewBox="0 0 215 200"><g transform="translate(0,6)"><path d="M170,30 C146,38 120,58 102,84 C84,110 70,134 54,148 C42,158 30,152 30,138 C30,126 36,116 44,110 C34,120 24,134 28,152 C31,172 60,178 86,160 C114,140 140,106 158,76 C165,63 169,46 170,30 Z" fill="#e0150f"/></g><g transform="translate(184,26) rotate(-38) scale(.95)"><path d="M22,0 C22,-2 20,-3 17,-3 L4,-3 L-4,-17 L-9,-17 L-5,-3 L-14,-3 L-17,-8 L-20,-8 L-17,0 L-20,8 L-17,8 L-14,3 L-5,3 L-9,17 L-4,17 L4,3 L17,3 C20,3 22,2 22,0 Z" fill="currentColor"/></g><g fill="#e0150f"><circle cx="150" cy="28" r="3.4" opacity=".9"/><circle cx="136" cy="36" r="2.6" opacity=".65"/><circle cx="124" cy="44" r="1.9" opacity=".4"/></g></symbol><clipPath id="blobclip" clipPathUnits="objectBoundingBox"><path d="M0,0.5 Q0,0.40 0.06,0.40 L0.20,0.40 Q0.27,0.40 0.27,0.30 L0.27,0.09 Q0.27,0 0.35,0 L0.93,0 Q1,0 1,0.07 L1,0.93 Q1,1 0.93,1 L0.07,1 Q0,1 0,0.93 Z"/></clipPath></defs></svg>'
 
 # header button style (both from Uiverse.io, MIT; CSS in style.css):
@@ -796,7 +813,7 @@ def pill(u, n, cur):
     return f'<a class="pill" href="{u}"{" aria-current=\"page\"" if on else ""}>{SPARK if on else ""}<span class="nm">{n}</span></a>'
 
 def header(cur):
-    BRAND_IMG = f'<img class="lgf" src="{AL_MARK_S}" srcset="{AL_MARK_S} 1x, {AL_MARK} 2x" alt="" width="60" height="48"><span class="bt"><b>AL ARBAB</b><small>TRAVEL &amp; TOURS</small></span>'
+    BRAND_IMG = f'<img class="lgf" src="{AL_MARK_S}" alt="" width="60" height="48"><span class="bt"><b>AL ARBAB</b><small>TRAVEL &amp; TOURS</small></span>'
     links = "".join(pill(u, n, cur) for u, n in NAV)
     return f'''<header class="nav {NAV_STYLE}{" board" if NAV_BOARD else ""}{" soft" if NAV_SOFT else ""}" role="banner">
   <a class="brand" href="/" aria-label="AL ARBAB TRAVEL &amp; TOURS home">{BRAND_IMG}</a>
@@ -1014,7 +1031,7 @@ def footer():
     return f'''<footer class="fB">
   <div class="fb-card">
     <div class="fb-top">
-      <div class="fa-brand"><a class="brand" href="/" aria-label="AL ARBAB TRAVEL &amp; TOURS home"><img class="lgf" src="{AL_MARK_M}" srcset="{AL_MARK_M} 1x, {AL_MARK} 2x" alt="" width="77" height="62" loading="lazy"><span class="bt"><b>AL ARBAB</b><small>TRAVEL &amp; TOURS</small></span></a><h2 class="sr">{NAME}</h2>
+      <div class="fa-brand"><a class="brand" href="/" aria-label="AL ARBAB TRAVEL &amp; TOURS home"><img class="lgf" src="{AL_MARK_M}" alt="" width="77" height="62" loading="lazy"><span class="bt"><b>AL ARBAB</b><small>TRAVEL &amp; TOURS</small></span></a><h2 class="sr">{NAME}</h2>
         <p>{e(FB_LINE)}</p>{google_line()}</div>
       <div class="fb-col fb-visit"><h2 class="fh">Visit us</h2><ul class="fa-contact">
         <li>{ico("pin", 18, "#ff7a6b")}<a href="{MAP_URL}" target="_blank" rel="noopener">{ADDR}</a></li>
@@ -1051,7 +1068,12 @@ FONT_URL = {k: f"/assets/fonts/{v[0]}?v={asset_hash('fonts/' + v[0])}" for k, v 
 FONT_CSS = "".join(f"@font-face{{font-family:{k};font-style:normal;font-weight:{FONT_FILES[k][1]};font-display:swap;src:url({FONT_URL[k]}) format('woff2');unicode-range:{_FR}}}" for k in FONT_FILES)
 FONT_PRELOAD = "".join(f'<link rel="preload" as="font" type="font/woff2" href="{u}" crossorigin>' for u in FONT_URL.values())
 VERIFY_TAGS = (f'<meta name="google-site-verification" content="{GSC_CODE}">' if GSC_CODE else '') + (f'<meta name="msvalidate.01" content="{BING_CODE}">' if BING_CODE else '')
-GA_TAG = (f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag("js",new Date());gtag("config","{GA_ID}");</script>'
+# GA4 is queued at once (dataLayer) but gtag.js (~180 KB, ~0.4 s main-thread) loads on the first scroll/tap/key or 5 s after load,
+# so it no longer blocks the first render (Lighthouse TBT, Nov 2026). Page views are still sent when the script arrives.
+GA_TAG = ('<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","' + GA_ID + '");'
+          '(function(){var d=0,E=["scroll","pointerdown","keydown","touchstart"];function L(){if(d)return;d=1;E.forEach(function(e){removeEventListener(e,L,{passive:true})});'
+          'var s=document.createElement("script");s.async=1;s.src="https://www.googletagmanager.com/gtag/js?id=' + GA_ID + '";document.head.appendChild(s)}'
+          'E.forEach(function(e){addEventListener(e,L,{passive:true,once:true})});addEventListener("load",function(){setTimeout(L,5000)})})();</script>'
           if GA_ID else "")
 
 def an(word):
@@ -1146,7 +1168,7 @@ def page(url, title, desc, body, ld=None, kw="", image=None, extra_head="", extr
 <meta property="og:type" content="website"><meta property="og:site_name" content="{NAME}"><meta property="og:locale" content="en_PK">
 <meta property="og:title" content="{attr(title)}"><meta property="og:description" content="{attr(desc)}"><meta property="og:url" content="{canon}"><meta property="og:image" content="{img}">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{attr(title)}"><meta name="twitter:description" content="{attr(desc)}"><meta name="twitter:image" content="{img}">
-<link rel="preconnect" href="https://images.unsplash.com">
+
 {FONT_PRELOAD}
 {extra_head}
 {VERIFY_TAGS}{GA_TAG if not noindex else ""}
@@ -1161,7 +1183,7 @@ def page(url, title, desc, body, ld=None, kw="", image=None, extra_head="", extr
 {footer()}
 <script>window.SITE={{wa:"{WA}",email:"{EMAIL}",waS:"https://wa.me/{WA_DESK["schengen"]}",waA:"https://wa.me/{WA_DESK["asian"]}",sch:{json.dumps(sch_names())}}};</script>
 {extra_script}
-<script src="{APPJS}" defer></script>
+<script>requestAnimationFrame(function(){{setTimeout(function(){{var s=document.createElement("script");s.src="{APPJS}";document.body.appendChild(s)}},0)}})</script>
 </body>
 </html>'''
     html = city_links(url, html)
@@ -4703,6 +4725,13 @@ def write_all():
     shutil.copytree(os.path.join(ROOT, "assets", "countries"), os.path.join(OUT, "assets", "countries"))   # owner's country photos
     shutil.copytree(os.path.join(ROOT, "assets", "umrah"), os.path.join(OUT, "assets", "umrah"))   # owner's Umrah photo
     shutil.copytree(os.path.join(ROOT, "assets", "packages"), os.path.join(OUT, "assets", "packages"))   # owner's package photos
+    # local copies of Unsplash photos (tools/localize_unsplash.py): only the files the pages actually use are published
+    os.makedirs(os.path.join(OUT, "assets", "uns"))
+    _uns = set()
+    for _h, _p, _n in PAGES.values():
+        _uns.update(re.findall(r"/assets/uns/([\w-]+\.webp)", _h))
+    for _f in _uns:
+        shutil.copy(os.path.join(ROOT, "assets", "uns", _f), os.path.join(OUT, "assets", "uns", _f))
     if os.path.isdir(os.path.join(ROOT, "assets", "brand")):
         shutil.copytree(os.path.join(ROOT, "assets", "brand"), os.path.join(OUT, "assets", "brand"))   # the licensed logo mark
     js = open(os.path.join(ROOT, "assets", "app.js"), encoding="utf-8").read()
