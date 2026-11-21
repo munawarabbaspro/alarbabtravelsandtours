@@ -4759,13 +4759,17 @@ def write_all():
             if BASE + m.group(1) not in [o[0] for o in out]:
                 out.append((BASE + m.group(1), m.group(2)))
         return out[:8]
+    # real last-change dates from git history (tools/lastmod.py); pages missing from it fall back to the fixed dates above
+    _lmf = os.path.join(ROOT, "data", "lastmod.json")
+    _REAL_LASTMOD = json.load(open(_lmf, encoding="utf-8")) if os.path.exists(_lmf) else {}
     urls = ""
     _rk = country_rank(); _crank = {c["url"]: _rk[c["url"]] for c in COUNTRIES.values()}
     for u, (h, p, noi) in sorted(PAGES.items(), key=lambda x: (-float(x[1][0:][1]), _crank.get(x[0], -1), x[0])):
         if noi:
             continue
         im = "".join(f"<image:image><image:loc>{src}</image:loc></image:image>" for src, _ in imgs(h))
-        _lm = TODAY_NOV if (u in LASTMOD_NOV_URLS or u.startswith(LASTMOD_NOV_PREFIX) or any(c["url"] == u and c["slug"] in CHECKED_NOV for c in COUNTRIES.values())) else TODAY
+        _lm = (_REAL_LASTMOD.get(u) or
+               (TODAY_NOV if (u in LASTMOD_NOV_URLS or u.startswith(LASTMOD_NOV_PREFIX) or any(c["url"] == u and c["slug"] in CHECKED_NOV for c in COUNTRIES.values())) else TODAY))
         urls += f"<url><loc>{BASE}{u}</loc><lastmod>{_lm}</lastmod><priority>{p}</priority>{im}</url>\n"
     open(os.path.join(OUT, "sitemap.xml"), "w", encoding="utf-8").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n' + urls + "</urlset>\n")
     llms = [f"# {NAME}", "", f"> DTS-licensed travel agency and visa consultancy in Blue Area, Islamabad, Pakistan. Visa help with {len(COUNTRIES)} country guides, air tickets, Umrah packages, hotels and travel insurance.", "",
