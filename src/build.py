@@ -4686,6 +4686,11 @@ POPULAR = [(c["url"], f'{c["name"]} visa') for c in asian_priority()[:7]] + \
            ("/countries/canada", "Canada visit visa"), ("/umrah", "Umrah packages 2026"), ("/pakistan-tours", "Pakistan tours")]
 
 # ================================================================== write
+ASSET_CDN = os.environ.get("ASSET_CDN_URL", "").rstrip("/")   # optional CDN origin mirroring dist/assets; empty = serve images from this site
+_CDN_RE = re.compile(r'(?<=["\s,(])/assets/(?:uns|hero|countries|regions|packages|umrah|cards|steps)/')
+def cdn_rewrite(html):
+    return _CDN_RE.sub(lambda m: ASSET_CDN + m.group(0), html) if ASSET_CDN else html
+
 def write_all():
     bad = [u for u, (h, _, _) in PAGES.items() if re.search(r"\bIATA\b", re.sub(r"<script[^>]*>.*?</script>", "", h, flags=re.S))]
     assert not bad, f"IATA still mentioned on: {bad[:10]}"
@@ -4752,7 +4757,7 @@ def write_all():
         else:
             path = os.path.join(OUT, url.strip("/"), "index.html")
         os.makedirs(os.path.dirname(path), exist_ok=True)
-        open(path, "w", encoding="utf-8").write(re.sub(r">\s*\n\s*<", ">\n<", html))
+        open(path, "w", encoding="utf-8").write(cdn_rewrite(re.sub(r">\s*\n\s*<", ">\n<", html)))
     def imgs(html):
         out = []
         for m in re.finditer(r'<img[^>]+src="(/assets/(?:hero|countries|regions|packages|umrah)/[^"?]+)[^"]*"[^>]*alt="([^"]+)"', html):
