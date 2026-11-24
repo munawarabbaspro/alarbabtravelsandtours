@@ -1130,6 +1130,28 @@ META_OVERRIDE = {
 _CITY_NOTE_VISA = '<section class="sec reveal"><p class="note">Need help with your own file? Talk to our <a class="il" href="/visa-consultant-islamabad">visa consultants in Islamabad</a> (Blue Area office) or <a class="il" href="/eligibility-check">check your eligibility for free</a>.</p></section>'
 _CITY_NOTE_TRAVEL = '<section class="sec reveal"><p class="note">AL ARBAB is a <a class="il" href="/travel-agency-islamabad">travel agency in Islamabad</a> (Blue Area, DTS licensed): visas, air tickets, hotels and Umrah from one office.</p></section>'
 _CITY_VISA_PREFIX = ("/guides/",)
+META_OVERRIDE.update({   # 24 Nov 2026 round: Umrah + target Asian countries + Europe/USA (Search Console 7-day data)
+    "/umrah": ("Umrah Packages 2026 from Islamabad: Economy to 5 Star",
+        "Umrah packages 2026 from Islamabad: Economy, 3, 4 and 5 Star with Makkah and Madinah hotels, flights and visa file preparation. Price on WhatsApp 0315-2323811."),
+    "/countries/south-asia/nepal": ("Nepal Visa for Pakistanis: On Arrival & Online Form 2026",
+        "Nepal tourist visa for Pakistanis: on arrival at Tribhuvan, Pokhara or Lumbini airports, online form or Nepali mission. 15, 30 or 90 days. File help in Islamabad."),
+    "/countries/south-asia/bangladesh": ("Bangladesh Visa from Pakistan: High Commission Islamabad",
+        "Bangladesh visa for Pakistanis: apply via the High Commission in Islamabad, e-Consular appointment, documents and file help in Blue Area. WhatsApp 0315-2323811."),
+    "/countries/south-asia/sri-lanka": ("Sri Lanka ETA from Pakistan: Free 30-Day Tourist Visa 2026",
+        "Sri Lanka free 30-day tourist visa for Pakistanis from 25 May 2026: ETA steps, documents and file help in Blue Area, Islamabad. WhatsApp 0315-2323811."),
+    "/countries/south-asia/thailand": ("Thailand e-Visa from Pakistan: Apply Online, Documents 2026",
+        "Thailand e-Visa for Pakistanis: apply online on the official portal while outside Thailand, documents checklist and file help in Blue Area. Free check on WhatsApp."),
+    "/countries/south-asia/malaysia": ("Malaysia Visa from Pakistan: eVISA Portal, MDAC & Documents",
+        "Malaysia visa for Pakistanis: Pakistan is on the visa-required list, apply on the official eVISA portal and add the MDAC 3 days before arrival. File help in Blue Area."),
+    "/countries/schengen/italy": ("Italy (Rome) Visa from Pakistan: BLS Centres & Documents",
+        "Visa for Rome and Italy from Pakistan: apply at the BLS-Intiana centre for your area, official embassy steps, documents checklist and file help in Blue Area."),
+    "/countries/schengen/netherlands": ("Netherlands (Amsterdam) Visa from Pakistan: VFS & Documents",
+        "Visa for Amsterdam and the Netherlands from Pakistan: apply at VFS Global in Islamabad, Karachi or Lahore up to 6 months ahead. Official steps and file help in Blue Area."),
+    "/travel-insurance": ("Schengen Travel Insurance Pakistan: \u20ac30,000 Cover | AL ARBAB",
+        "Schengen travel insurance in Pakistan: the \u20ac30,000 minimum medical cover embassies ask for, insurers on the German Embassy list, arranged from Blue Area, Islamabad."),
+    "/countries/united-states": ("USA Visa from Pakistan: B1/B2, DS-160 & Interview Help | AL ARBAB",
+        "USA B1/B2 visa from Pakistan: DS-160 form, appointment scheduling and interview preparation from Blue Area, Islamabad. The final decision rests with the US embassy."),
+})
 _CITY_TRAVEL_PREFIX = ("/air-ticketing", "/hotel-booking", "/flight-hotel-reservation-for-visa", "/umrah", "/packages", "/honeymoon-packages", "/tours/", "/pakistan-tours", "/partner-airlines", "/travel-insurance")
 
 def city_links(url, html):
@@ -3456,7 +3478,7 @@ def build_air():
          body, ld, "air ticketing islamabad, flight tickets islamabad, licensed travel agent pakistan, pia booking islamabad, emirates tickets islamabad", priority="0.9")
 
 # ---- prompt 04: Umrah hub, package pages and Ramadan Umrah. Facts only from the site's own package data and the official Saudi pages listed in UMRAH_SOURCES.
-UMRAH_SOURCES = [("Nusuk Umrah (official platform)", "https://umrah.nusuk.sa/"), ("Saudi visa platform", "https://visa.visitsaudi.com/"),
+UMRAH_SOURCES = [("Official Saudi Umrah website, haj.gov.sa (Urdu)", "https://haj.gov.sa/ur/Umrah"), ("Nusuk Umrah (official platform)", "https://umrah.nusuk.sa/"), ("Saudi visa platform", "https://visa.visitsaudi.com/"),
                  ("Saudi Ministry of Health: health regulations for Umrah travellers", "https://www.moh.gov.sa/en/HealthAwareness/Pilgrims-Health/Documents/Health-Regulations-Umrah-EN.pdf")]
 
 def umrah_sources_block(h="Official sources for your Umrah"):
@@ -3471,6 +3493,8 @@ UMRAH_FAQS2 = [
  ("Is the visa included in the package?", "Visa processing is listed in the Economy and 3 Star packages, and visa and insurance in the 4 Star package. For the 5 Star package and custom plans, ask us what is included for your dates. The Saudi authorities issue the visa and make the final decision."),
  ("Can I travel as a family or as a group?", "Yes. Plans can be made as a group or as a private family package, with stays of 7, 10, 15 or 30 days."),
  ("Do I need vaccinations for Umrah?", "Health requirements for Umrah travellers are set by the Saudi Ministry of Health and can change. Read the current Umrah health regulations on the official page linked on this page and check your vaccination certificate before you travel."),
+ ("When can I perform Umrah?", "The official Saudi Umrah website (haj.gov.sa) says on its Umrah page that Umrah can be performed at any time of the year. Each season has its own dates for visa issue, entry and departure, so we check the current dates before you book."),
+ ("How are Umrah packages booked officially?", "The official Saudi Umrah website (haj.gov.sa) says Umrah packages are booked through approved service providers and approved travel platforms linked to the Nusuk platform. Ask us how your booking and visa file will be processed before you pay."),
  ("Where do I check the official Umrah rules?", "On the official Saudi pages linked in the sources section of this page: the Nusuk Umrah platform, the Saudi visa platform and the Saudi Ministry of Health regulations for Umrah travellers."),
 ]
 

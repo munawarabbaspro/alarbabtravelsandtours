@@ -1753,7 +1753,48 @@
      "Everest Base Camp",
      "Lumbini"
     ],
-    "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&q=80&w=800"
+    "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&q=80&w=800",
+    "facts": [
+     [
+      "The Nepal Tourism Board lists the nationalities for which no visa on arrival is provided, who must get a visa from a Nepali mission before travel. Pakistan is not on that list.",
+      "Nepal Tourism Board: Tourist visa",
+      "https://ntb.gov.np/en/plan-your-trip/before-you-come/tourist-visa"
+     ],
+     [
+      "A tourist visa can be issued on arrival at Tribhuvan International Airport, Pokhara International Airport and Gautam Buddha International Airport in Lumbini, or before travel from Nepal's diplomatic missions abroad.",
+      "Nepal Tourism Board: Tourist visa",
+      "https://ntb.gov.np/en/plan-your-trip/before-you-come/tourist-visa"
+     ],
+     [
+      "You may fill the online visa application form on the Department of Immigration portal before you arrive in Nepal. A visa issued abroad must be used to enter Nepal within six months of the issue date.",
+      "Nepal Tourism Board: Tourist visa",
+      "https://ntb.gov.np/en/plan-your-trip/before-you-come/tourist-visa"
+     ],
+     [
+      "Tourist visas are listed as multiple entry for 15, 30 or 90 days. Extensions are handled by the Department of Immigration in Kathmandu or Pokhara.",
+      "Nepal Tourism Board: Tourist visa",
+      "https://ntb.gov.np/en/plan-your-trip/before-you-come/tourist-visa"
+     ],
+     [
+      "You need a valid passport and a passport-size photo with a light background. The Nepal Tourism Board also lists a free visa for up to 30 days for SAARC citizens (except Afghanistan) visiting for the first time in a visa year.",
+      "Nepal Tourism Board: Tourist visa",
+      "https://ntb.gov.np/en/plan-your-trip/before-you-come/tourist-visa"
+     ]
+    ],
+    "faq_extra": [
+     [
+      "Do Pakistanis need a visa for Nepal?",
+      "Yes, a tourist visa is needed. The Nepal Tourism Board says all foreigners except Indians need one, and Pakistan is not on its list of nationalities for which no on-arrival visa is provided. We check the current Immigration Department rule for your passport before you travel."
+     ],
+     [
+      "Where can I get a Nepal tourist visa?",
+      "The Nepal Tourism Board lists three ways: on arrival at Tribhuvan, Pokhara or Gautam Buddha (Lumbini) airport, before travel from a Nepali mission, or by filling the online form before you arrive. We help you fill the form and prepare your documents."
+     ],
+     [
+      "How long can I stay in Nepal on a tourist visa?",
+      "Tourist visas are listed for 15, 30 or 90 days, multiple entry. You can ask the Department of Immigration in Kathmandu or Pokhara for an extension."
+     ]
+    ]
    },
    {
     "slug": "indonesia",
@@ -1912,7 +1953,29 @@
      "Sylhet",
      "Sundarbans"
     ],
-    "image": "https://images.unsplash.com/photo-1585938389612-a552a28d6914?auto=format&fit=crop&q=80&w=800"
+    "image": "https://images.unsplash.com/photo-1585938389612-a552a28d6914?auto=format&fit=crop&q=80&w=800",
+    "facts": [
+     [
+      "The High Commission of Bangladesh in Islamabad lists Tourist Visa and Business Visa among its visa categories, with a downloadable visa application form on its website.",
+      "High Commission of Bangladesh, Islamabad",
+      "http://islamabad.mofa.gov.bd/"
+     ],
+     [
+      "The High Commission's website offers e-Consular visa services, including booking an appointment and checking the status of an application.",
+      "High Commission of Bangladesh, Islamabad",
+      "http://islamabad.mofa.gov.bd/"
+     ]
+    ],
+    "faq_extra": [
+     [
+      "Where do Pakistanis apply for a Bangladesh visa?",
+      "At the High Commission of Bangladesh in Islamabad. Its website lists the visa categories, a visa application form and an e-Consular service for booking an appointment and checking your application status. We prepare your documents and guide you through the submission."
+     ],
+     [
+      "What types of Bangladesh visa can I apply for?",
+      "The High Commission lists categories such as Tourist Visa, Business Visa and Student Visa. We help you choose the one that matches your purpose of travel and check the requirements for it."
+     ]
+    ]
    },
    {
     "slug": "cambodia",
